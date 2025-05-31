@@ -282,7 +282,11 @@ function RewardsGamification() {
             animation: "badge-pop 0.45s cubic-bezier(.21,2.0,.36,1.12) both",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center"
+            alignItems: "center",
+            background: "var(--surface-alt)",
+            borderRadius: 19,
+            boxShadow: "0 2px 15px var(--accent-gold)11",
+            padding: "18px 6px 14px 6px"
           }}>
             <div
               style={{
@@ -311,13 +315,13 @@ function RewardsGamification() {
             </div>
             <div style={{
               color: "var(--text-dark)",
-              background: "var(--surface)",
+              background: "var(--surface-contrast)", // Tertiary palette for distinction vs. card
               padding: "11px 14px",
-              borderRadius: 11,
+              borderRadius: 13,
               marginBottom: 10,
               fontSize: "1.08rem",
-              boxShadow: "0 4px 18px 0 var(--accent-gold)15, 0 2px 7px var(--accent-purple)10",
-              textShadow: "0 1px 3px var(--background)20"
+              boxShadow: "0 4px 11px 0 var(--accent-gold)16, 0 2px 7px var(--accent-purple)10",
+              textShadow: "0 1px 2px var(--background)16"
             }}>
               {selectedBadge.desc}
             </div>
