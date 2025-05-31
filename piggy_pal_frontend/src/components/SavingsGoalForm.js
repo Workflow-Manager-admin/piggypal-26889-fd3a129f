@@ -211,7 +211,7 @@ function SavingsGoalForm() {
                 padding: "8px 11px",
                 outline: "none",
                 fontWeight: 500,
-                background: "var(--surface)",
+                background: "var(--surface-contrast)", // palette for clear separation from card bg
                 color: "var(--text-dark)"
               }}
               required
