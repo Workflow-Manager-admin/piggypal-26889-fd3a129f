@@ -154,18 +154,22 @@ body {
   align-items: center;
   gap: 24px;
 }
-
+/* Typography */
 .subtitle {
-  color: var(--kavia-orange);
-  font-weight: 500;
+  color: var(--accent-yellow);
+  font-weight: 600;
   font-size: 1.1rem;
+  letter-spacing: 0.9px;
+  text-shadow: 0 1px 2px #211a391b;
 }
 
 .title {
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   margin: 0;
+  color: var(--text-color);
+  text-shadow: 0 1.5px 7px #180a2330;
 }
 
 .description {
