@@ -315,7 +315,7 @@ function EducationZone() {
                   fontWeight: 800,
                   fontSize: "1.34rem",
                   marginBottom: 2,
-                  background: "var(--surface)",
+                  background: "var(--surface)", // Palette surface only!
                   padding: "12px 16px",
                   borderRadius: 13,
                   boxShadow: "0 4px 16px 0 var(--accent-1)20"
@@ -330,7 +330,7 @@ function EducationZone() {
                     fontWeight: 800,
                     fontSize: "1.20rem",
                     marginBottom: 2,
-                    background: "var(--surface)",
+                    background: "var(--surface)", // Surface only (matches card)
                     padding: "11px 14px",
                     borderRadius: 13,
                     boxShadow: "0 2px 11px 0 var(--accent-orange)14"
