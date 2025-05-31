@@ -300,6 +300,7 @@ function EducationZone() {
                   boxShadow: "0 4px 16px 0 var(--accent-1)20"
                 }}>
                   {quiz.correctFeedback}
+                  {/* No Next button – auto-advance after a short delay! */}
                 </div>
               ) : (
                 <div>
@@ -334,27 +335,6 @@ function EducationZone() {
                     Try Again
                   </button>
                 </div>
-              )}
-              {/* If correct, show Advance button  */}
-              {feedback === "correct" && (
-                <button
-                  className="btn"
-                  style={{
-                    marginTop: 13,
-                    background: "linear-gradient(91deg, var(--accent-gold) 38%, var(--secondary) 100%)",
-                    color: "var(--text-dark)",
-                    fontWeight: 800,
-                    fontSize: "1.06rem",
-                    border: "none",
-                    borderRadius: 10,
-                    padding: "9px 18px",
-                    boxShadow: "0 1px 7px var(--accent-gold)12"
-                  }}
-                  onClick={handleNextQuestion}
-                  aria-label="Next Question"
-                >
-                  {current === questions.length - 1 ? "Finish" : "Next Question"}
-                </button>
               )}
             </div>
           )}
