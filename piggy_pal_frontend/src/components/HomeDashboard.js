@@ -9,24 +9,7 @@ import React, { useState } from "react";
  */
 function HomeDashboard() {
   // Savings goals state
-  const [goals, setGoals] = useState([
-    {
-      id: 1,
-      name: "New Bike",
-      target: 100,
-      saved: 25,
-      color: "var(--accent-purple)",
-      emoji: "🚲"
-    },
-    {
-      id: 2,
-      name: "Comic Book",
-      target: 15,
-      saved: 8,
-      color: "var(--accent-gold)",
-      emoji: "📚"
-    }
-  ]);
+  const [goals, setGoals] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
   const [newGoalName, setNewGoalName] = useState("");
   const [newGoalTarget, setNewGoalTarget] = useState("");
