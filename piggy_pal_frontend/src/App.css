@@ -1,3 +1,6 @@
+/* Import Fredoka font (Google Fonts) for playful, kid-friendly look */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+
 :root {
   /* PiggyPal 2024 playful accessible palette */
   --primary: #3A86FF;         /* Vivid Blue */
@@ -8,6 +11,8 @@
   --surface: #F1F3F7;         /* Off-white for cards/surfaces */
   --text-light: #1A1A1A;      /* For light backgrounds */
   --text-dark: #F5F6FA;       /* For dark backgrounds */
+
+  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif; /* Brand playful font stack */
 
   /* Semantic roles/aliases for easier styling */
   --nav-bg: var(--background);
@@ -36,12 +41,26 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: var(--font-playful);
   background-color: var(--background);
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* enforce readable text rendering */
+}
+
+/* Ensure typography and all content inherits playful font */
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+/* The main "app" always gets the playful font */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
+  font-family: var(--font-playful);
 }
 
 .app {
