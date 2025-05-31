@@ -14,7 +14,7 @@ function HomeDashboard() {
     {
       name: "Super Games",
       emoji: "🎮",
-      color: "var(--piggy-coral)",
+      color: "var(--accent-orange)",
       goal: 50,
       saved: 19,
       id: 1,
@@ -22,7 +22,7 @@ function HomeDashboard() {
     {
       name: "Bike Fund",
       emoji: "🚲",
-      color: "var(--piggy-teal)",
+      color: "var(--primary)",
       goal: 120,
       saved: 48,
       id: 2,
@@ -30,7 +30,7 @@ function HomeDashboard() {
     {
       name: "Birthday",
       emoji: "🎂",
-      color: "var(--accent-yellow)",
+      color: "var(--secondary)",
       goal: 35,
       saved: 33,
       id: 3,
@@ -94,20 +94,20 @@ function HomeDashboard() {
         <div style={{
           width: `${pct * 100}%`,
           height: 14,
-          background: "linear-gradient(91deg,var(--accent-purple) 48%,var(--primary) 92%)",
+          background: "linear-gradient(91deg,var(--accent-1) 48%,var(--primary) 92%)",
           borderRadius: 9,
           transition: "width 0.57s cubic-bezier(.6,1.1,.36,1.01)",
-          boxShadow: "0 1.5px 8px #FF6F6117"
+          boxShadow: "0 1.5px 8px var(--accent-2)17"
         }} />
         <span style={{
           position: "absolute",
           left: 8,
           top: -3,
           fontSize: 11,
-          color: "#1A1A1A",
+          color: "var(--text-light)",
           fontWeight: 800,
           letterSpacing: 0.6,
-          background: "#FFD600",
+          background: "var(--secondary)",
           borderRadius: 7,
           padding: "2px 6px",
           textShadow: "none"
