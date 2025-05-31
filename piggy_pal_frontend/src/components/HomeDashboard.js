@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 // PUBLIC_INTERFACE
 /**
- * Interactive Home Dashboard:
- * Displays all savings goals in playful card form,
- * provides add, update, and delete functionality, and enforces
- * clear visual contrast: feature cards use var(--surface), page uses var(--background).
+ * HomeDashboard: Displays ALL savings goals (cards, add $, progress),
+ * and the user's assigned chores (but disables adding chores here).
+ * All savings goals update in real time; chores are read-only & shown in a section below (UI).
+ * Chore-creation only happens in the Parental Dashboard!
  */
 function HomeDashboard() {
   // Savings goals state
@@ -20,6 +20,15 @@ function HomeDashboard() {
   const [amountInputs, setAmountInputs] = useState({});
   // Track errors for incremental add (per goal)
   const [inputErrors, setInputErrors] = useState({});
+
+  // Assigned chores (simulate a few from "parent" as baseline)
+  // In production, this would come from shared app/global state or similar
+  const [assignedChores] = useState([
+    { id: 1, desc: "Clean your room", reward: 2, goalRef: null, done: false },
+    { id: 2, desc: "Take out trash", reward: 1, goalRef: null, done: true },
+    { id: 3, desc: "Feed the pet", reward: 1, goalRef: null, done: false },
+    // goalRef: could assign to a goal if wanted (not yet mapped)
+  ]);
 
   // PUBLIC_INTERFACE
   /**
