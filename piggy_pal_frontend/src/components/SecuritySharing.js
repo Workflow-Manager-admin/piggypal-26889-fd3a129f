@@ -83,15 +83,16 @@ function SecuritySharing() {
         {unlocked ? "🔓" : "🔒"}
       </div>
       <h2 style={{
-        color: "#20CFCF",
+        color: "#fff",
         fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
         fontWeight: 700,
-        background: "linear-gradient(60deg,#A259F7,#20CFCF 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
+        background: "unset",
+        WebkitBackgroundClip: "unset",
+        WebkitTextFillColor: "unset",
         fontSize: "2.2rem",
         margin: 0,
-        letterSpacing: 1.5
+        letterSpacing: 1.5,
+        textShadow: "0 2px 9px #181818"
       }}>
         Security & Sharing
       </h2>
