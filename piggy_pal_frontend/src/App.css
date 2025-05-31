@@ -187,28 +187,31 @@ body {
   border-radius: 8px;
   padding: 10px 20px;
   font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(255, 111, 97, 0.07);
-  transition: background 0.22s, box-shadow 0.2s, color 0.15s;
-}
-
-.btn:hover, .btn:focus {
-  background: linear-gradient(90deg, var(--primary) 68%, var(--accent-purple) 100%);
-  color: var(--accent-yellow);
-  box-shadow: 0 4px 18px 0 rgba(255, 111, 97, 0.18);
+  box-shadow: 0 2px 8px 0 rgba(255, 111, 97, 0.09);
+  transition: background 0.22s, box-shadow 0.2s, color 0.14s;
   outline: none;
 }
 
+.btn:hover, .btn:focus {
+  background: linear-gradient(90deg, var(--primary) 66%, var(--accent-purple) 100%);
+  color: var(--accent-yellow);
+  box-shadow: 0 4px 21px 0 rgba(255, 111, 97, 0.22);
+  outline: 2.5px solid var(--accent-yellow);
+}
+
 .btn-secondary {
-  background-color: var(--secondary);
-  color: #fff;
+  background: var(--secondary);
+  color: var(--text-color);
   border: none;
   border-radius: 8px;
+  font-weight: 700;
 }
 
 .btn-large {
   padding: 12px 24px;
   font-size: 1.1rem;
 }
+
