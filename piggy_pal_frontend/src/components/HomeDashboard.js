@@ -150,126 +150,128 @@ function HomeDashboard() {
           gap: 30,
           justifyContent: "center"
         }}>
-          {goals.map((goal, idx) => (
-            <div
-              key={goal.id}
-              className="feature-card"
-              style={{
-                // Card background & border based on app palette
-                background: "var(--surface)",
-                borderRadius: 32,
-                boxShadow: "0 3px 24px 0 #FFD60019, 0 12px 45px 0 #A259F723",
-                padding: "36px 17px 29px 17px",
-                margin: "29px 0",
-                minWidth: 265,
-                maxWidth: 340,
-                border: `3.5px solid ${goal.color}`,
-                position: "relative",
-                zIndex: 1,
-                overflow: "hidden",
-                transition: "box-shadow 0.18s"
-              }}
-            >
-              <div style={{ fontSize: "2.4rem", marginBottom: 7 }}>
-                {goal.emoji}
-              </div>
-              <h2 style={{
-                color: goal.color,
-                background: `linear-gradient(70deg, ${goal.color} 68%, var(--primary) 130%)`,
-                fontFamily: "var(--font-playful)",
-                fontWeight: 700,
-                letterSpacing: 1.4,
-                margin: 0,
-                fontSize: "1.28rem",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text"
-              }}>
-                {goal.name}
-              </h2>
-              <div className="card-desc" style={{
-                color: "var(--text-dark)",
-                fontWeight: 600,
-                fontSize: "1.11rem",
-                marginTop: 11,
-                marginBottom: 13
-              }}>
-                Saved: ${goal.saved} / ${goal.target}
-              </div>
-              {/* Progress bar */}
-              <div style={{
-                width: "100%",
-                height: 19,
-                background: "var(--surface-alt)",
-                borderRadius: 11,
-                border: `2px solid ${goal.color}`,
-                margin: "9px 0 11px 0",
-                boxShadow: "0 1px 6px var(--accent-gold)25"
-              }}>
+          {goals
+            .filter(goal => !goal.deleted) // Defensive: never show a 'deleted' goal, even if marked
+            .map((goal, idx) => (
+              <div
+                key={goal.id}
+                className="feature-card"
+                style={{
+                  // Card background & border based on app palette
+                  background: "var(--surface)",
+                  borderRadius: 32,
+                  boxShadow: "0 3px 24px 0 #FFD60019, 0 12px 45px 0 #A259F723",
+                  padding: "36px 17px 29px 17px",
+                  margin: "29px 0",
+                  minWidth: 265,
+                  maxWidth: 340,
+                  border: `3.5px solid ${goal.color}`,
+                  position: "relative",
+                  zIndex: 1,
+                  overflow: "hidden",
+                  transition: "box-shadow 0.18s"
+                }}
+              >
+                <div style={{ fontSize: "2.4rem", marginBottom: 7 }}>
+                  {goal.emoji}
+                </div>
+                <h2 style={{
+                  color: goal.color,
+                  background: `linear-gradient(70deg, ${goal.color} 68%, var(--primary) 130%)`,
+                  fontFamily: "var(--font-playful)",
+                  fontWeight: 700,
+                  letterSpacing: 1.4,
+                  margin: 0,
+                  fontSize: "1.28rem",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text"
+                }}>
+                  {goal.name}
+                </h2>
+                <div className="card-desc" style={{
+                  color: "var(--text-dark)",
+                  fontWeight: 600,
+                  fontSize: "1.11rem",
+                  marginTop: 11,
+                  marginBottom: 13
+                }}>
+                  Saved: ${goal.saved} / ${goal.target}
+                </div>
+                {/* Progress bar */}
                 <div style={{
-                  height: 17,
-                  borderRadius: 10,
-                  width: `${(goal.saved / goal.target) * 100}%`,
-                  background: `linear-gradient(95deg, ${goal.color} 60%, var(--accent-gold) 105%)`,
-                  transition: "width 0.4s cubic-bezier(.41,1.36,.68,1.0)"
-                }} />
+                  width: "100%",
+                  height: 19,
+                  background: "var(--surface-alt)",
+                  borderRadius: 11,
+                  border: `2px solid ${goal.color}`,
+                  margin: "9px 0 11px 0",
+                  boxShadow: "0 1px 6px var(--accent-gold)25"
+                }}>
+                  <div style={{
+                    height: 17,
+                    borderRadius: 10,
+                    width: `${(goal.saved / goal.target) * 100}%`,
+                    background: `linear-gradient(95deg, ${goal.color} 60%, var(--accent-gold) 105%)`,
+                    transition: "width 0.4s cubic-bezier(.41,1.36,.68,1.0)"
+                  }} />
+                </div>
+                {/* Add Money/Delete */}
+                <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 9,
+                  marginTop: 8
+                }}>
+                  <button
+                    className="btn btn-large"
+                    style={{
+                      background: goal.saved < goal.target ?
+                        "linear-gradient(90deg, var(--primary) 62%, var(--accent-teal) 111%)" :
+                        "#aaa",
+                      color: goal.saved < goal.target ? "var(--text-light)" : "#eee",
+                      fontWeight: 800,
+                      border: "none",
+                      borderRadius: 9,
+                      fontSize: "1.03rem",
+                      padding: "7px 16px",
+                      cursor: goal.saved < goal.target ? "pointer" : "not-allowed",
+                      opacity: goal.saved < goal.target ? 1 : 0.7,
+                      boxShadow: "0 2px 12px 0 var(--primary)12",
+                      transition: "background 0.15s"
+                    }}
+                    type="button"
+                    aria-label={`Add money to ${goal.name}`}
+                    onClick={() => handleAddMoney(goal.id)}
+                    disabled={goal.saved >= goal.target}
+                  >
+                    {goal.saved < goal.target
+                      ? <>Add&nbsp;<span style={{ fontWeight: 900 }}>$5</span> 🐷</>
+                      : <>Goal Reached! 🎉</>
+                    }
+                  </button>
+                  <button
+                    className="btn"
+                    style={{
+                      background: "#eaeaea",
+                      color: "#f24a4a",
+                      fontSize: "1.04rem",
+                      fontWeight: 700,
+                      border: "none",
+                      borderRadius: 8,
+                      padding: "7px 12px",
+                      marginLeft: 2,
+                      transition: "background 0.15s"
+                    }}
+                    type="button"
+                    aria-label={`Delete ${goal.name}`}
+                    onClick={() => handleDelete(goal.id)}
+                  >
+                    <span role="img" aria-label="delete">🗑️</span>
+                  </button>
+                </div>
               </div>
-              {/* Add Money/Delete */}
-              <div style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: 9,
-                marginTop: 8
-              }}>
-                <button
-                  className="btn btn-large"
-                  style={{
-                    background: goal.saved < goal.target ?
-                      "linear-gradient(90deg, var(--primary) 62%, var(--accent-teal) 111%)" :
-                      "#aaa",
-                    color: goal.saved < goal.target ? "var(--text-light)" : "#eee",
-                    fontWeight: 800,
-                    border: "none",
-                    borderRadius: 9,
-                    fontSize: "1.03rem",
-                    padding: "7px 16px",
-                    cursor: goal.saved < goal.target ? "pointer" : "not-allowed",
-                    opacity: goal.saved < goal.target ? 1 : 0.7,
-                    boxShadow: "0 2px 12px 0 var(--primary)12",
-                    transition: "background 0.15s"
-                  }}
-                  type="button"
-                  aria-label={`Add money to ${goal.name}`}
-                  onClick={() => handleAddMoney(goal.id)}
-                  disabled={goal.saved >= goal.target}
-                >
-                  {goal.saved < goal.target
-                    ? <>Add&nbsp;<span style={{ fontWeight: 900 }}>$5</span> 🐷</>
-                    : <>Goal Reached! 🎉</>
-                  }
-                </button>
-                <button
-                  className="btn"
-                  style={{
-                    background: "#eaeaea",
-                    color: "#f24a4a",
-                    fontSize: "1.04rem",
-                    fontWeight: 700,
-                    border: "none",
-                    borderRadius: 8,
-                    padding: "7px 12px",
-                    marginLeft: 2,
-                    transition: "background 0.15s"
-                  }}
-                  type="button"
-                  aria-label={`Delete ${goal.name}`}
-                  onClick={() => handleDelete(goal.id)}
-                >
-                  <span role="img" aria-label="delete">🗑️</span>
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
         {/* Add new goal */}
         <div style={{
