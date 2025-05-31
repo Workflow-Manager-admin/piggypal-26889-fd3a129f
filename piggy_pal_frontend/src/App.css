@@ -1,36 +1,44 @@
 :root {
-  /* Kavia palette (legacy used for reference) */
-  --kavia-orange: #E87A41;
-  --kavia-dark: #141416;
-  --kavia-overlay: #181920;
-  --text-color: #fff;
-  --text-contrast: #1A1A1A;
-  --text-secondary: #E0D9F6;
-  --text-warning: #fffcdb;
-  --border-color: rgba(255, 255, 255, 0.16);
+  /* PiggyPal 2024 playful accessible palette */
+  --primary: #3A86FF;         /* Vivid Blue */
+  --secondary: #FFBE0B;       /* Gold */
+  --accent-1: #8338EC;        /* Fun Purple */
+  --accent-2: #FB5607;        /* Coral Orange */
+  --background: #212529;      /* Deep slightly bluish dark grey */
+  --surface: #F1F3F7;         /* Off-white for cards/surfaces */
+  --text-light: #1A1A1A;      /* For light backgrounds */
+  --text-dark: #F5F6FA;       /* For dark backgrounds */
 
-  /* PiggyPal core palette */
-  --piggy-coral: #FF6F61;
-  --piggy-teal:  #20CFCF;
-  --piggy-purple: #A259F7;
-  --piggy-yellow: #FFD600;
+  /* Semantic roles/aliases for easier styling */
+  --nav-bg: var(--background);
+  --card-bg-default: var(--surface);
+  --card-bg-light: #e2e6f3;
+  --card-bg-gradient: linear-gradient(120deg, var(--surface) 78%, var(--primary) 112%);
+  --button-bg: var(--primary);
+  --button-bg-secondary: var(--secondary);
+  --button-text: var(--text-dark);
+  --button-text-inverse: var(--text-light);
+  --border-color: #3A86FF33;
 
-  /* Alias for easier theme use */
-  --primary: var(--piggy-coral);
-  --secondary: var(--piggy-teal);
-  --accent-purple: var(--piggy-purple);
-  --accent-yellow: var(--piggy-yellow);
+  /* Accent helpers for playful effects */
+  --accent-purple: var(--accent-1);
+  --accent-gold: var(--secondary);
+  --accent-orange: var(--accent-2);
 
-  --card-bg-default: #19191e;
-  --card-bg-light: #23233A;
-  --card-bg-gradient: linear-gradient(120deg, #23233A 46%, #1A1A26 110%);
+  /* For easy upgrades of vs code autocompletes...keep the legacy ones but deprecated */
+  --kavia-orange: #E87A41; /* deprecated - use --accent-orange */
+  --kavia-dark: #141416;   /* deprecated - use --background */
+  --piggy-coral: #FF6F61;  /* deprecated - use --accent-orange */
+  --piggy-teal:  #20CFCF;  /* deprecated - remove */
+  --piggy-purple: #A259F7; /* deprecated - use --accent-purple */
+  --piggy-yellow: #FFD600;  /* deprecated - use --secondary */
 }
 
 body {
   margin: 0;
   font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: var(--kavia-dark);
-  color: var(--text-color);
+  background-color: var(--background);
+  color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* enforce readable text rendering */
