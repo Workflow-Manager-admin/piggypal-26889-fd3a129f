@@ -9,22 +9,22 @@
 */
 
 :root {
-  /* PiggyPal 2024 playful accessible palette */
-  --primary: #3A86FF;
-  --secondary: #FFBE0B;
-  --accent-1: #8338EC;
-  --accent-2: #FB5607;
-  --background: #212529;
-  --surface: #F1F3F7;
-  --text-light: #1A1A1A;
-  --text-dark: #F5F6FA;
+  /* PiggyPal 2024 playful accessible palette (harmonious + high contrast) */
+  --primary: #3A86FF;         /* bright blue */
+  --secondary: #FFBE0B;       /* golden yellow */
+  --accent-1: #8338EC;        /* purple */
+  --accent-2: #FB5607;        /* orange */
+  --background: #212529;      /* deep navy/charcoal */
+  --surface: #F1F3F7;         /* ultra-light bluegray paper */
+  --text-dark: #1A1A1A;       /* almost-black for text on lights */
+  --text-light: #F5F6FA;      /* pure light for text on darks */
 
   --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
 
-  /* Semantic roles for playful styling */
+  /* Brand semantic color roles only - all legacy colors removed for clarity */
   --nav-bg: var(--background);
   --card-bg-default: var(--surface);
-  --card-bg-light: #e2e6f3;
+  --card-bg-light: #EBF2FA;
   --card-bg-gradient: linear-gradient(120deg, var(--surface) 78%, var(--primary) 112%);
   --button-bg: var(--primary);
   --button-bg-secondary: var(--secondary);
@@ -32,18 +32,13 @@
   --button-text-inverse: var(--text-light);
   --border-color: #3A86FF33;
 
-  /* Accent helpers */
+  /* Accent helpers referencing new palette only */
   --accent-purple: var(--accent-1);
   --accent-gold: var(--secondary);
   --accent-orange: var(--accent-2);
+  --accent-yellow: var(--secondary);
 
-  /* Legacy/deprecated palette (for compatibility) */
-  --kavia-orange: #E87A41;
-  --kavia-dark: #141416;
-  --piggy-coral: #FF6F61;
-  --piggy-teal:  #20CFCF;
-  --piggy-purple: #A259F7;
-  --piggy-yellow: #FFD600;
+  /* Legacy/deprecated palette completely removed for color unity and harmony */
 }
 
 /* ENFORCE playful kid-friendly font globally (root, body, all elements, containers) */
