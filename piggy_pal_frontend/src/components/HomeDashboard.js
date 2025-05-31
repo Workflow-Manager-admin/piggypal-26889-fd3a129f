@@ -536,6 +536,97 @@ function HomeDashboard() {
           </div>
         )}
       </div>
+      {/* Assigned chores (no add chore button, chore creation is disabled) */}
+      <div style={{
+        maxWidth: 540,
+        margin: "39px auto 0 auto",
+        background: "var(--surface-alt)",
+        borderRadius: 19,
+        padding: "18px 14px 18px 21px",
+        boxShadow: "0 2px 15px 0 var(--accent-purple)13",
+        color: "var(--text-dark)",
+        position: "relative"
+      }}>
+        <h3 style={{
+          fontFamily: "var(--font-playful)",
+          color: "var(--primary)",
+          fontWeight: 800,
+          fontSize: "1.28rem",
+          letterSpacing: 1.1,
+          margin: 0,
+          marginBottom: 10,
+          textShadow: "0 2px 5px var(--accent-1)17"
+        }}>
+          Your Assigned Chores
+        </h3>
+        {assignedChores.length === 0 ? (
+          <div style={{ color: "var(--accent-purple)", fontWeight: 600, fontSize: "1.06rem" }}>
+            No chores assigned yet. All new chores come from your parent!
+          </div>
+        ) : (
+          <ul style={{
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 10
+          }}>
+            {assignedChores.map(chore => (
+              <li key={chore.id}
+                style={{
+                  background: chore.done ? "var(--surface-contrast)" : "var(--surface)",
+                  border: chore.done
+                    ? "2.5px solid var(--accent-gold)"
+                    : "2.5px solid var(--accent-1)",
+                  borderRadius: 11,
+                  boxShadow: chore.done
+                    ? "0 2px 11px var(--accent-gold)13"
+                    : "0 2px 11px var(--accent-1)17",
+                  padding: "10px 8px 8px 13px",
+                  color: "var(--text-dark)",
+                  opacity: chore.done ? 0.7 : 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between"
+                }}
+              >
+                <span style={{
+                  fontWeight: 700,
+                  color: "var(--primary)",
+                  fontSize: "1.08rem",
+                  display: "flex", alignItems: "center", gap: 8
+                }}>
+                  {chore.done
+                    ? <span role="img" aria-label="done" style={{ fontSize: 19 }}>✅</span>
+                    : <span role="img" aria-label="todo" style={{ fontSize: 19 }}>🔲</span>
+                  }
+                  {chore.desc}
+                </span>
+                <span style={{
+                  color: "var(--accent-gold)",
+                  fontWeight: 700,
+                  minWidth: 77,
+                  textAlign: "right",
+                  fontSize: "1rem"
+                }}>
+                  🪙 {chore.reward} coin{chore.reward > 1 ? "s" : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <div style={{
+          color: "var(--accent-teal)",
+          marginTop: 16,
+          fontWeight: 500,
+          fontSize: "1.06rem"
+        }}>
+          Chores are assigned by your parent and shown here!<br />
+          (To add chores, ask a parent to use the Parental Dashboard.)
+        </div>
+      </div>
       {/* Animations */}
       <style>
         {`
