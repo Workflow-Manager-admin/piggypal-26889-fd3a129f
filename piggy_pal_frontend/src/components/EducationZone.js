@@ -144,11 +144,11 @@ function EducationZone() {
           ) : (
             <div>
               <div style={{
-                color: "#FF6F61",
+                color: "#991c21",
                 fontWeight: 800,
                 fontSize: "1.20rem",
                 marginBottom: 2,
-                background: "#fff8f8",
+                background: "#fff",
                 padding: "11px 14px",
                 borderRadius: 13,
                 boxShadow: "0 2px 11px 0 #FF6F6121"
