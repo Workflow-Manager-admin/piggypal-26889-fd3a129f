@@ -339,9 +339,10 @@ function SecuritySharing() {
       {/* Helper text */}
       <div style={{
         marginTop: 22,
-        color: "#20CFCF",
+        color: "#fff",
         fontWeight: 400,
-        fontSize: "1.08rem"
+        fontSize: "1.08rem",
+        textShadow: "0 1.5px 7px #181818"
       }}>
         This is a demo! In the real PiggyPal, your PIN would keep your money safe and invite links would let trusted people add to your goal!<br />Try unlocking and sharing now.
       </div>
