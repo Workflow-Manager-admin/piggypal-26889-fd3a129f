@@ -1,26 +1,27 @@
-/* Import Fredoka and Comic Neue from Google Fonts for playful, kid-friendly accessibility */
+/* Import Fredoka and Comic Neue from Google Fonts—globally playful, accessible */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 
 /* 
-  Global playful, friendly, accessible font-family for the app.
-  Font order: Fredoka, Comic Neue, Comic Sans MS, cursive, sans-serif.
+  GLOBAL playful, friendly, accessible font for all of PiggyPal.
+  Enforced via --font-playful and applied at :root, body, .app, and all major containers.
+  Font fallback: Fredoka, Comic Neue, Comic Sans MS, cursive, sans-serif.
 */
 
 :root {
   /* PiggyPal 2024 playful accessible palette */
-  --primary: #3A86FF;         /* Vivid Blue */
-  --secondary: #FFBE0B;       /* Gold */
-  --accent-1: #8338EC;        /* Fun Purple */
-  --accent-2: #FB5607;        /* Coral Orange */
-  --background: #212529;      /* Deep slightly bluish dark grey */
-  --surface: #F1F3F7;         /* Off-white for cards/surfaces */
-  --text-light: #1A1A1A;      /* For light backgrounds */
-  --text-dark: #F5F6FA;       /* For dark backgrounds */
+  --primary: #3A86FF;
+  --secondary: #FFBE0B;
+  --accent-1: #8338EC;
+  --accent-2: #FB5607;
+  --background: #212529;
+  --surface: #F1F3F7;
+  --text-light: #1A1A1A;
+  --text-dark: #F5F6FA;
 
-  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif; /* Playful kid-friendly stack (fallback for max OS support) */
+  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
 
-  /* Semantic roles/aliases for easier styling */
+  /* Semantic roles for playful styling */
   --nav-bg: var(--background);
   --card-bg-default: var(--surface);
   --card-bg-light: #e2e6f3;
@@ -31,50 +32,45 @@
   --button-text-inverse: var(--text-light);
   --border-color: #3A86FF33;
 
-  /* Accent helpers for playful effects */
+  /* Accent helpers */
   --accent-purple: var(--accent-1);
   --accent-gold: var(--secondary);
   --accent-orange: var(--accent-2);
 
-  /* For easy upgrades of vs code autocompletes...keep the legacy ones but deprecated */
-  --kavia-orange: #E87A41; /* deprecated - use --accent-orange */
-  --kavia-dark: #141416;   /* deprecated - use --background */
-  --piggy-coral: #FF6F61;  /* deprecated - use --accent-orange */
-  --piggy-teal:  #20CFCF;  /* deprecated - remove */
-  --piggy-purple: #A259F7; /* deprecated - use --accent-purple */
-  --piggy-yellow: #FFD600;  /* deprecated - use --secondary */
+  /* Legacy/deprecated palette (for compatibility) */
+  --kavia-orange: #E87A41;
+  --kavia-dark: #141416;
+  --piggy-coral: #FF6F61;
+  --piggy-teal:  #20CFCF;
+  --piggy-purple: #A259F7;
+  --piggy-yellow: #FFD600;
 }
 
-/* Enforce playful font family globally */
+/* ENFORCE playful kid-friendly font globally (root, body, all elements, containers) */
+html, body, #root, .app, .container, main, nav, section {
+  font-family: var(--font-playful) !important;
+}
+
 body {
   margin: 0;
-  font-family: var(--font-playful) !important;
   background-color: var(--background);
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* enforce readable text rendering */
 }
 
-/* All elements default to playful font-family, unless explicitly overridden */
+/* All elements default to playful font-family, using !important to ensure override unless an explicit code/monospace font is needed */
 *, *::before, *::after {
   font-family: var(--font-playful) !important;
 }
 
-/* Main "app" container uses playful font explicitly */
+/* Main .app container style */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
-  font-family: var(--font-playful) !important;
-}
-
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
+  /* font-family enforced above */
 }
 
 /* If special font-family used in subcomponents (e.g. 'Fredoka One'), encourage fallback to --font-playful stack if unavailable */
