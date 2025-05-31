@@ -1,3 +1,101 @@
+import React, { useState } from "react";
+
+// PUBLIC_INTERFACE
+/**
+ * ParentalDashboard: Interactive chore assignment and completion approval simulation.
+ *
+ * Lets a parent:
+ *   - Assign a custom chore (eg. "Clean room")
+ *   - Set a coin reward
+ *   - Simulate "Approve" (or "Deny") after child marks chore as done
+ *   - Includes kid-friendly, fun animations/feedback on approval
+ *
+ * (No persistence -- pure UI demo/minigame)
+ */
+function ParentalDashboard() {
+  // Form state
+  const [chore, setChore] = useState("");
+  const [coins, setCoins] = useState("");
+  const [assignDone, setAssignDone] = useState(false); // after assigning
+  const [choreDone, setChoreDone] = useState(false); // child completed
+  const [approval, setApproval] = useState(null); // null=not acted, 'approved', 'denied'
+  const [resetting, setResetting] = useState(false);
+
+  // Handle form input changes
+  const handleChoreChange = (e) => {
+    setChore(e.target.value);
+    setAssignDone(false);
+    setChoreDone(false);
+    setApproval(null);
+  };
+
+  const handleCoinsChange = (e) => {
+    // Allow only numbers, max 2 digits (0-99)
+    let val = e.target.value.replace(/[^0-9]/g, "");
+    if (val.length > 2) val = val.slice(0, 2);
+    setCoins(val);
+    setAssignDone(false);
+    setChoreDone(false);
+    setApproval(null);
+  };
+
+  // Assign a new chore (simulate send to child)
+  const handleAssign = (e) => {
+    e.preventDefault();
+    if (!chore.trim() || !coins.trim() || isNaN(parseInt(coins)) || parseInt(coins) <= 0) {
+      setAssignDone(false);
+      return;
+    }
+    setAssignDone(true);
+    setChoreDone(false);
+    setApproval(null);
+  };
+
+  // Parent: approve/deny upon "child's completion"
+  const handleApproval = (status) => {
+    setApproval(status); // status: 'approved' | 'denied'
+  };
+
+  // "Child" marks the chore as done (for simulation)
+  const handleChildDone = () => {
+    setChoreDone(true);
+    setApproval(null);
+  };
+
+  // Reset to assign another
+  const handleReset = () => {
+    setResetting(true);
+    setTimeout(() => {
+      setChore("");
+      setCoins("");
+      setAssignDone(false);
+      setChoreDone(false);
+      setApproval(null);
+      setResetting(false);
+    }, 340); // Time for a little playful shake-out animation (optional)
+  };
+
+  return (
+    <div
+      style={{
+        maxWidth: 420,
+        margin: "54px auto",
+        background: "linear-gradient(110deg, #20CFCF 68%, #FF6F61 99%)",
+        borderRadius: 36,
+        boxShadow: "0 2px 18px 0 rgba(32,207,207,0.12)",
+        padding: "38px 18px 34px 18px",
+        textAlign: "center",
+        border: "3.5px solid #20CFCF",
+        minHeight: 440,
+        transition: resetting ? "transform 0.3s" : undefined,
+        transform: resetting ? "scale(0.92) rotate(-7deg)" : "none",
+        opacity: resetting ? 0.7 : 1
+      }}
+    >
+      <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>👨‍👩‍👧</div>
+      <h2
+        style={{
+          color: "#20CFCF",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
           background: "linear-gradient(70deg,#20CFCF 60%,#FF6F61 140%)",
@@ -387,4 +485,3 @@
 }
 
 export default ParentalDashboard;
-
