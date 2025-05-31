@@ -83,9 +83,9 @@ body {
 
 /* PiggyPal-feature playful card design (for feature placeholder screens) */
 .feature-card {
-  background: linear-gradient(113deg, var(--accent-yellow) 68%, var(--primary) 91%, var(--secondary) 130%);
+  background: linear-gradient(119deg, var(--card-bg-light) 44%, var(--accent-yellow) 82%, var(--primary) 120%);
   border-radius: 36px;
-  box-shadow: 0 2px 18px 0 rgba(255, 111, 97, 0.13), 0 6px 36px 0 rgba(162, 89, 247, 0.06);
+  box-shadow: 0 3px 24px 0 rgba(36, 15, 16, 0.12), 0 12px 45px 0 rgba(162, 89, 247, 0.09);
   padding: 38px 18px 34px 18px;
   text-align: center;
   margin: 54px auto;
@@ -105,7 +105,7 @@ body {
   width: 60%;
   height: 18%;
   background: radial-gradient(circle, var(--accent-purple) 10%, transparent 90%);
-  opacity: 0.2;
+  opacity: 0.17;
   filter: blur(7px);
   pointer-events: none;
 }
@@ -133,7 +133,7 @@ body {
 
 .feature-card .card-desc {
   margin-top: 14px;
-  color: #444;
+  color: var(--text-color);
   font-weight: 400;
   font-size: 1.1rem;
 }
