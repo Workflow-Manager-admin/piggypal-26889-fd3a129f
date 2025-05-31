@@ -51,17 +51,19 @@ function SavingsGoalForm() {
   // Core playful card container re-uses the existing card style but now uses consistent palette backgrounds.
   return (
     <div
+      className="feature-card savings-goal-card"
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "var(--surface)", // Card background - always palette surface
-        borderRadius: 36,
-        boxShadow: "0 2px 18px 0 var(--primary)18",
+        background: "var(--surface)", // Explicit palette background
+        borderRadius: 38,
+        boxShadow: "0 3px 24px 0 var(--accent-2)18, 0 14px 48px 0 var(--primary)13",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
         border: "3.5px solid var(--primary)",
         position: "relative",
-        zIndex: 1
+        zIndex: 2,
+        overflow: "hidden"
       }}
     >
       <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--secondary)", textShadow: "0 1.5px 7px var(--background)" }}>🎯</div>
