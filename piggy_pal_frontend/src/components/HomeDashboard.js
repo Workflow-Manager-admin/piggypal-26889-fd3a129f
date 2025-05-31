@@ -52,16 +52,26 @@ function HomeDashboard() {
     setNewGoalTarget("");
   };
 
-  // Add money to a goal
-  const handleAddMoney = (id) => {
+  // Add money to a goal (by a custom amount; enforces not exceeding goal.target)
+  // PUBLIC_INTERFACE
+  /**
+   * handleAddMoney: Adds a custom amount to the selected savings goal.
+   * Ensures the new saved value does not exceed the target.
+   */
+  const handleAddMoney = (id, amount) => {
     setGoals(goals =>
       goals.map(g =>
         g.id === id
-          ? { ...g, saved: Math.min(g.saved + 5, g.target) }
+          ? { ...g, saved: Math.min(g.saved + amount, g.target) }
           : g
       )
     );
   };
+
+  // Track the user input for amount to add (per goal ID); default empty
+  const [amountInputs, setAmountInputs] = useState({});
+  // Track any error for individual goal input
+  const [inputErrors, setInputErrors] = useState({});
 
   // Delete a goal - simulate "deleted" property for future-proofing (even though filter suffices now)
   // If a goal had a 'deleted' key, do not display it.
