@@ -104,10 +104,13 @@ function HomeDashboard() {
           left: 8,
           top: -3,
           fontSize: 11,
-          color: "#fff",
+          color: "#1A1A1A",
           fontWeight: 800,
           letterSpacing: 0.6,
-          textShadow: "0 1.5px 3px #A259F799"
+          background: "#FFD600",
+          borderRadius: 7,
+          padding: "2px 6px",
+          textShadow: "none"
         }}>{goal > 0 ? `$${saved}/${goal}` : "Set your goal!"}</span>
       </div>
     );
