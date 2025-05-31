@@ -237,7 +237,7 @@ function HomeDashboard() {
               style={{
                 fontSize: 13,
                 color: "var(--secondary)",
-                background: "var(--surface)",
+                background: "var(--card-bg-light)",
                 fontWeight: 900,
                 fontFamily: "var(--font-playful)",
                 padding: "1px 7px 1.5px 7px",
@@ -330,7 +330,7 @@ function HomeDashboard() {
             onClick={e => e.stopPropagation()}
             style={{
               maxWidth: 370,
-              background: "var(--surface)",
+              background: "var(--card-bg-default)",
               borderRadius: 30,
               padding: "27px 22px 24px 22px",
               boxShadow: "0 8px 38px 0 var(--secondary)4a, 0 1.5px 7px var(--accent-2)21",
