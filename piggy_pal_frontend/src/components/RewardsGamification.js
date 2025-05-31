@@ -81,7 +81,8 @@ function RewardsGamification() {
       style={{
         maxWidth: 420,
         margin: "54px auto",
-        background: "linear-gradient(120deg, var(--accent-purple) 76%, var(--accent-gold) 105%)",
+        // Palette: replace decorative gradient with subtle patterned background using palette
+        background: "var(--surface)",
         borderRadius: 36,
         boxShadow: "0 2px 18px 0 var(--accent-purple)13",
         padding: "38px 18px 34px 18px",
@@ -91,7 +92,11 @@ function RewardsGamification() {
         position: "relative"
       }}
     >
-      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--accent-gold)" }}>🏅</div>
+      <div style={{
+        fontSize: "3.2rem",
+        marginBottom: 8,
+        color: "var(--accent-gold)"
+      }}>🏅</div>
       <h2
         style={{
           color: "var(--text-dark)",
