@@ -87,10 +87,10 @@ function SavingsGoalForm() {
               margin: "24px auto 14px auto",
               padding: "16px 10px",
               borderRadius: 17,
-              background: "#fff8",
-              color: "#1A1A1A",
+              background: "#fff",
+              color: "#161616",
               fontWeight: 500,
-              fontSize: "1.12rem",
+              fontSize: "1.12rem"
             }}
           >
             <span style={{ fontWeight: 700, color: "#FF6F61" }}>
@@ -101,7 +101,7 @@ function SavingsGoalForm() {
                 margin: "0 7px",
                 color: "#A259F7",
                 fontWeight: 700,
-                fontSize: "1.05em",
+                fontSize: "1.05em"
               }}
             >
               – ${parseFloat(goalAmount).toLocaleString(undefined, {
