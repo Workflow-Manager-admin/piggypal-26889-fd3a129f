@@ -54,12 +54,14 @@ function SavingsGoalForm() {
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "var(--surface)",
+        background: "var(--surface)", // Card background - always palette surface
         borderRadius: 36,
         boxShadow: "0 2px 18px 0 var(--primary)18",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
         border: "3.5px solid var(--primary)",
+        position: "relative",
+        zIndex: 1
       }}
     >
       <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--secondary)", textShadow: "0 1.5px 7px var(--background)" }}>🎯</div>
@@ -88,11 +90,11 @@ function SavingsGoalForm() {
               margin: "24px auto 14px auto",
               padding: "16px 10px",
               borderRadius: 17,
-              background: "var(--background)",
-              color: "var(--text-light)",
-              fontWeight: 500,
-              fontSize: "1.12rem",
-              boxShadow: "0 2px 9px var(--secondary)32"
+              background: "var(--surface-alt)", // Use softer, palette-backed surface for confirmation
+              color: "var(--text-dark)",
+              fontWeight: 600,
+              fontSize: "1.17rem",
+              boxShadow: "0 2px 9px var(--secondary)21"
             }}
           >
             <span style={{ fontWeight: 700, color: "var(--secondary)" }}>
@@ -116,8 +118,9 @@ function SavingsGoalForm() {
             className="btn btn-large"
             style={{
               marginTop: 12,
-              background: "var(--secondary)",
-              color: "var(--text-dark)",
+              background: "linear-gradient(99deg, var(--secondary) 60%, var(--primary) 120%)",
+              color: "var(--text-light)",
+              fontWeight: 800
             }}
             onClick={handleNewGoal}
             type="button"
