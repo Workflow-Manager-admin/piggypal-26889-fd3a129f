@@ -134,19 +134,25 @@ function HomeDashboard() {
       <div style={{ fontSize: "2.4rem", marginBottom: 8, color: "var(--accent-2)" }} aria-label="Piggy Home">🐷🏠</div>
       <h2 style={{
         color: "var(--accent-2)",
-        fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
-        fontWeight: 700,
+        fontFamily: "var(--font-playful)",
+        fontWeight: 800,
         background: "linear-gradient(70deg,var(--accent-2) 60%,var(--accent-1) 130%)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
-        fontSize: "2.09rem",
+        fontSize: "2.15rem",
         margin: 0,
         letterSpacing: 1.5
       }}>
         Your PiggyPals
       </h2>
-      <div style={{ color: "var(--accent-1)", fontWeight: 600, fontSize: "1.24rem", margin: "21px 0 19px 0" }}>
+      <div style={{ 
+        color: "var(--accent-1)", 
+        fontWeight: 700, 
+        fontFamily: "var(--font-playful)", 
+        fontSize: "1.2rem", 
+        margin: "21px 0 19px 0" 
+      }}>
         {piggies.length === 0 ? "Create your first piggy goal!" : "Tap a piggy to view progress"}
       </div>
       {/* Piggy avatars/cards grid */}
@@ -201,9 +207,10 @@ function HomeDashboard() {
             </span>
             <div
               style={{
-                fontWeight: 700,
+                fontWeight: 800,
+                fontFamily: "var(--font-playful)",
                 color: "var(--text-dark)",
-                fontSize: "1.04rem",
+                fontSize: "1.08rem",
                 letterSpacing: 0.7,
                 margin: "6px 0 1px 0",
                 maxWidth: 95,
@@ -211,7 +218,7 @@ function HomeDashboard() {
                 overflow: "hidden",
                 textOverflow: "ellipsis"
               }}>
-              {p.name ? p.name : <span style={{color:"var(--secondary)",fontWeight:800}}>New Goal!</span>}
+              {p.name ? p.name : <span style={{color:"var(--secondary)",fontWeight:900,fontFamily:"var(--font-playful)"}}>New Goal!</span>}
             </div>
             <PiggyProgress saved={p.saved} goal={p.goal} />
             {/* Mini 'View' badge */}
