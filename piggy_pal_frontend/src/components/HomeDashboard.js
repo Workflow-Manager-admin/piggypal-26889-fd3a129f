@@ -146,7 +146,7 @@ function HomeDashboard() {
             .map((goal, idx) => (
               <div
                 key={goal.id}
-                className="feature-card"
+                className={`feature-card${addAnim && idx === goals.length - 1 ? " add-anim" : ""}`}
                 style={{
                   // Card background & border based on app palette
                   background: "var(--surface)",
