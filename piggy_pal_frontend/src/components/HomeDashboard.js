@@ -322,15 +322,15 @@ function HomeDashboard() {
 
   return (
     <div style={{
-      maxWidth: 490,
-      minHeight: 420,
-      margin: '54px auto',
-      background: 'linear-gradient(118deg, var(--secondary) 86%, var(--accent-2) 135%)',
+      maxWidth: 530,
+      minHeight: 460,
+      margin: "54px auto",
+      background: "linear-gradient(118deg, var(--secondary) 86%, var(--accent-2) 135%)",
       borderRadius: 36,
       boxShadow: "0 2px 18px 0 var(--primary)1a, 0 7px 33px 0 var(--secondary)19",
-      padding: '30px 12px 28px 12px',
-      textAlign: 'center',
-      border: '3.5px solid var(--primary)',
+      padding: "30px 12px 28px 12px",
+      textAlign: "center",
+      border: "3.5px solid var(--primary)",
       transition: "box-shadow 0.13s",
       position: "relative",
       overflow: "visible",
@@ -350,170 +350,131 @@ function HomeDashboard() {
         margin: 0,
         letterSpacing: 1.5
       }}>
-        Your PiggyPals
+        Your Piggy Goals
       </h2>
       <div style={{
         color: "var(--accent-1)",
         fontWeight: 700,
-        fontFamily: "var(--font-playful)",
-        fontSize: "1.2rem",
-        margin: "21px 0 19px 0"
+        fontSize: "1.11rem",
+        margin: "10px 0 17px 0"
       }}>
-        {piggies.length === 0 ? "Create your first piggy goal!" : "Tap a piggy to view progress"}
+        {goals.length === 0 ? "Add a savings goal to begin!" : "Track all your savings jars below."}
       </div>
-      {/* Piggy avatars/cards grid */}
+      {/* Total savings dashboard */}
+      <div style={{
+        margin: "0 auto 19px auto",
+        padding: "13px 0 8px 0",
+        borderRadius: 19,
+        background: "linear-gradient(110deg, var(--accent-gold), var(--accent-1) 65%)",
+        boxShadow: "0 1px 12px var(--accent-gold)11",
+        color: "var(--primary)",
+        fontWeight: 800,
+        fontSize: "1.12rem",
+        maxWidth: 270
+      }}>
+        Total Saved: <span style={{ color: "var(--primary)", fontWeight: 900, fontSize: "1.15em", marginRight: 3 }}>${totalSaved}</span>
+        <span style={{ color: "var(--accent-2)", fontWeight: 700 }}> / ${totalGoal}</span>
+      </div>
+      {/* Piggy goal cards grid */}
       <div style={{
         display: "flex",
-        gap: "21px",
+        gap: "17px",
         flexWrap: "wrap",
         justifyContent: "center",
         minHeight: 90,
         marginBottom: 16
       }}>
-        {piggies.map((p, idx) => (
-          <div
-            key={p.id}
-            tabIndex={0}
-            role="button"
-            aria-label={p.name ? `View ${p.name} piggy details` : "View new piggy details"}
-            onClick={() => handleViewDetails(p)}
-            onKeyDown={(e) => { if (["Enter"," "].includes(e.key)) handleViewDetails(p); }}
-            style={{
-              cursor: "pointer",
-              outline: "none",
-              background: `linear-gradient(120deg, ${p.color} 85%, var(--accent-1) 120%)`,
-              borderRadius: 26,
-              boxShadow: p.isNew ? "0 6px 27px 0 var(--secondary)77,0 2.5px 18px var(--accent-1)66"
-                                : "0 2px 13px var(--accent-2)17",
-              padding: "16px 16px 13px 16px",
-              margin: "8px 0",
-              minWidth: 104,
-              minHeight: 94,
-              maxWidth: 122,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              border: `2.3px solid var(--surface)`,
-              transition: "box-shadow .18s, border .17s, transform .19s, background .19s",
-              position: "relative",
-              zIndex: 1,
-              animation: p.isNew ? "piggy-pop 0.74s cubic-bezier(.22,1.6,.41,1.01) both" : undefined,
-              fontFamily: "var(--font-playful)"
-            }}
-          >
-            <span
-              style={{
-                fontSize: 38,
-                filter: "drop-shadow(0 2px 10px var(--accent-2)11) drop-shadow(0 2px 2px var(--secondary)4a)",
-                transform: p.isNew ? "scale(1.23)" : undefined,
-                transition: "transform 0.15s",
-                fontFamily: "var(--font-playful)"
-              }}
-            >
-              {p.emoji}
-            </span>
-            <div
-              style={{
-                fontWeight: 800,
-                fontFamily: "var(--font-playful)",
-                color: "var(--text-dark)",
-                fontSize: "1.08rem",
-                letterSpacing: 0.7,
-                margin: "6px 0 1px 0",
-                maxWidth: 95,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis"
-              }}>
-              {p.name
-                ? p.name
-                : <span style={{
-                    color: "var(--secondary)",
-                    fontWeight: 900,
-                    fontFamily: "var(--font-playful)"
-                  }}>New Goal!</span>}
-            </div>
-            <PiggyProgress saved={p.saved} goal={p.goal} />
-            {/* Mini 'View' badge */}
-            <span
-              style={{
-                fontSize: 13,
-                color: "var(--secondary)",
-                background: "var(--card-bg-light)",
-                fontWeight: 900,
-                fontFamily: "var(--font-playful)",
-                padding: "1px 7px 1.5px 7px",
-                borderRadius: 9,
-                marginTop: 5,
-                letterSpacing: 0.37
-              }}>
-              View
-            </span>
+        {goals.length > 0 ? goals.map((goal, idx) =>
+          <GoalCard goal={goal} idx={idx} key={goal.id}/>
+        ) : (
+          <div style={{
+            color: "var(--accent-gold)",
+            fontWeight: 700,
+            fontSize: "1.13rem",
+            marginTop: 20
+          }}>
+            No piggy jars yet. Add one below!
           </div>
-        ))}
+        )}
       </div>
-      {/* Animated Add New Goal button */}
-      <button
-        className="btn btn-large"
-        style={{
-          marginTop: 13,
-          padding: "13px 34px 13px 21px",
-          background: adding
-            ? "repeating-linear-gradient(-90deg, var(--secondary), var(--accent-1) 8%, var(--primary) 17%)"
-            : "linear-gradient(95deg, var(--secondary) 60%, var(--primary) 112%)",
-          color: "var(--text-dark)",
-          fontWeight: 900,
-          fontFamily: "var(--font-playful)",
-          fontSize: "1.16rem",
-          letterSpacing: 1,
-          border: "none",
-          borderRadius: 14,
-          position: "relative",
-          minWidth: 165,
-          boxShadow: "0 4px 22px 0 var(--secondary)22,0 1.5px 7px 0 var(--accent-2)14",
-          transition: "background 0.18s, box-shadow 0.12s, filter 0.13s",
-          filter: adding ? "brightness(1.1) blur(0.5px)" : undefined,
-          outline: adding ? "3px solid var(--secondary)" : "none",
-          pointerEvents: adding ? "none" : undefined
-        }}
-        onClick={handleAddPiggy}
-        aria-label="Add new piggy goal"
-        disabled={adding}
-      >
-        <span style={{
-          marginRight: 10, fontSize: 26, verticalAlign: "middle", display: "inline-block",
-          animation: adding ? "wiggle 0.55s cubic-bezier(.22,1.41,.53,.82) both" : undefined,
-          fontFamily: "var(--font-playful)"
-        }}>➕</span>
-        Add New Goal
-      </button>
-      {adding && (
-        <div style={{
-          color: "var(--accent-1)",
-          fontWeight: 700,
-          fontFamily: "var(--font-playful)",
-          fontSize: "1.12rem",
-          marginTop: 13,
-          animation: "fadein 0.55s cubic-bezier(.22,1.13,.32,.86) both"
-        }}>
-          Creating a new piggy jar...
-        </div>
-      )}
-      {/* "No piggies" encouragement */}
-      {!adding && piggies.length === 0 && (
-        <div style={{
-          color: "var(--accent-2)",
-          fontWeight: 700,
-          fontFamily: "var(--font-playful)",
-          marginTop: 21,
-          fontSize: "1.18rem"
-        }}>
-          Let's start your very first goal!
-        </div>
-      )}
 
-      {/* Details Modal */}
+      {/* Add goal form */}
+      <form onSubmit={handleAddGoal} style={{
+        margin: "32px auto 0 auto",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 12,
+        justifyContent: "center"
+      }}>
+        <input
+          type="text"
+          value={newGoalName}
+          onChange={e => { setNewGoalName(e.target.value); setAddError(""); }}
+          placeholder="Goal Name"
+          maxLength={24}
+          style={{
+            border: "2px solid var(--accent-1)",
+            borderRadius: 10,
+            fontSize: "1.01rem",
+            padding: "8px 10px",
+            background: "var(--surface-alt)",
+            outline: "none",
+            fontWeight: 700,
+            minWidth: 104,
+            color: "var(--accent-1)"
+          }}
+          aria-label="Goal name"
+          required
+        />
+        <input
+          type="text"
+          inputMode="decimal"
+          pattern="^[0-9]*[.]?[0-9]{0,2}$"
+          value={newGoalLimit}
+          onChange={e => { setNewGoalLimit(e.target.value.replace(/[^0-9.]/g, "")); setAddError(""); }}
+          placeholder="Limit ($)"
+          maxLength={8}
+          style={{
+            border: "2px solid var(--primary)",
+            borderRadius: 10,
+            fontSize: "1.01rem",
+            padding: "8px 10px",
+            background: "var(--surface-alt)",
+            outline: "none",
+            fontWeight: 700,
+            minWidth: 76,
+            color: "var(--primary)"
+          }}
+          aria-label="Goal amount"
+          required
+        />
+        <button
+          type="submit"
+          className="btn"
+          style={{
+            background: adding
+              ? "repeating-linear-gradient(-90deg, var(--secondary), var(--accent-1) 8%, var(--primary) 17%)"
+              : "linear-gradient(95deg, var(--secondary) 60%, var(--primary) 112%)",
+            color: "var(--text-dark)",
+            fontWeight: 900,
+            fontSize: "1.09rem",
+            border: "none",
+            borderRadius: 13,
+            padding: "8px 22px",
+            boxShadow: "0 3px 14px var(--secondary)11",
+            transition: "background 0.18s, box-shadow 0.12s, filter 0.13s",
+            minWidth: 74,
+            pointerEvents: adding ? "none" : undefined,
+            opacity: adding ? 0.8 : 1
+          }}
+          disabled={adding}
+          aria-label="Add savings goal"
+        >{adding ? "Adding..." : "Add Goal"}</button>
+      </form>
+      {addError && <div style={{ color: "var(--accent-orange)", marginTop: 7, fontWeight: 700 }}>{addError}</div>}
+
+      {/* Modal for detailed view, allow some inline limit editing and goal delete */}
       {showModal && selected && (
         <div
           aria-modal="true"
@@ -527,12 +488,12 @@ function HomeDashboard() {
             alignItems: "center",
             justifyContent: "center"
           }}
-          onClick={handleModalClose} // click outside closes
+          onClick={handleModalClose}
         >
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              maxWidth: 370,
+              maxWidth: 392,
               background: "var(--card-bg-default)",
               borderRadius: 30,
               padding: "27px 22px 24px 22px",
@@ -540,9 +501,10 @@ function HomeDashboard() {
               border: `3.5px solid ${selected.color || "var(--secondary)"}`,
               textAlign: "center",
               animation: "piggy-pop 0.36s cubic-bezier(.33,1.2,.48,1.01) both",
-              minHeight: 190,
+              minHeight: 240,
               fontFamily: "var(--font-playful)",
-              color: "var(--text-light)"
+              color: "var(--text-light)",
+              position: "relative"
             }}
           >
             <div style={{
@@ -555,7 +517,6 @@ function HomeDashboard() {
             </div>
             <div style={{
               fontWeight: 900,
-              fontFamily: "var(--font-playful)",
               color: "var(--accent-2)",
               background: "linear-gradient(70deg,var(--accent-2) 65%,var(--accent-1) 110%)",
               WebkitBackgroundClip: "text",
@@ -568,15 +529,16 @@ function HomeDashboard() {
             </div>
             <div style={{
               color: "var(--accent-1)",
-              fontWeight: 600,
-              fontFamily: "var(--font-playful)",
+              fontWeight: 700,
               fontSize: "1.15rem"
             }}>
               {selected.goal > 0 ? (
                 <>
-                  Goal: <span style={{ color: "var(--accent-2)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>${selected.goal}</span>
-                  <br />Saved:&nbsp;
-                  <span style={{ color: "var(--primary)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>${selected.saved}</span>
+                  <span>
+                    Goal: <span style={{ color: "var(--accent-2)", fontWeight: 900 }}>${selected.goal}</span>
+                  </span>
+                  <br />
+                  Saved: <span style={{ color: "var(--primary)", fontWeight: 800 }}>${selected.saved}</span>
                   <br />
                   <PiggyProgress saved={selected.saved} goal={selected.goal} />
                   {(selected.saved >= selected.goal) && (
@@ -584,18 +546,62 @@ function HomeDashboard() {
                       color: "var(--secondary)",
                       background: "var(--card-bg-light)",
                       fontWeight: 800,
-                      fontFamily: "var(--font-playful)",
                       borderRadius: 8,
                       padding: "5px 10px",
                       marginTop: 9
                     }}>
-                      🎉 Goal reached! Time to treat yourself.
+                      🎉 Goal reached!
                     </div>
                   )}
+                  {/* Add savings quick input here, too */}
+                  <form
+                    style={{
+                      display: "flex", flexDirection: "row", alignItems: "center",
+                      gap: 6, justifyContent: "center", margin: "15px 0 2px 0"
+                    }}
+                    onSubmit={e => {
+                      e.preventDefault();
+                      handleAddMoney(selected.id, addAmtById[selected.id]);
+                    }}
+                  >
+                    <input
+                      type="text"
+                      value={addAmtById[selected.id] || ""}
+                      onChange={e => handleQuickAmtChange(selected.id, e.target.value)}
+                      placeholder="+$"
+                      inputMode="decimal"
+                      style={{ width: 50, borderRadius: 7, padding: "4.5px 9px", fontWeight: 700, fontSize: 15, border: "1.7px solid var(--accent-gold)", color: "var(--accent-gold)", background: "var(--surface-alt)" }}
+                      pattern="^[0-9]*[.]?[0-9]{0,2}$"
+                      maxLength={8}
+                      aria-label="Add money in modal"
+                    />
+                    <button
+                      type="submit"
+                      className="btn"
+                      style={{
+                        fontWeight: 700,
+                        fontSize: "1.04rem",
+                        borderRadius: 8,
+                        padding: "4px 13px",
+                        background: "var(--accent-gold)",
+                        color: "var(--primary)",
+                        border: "none",
+                        cursor: "pointer",
+                        boxShadow: "0 2px 8px var(--accent-gold)10"
+                      }}
+                      disabled={
+                        !addAmtById[selected.id] ||
+                        isNaN(parseFloat(addAmtById[selected.id])) ||
+                        parseFloat(addAmtById[selected.id]) <= 0 ||
+                        selected.saved >= selected.goal
+                      }
+                      aria-label="Add money to selected goal"
+                    >＋</button>
+                  </form>
                 </>
               ) : (
-                <div style={{ color:"var(--accent-1)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>
-                  New piggy! Tap "Goal" to set target on the Goals tab.
+                <div style={{ color: "var(--accent-1)", fontWeight: 800 }}>
+                  New piggy! Set a target.
                 </div>
               )}
             </div>
@@ -605,7 +611,6 @@ function HomeDashboard() {
                 background: "linear-gradient(90deg,var(--accent-1) 50%,var(--accent-2) 100%)",
                 color: "var(--text-dark)",
                 fontWeight: 800,
-                fontFamily: "var(--font-playful)",
                 marginTop: 18,
                 border: "none",
                 borderRadius: 10,
@@ -618,6 +623,26 @@ function HomeDashboard() {
             >
               Close
             </button>
+            <button
+              className="btn"
+              onClick={() => handleDeleteGoal(selected.id)}
+              style={{
+                position: "absolute",
+                top: 16,
+                right: 12,
+                fontSize: 14,
+                background: "var(--accent-orange)",
+                border: "none",
+                color: "var(--surface)",
+                borderRadius: 9,
+                padding: "2px 9px",
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 2px 7px var(--accent-orange)22"
+              }}
+              aria-label="Delete this goal"
+              title="Delete"
+            ><span role="img" aria-label="delete">🗑️</span></button>
           </div>
         </div>
       )}
@@ -647,13 +672,13 @@ function HomeDashboard() {
       </style>
       {!showModal && (
         <div style={{
-          marginTop: 30,
+          marginTop: 23,
           color: "var(--accent-1)",
           fontWeight: 600,
           fontFamily: "var(--font-playful)",
           fontSize: "1.09rem"
         }}>
-          Make saving fun! Track all your piggy jars here.
+          Make saving fun! Manage as many piggy jars as you want.
         </div>
       )}
     </div>
