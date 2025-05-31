@@ -364,9 +364,15 @@ function EducationZone() {
             <div style={{
               marginTop: 21,
               color: "var(--text-dark)",
+              background: "var(--surface-alt)", // always surface-alt for encouragement
               fontWeight: 500,
               fontSize: "1.11rem",
-              textShadow: "0 1.5px 4px var(--accent-1)33"
+              borderRadius: 8,
+              textShadow: "0 1.5px 4px var(--accent-1)33",
+              padding: "7px 9px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              maxWidth: 320
             }}>
               Test your money smarts with a quiz!
             </div>
