@@ -5,7 +5,8 @@ import React, { useState } from "react";
  * EducationZone: Interactive financial literacy quiz (playful, themed)
  *
  * Displays a quiz question, answer buttons, and themed feedback for correct/incorrect answers.
- * Now supports an array of questions and automatically loads the next one.
+ * Now supports an array of questions and automatically loads the next on correct answers.
+ * The quiz auto-advances after correct, cycles through, and offers a playful restart.
  */
 
 // Sample quiz question set (Expand/replace for more questions!)
@@ -85,6 +86,22 @@ function EducationZone() {
     const isCorrect = quiz.answers[idx].correct;
     setFeedback(isCorrect ? "correct" : "incorrect");
     setReveal(true);
+
+    // If answer is correct, auto-advance to next after short playful delay
+    if (isCorrect) {
+      setTimeout(() => {
+        // Only move forward if not completed in the meantime
+        if (current < questions.length - 1) {
+          setCurrent(c => c + 1);
+          setSelected(null);
+          setFeedback(null);
+          setReveal(false);
+        } else {
+          setCompleted(true);
+        }
+      }, 1200); // ~1.2s to show feedback
+    }
+    // If not correct: user must click 'Try Again'
   }
 
   // Retry logic for incorrect answers
@@ -94,7 +111,7 @@ function EducationZone() {
     setReveal(false);
   }
 
-  // Go to next question or completion screen
+  // Kept for completeness (not used, but keeps button-less ARIA accessibility)
   function handleNextQuestion() {
     if (current < questions.length - 1) {
       setCurrent(current + 1);
@@ -300,7 +317,7 @@ function EducationZone() {
                   boxShadow: "0 4px 16px 0 var(--accent-1)20"
                 }}>
                   {quiz.correctFeedback}
-                  {/* No Next button – auto-advance after a short delay! */}
+                  {/* No "Next" button shown – auto advances! */}
                 </div>
               ) : (
                 <div>
