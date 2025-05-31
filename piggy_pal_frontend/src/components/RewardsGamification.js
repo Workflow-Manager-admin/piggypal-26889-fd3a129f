@@ -278,8 +278,8 @@ function RewardsGamification() {
               {selectedBadge.name} UNLOCKED!
             </div>
             <div style={{
-              color: "#222",
-              background: "#fffffbea",
+              color: "#181818",
+              background: "#fff",
               padding: "11px 14px",
               borderRadius: 11,
               marginBottom: 10,

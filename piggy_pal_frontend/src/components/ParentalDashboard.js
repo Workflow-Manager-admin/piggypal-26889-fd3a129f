@@ -413,8 +413,8 @@ function ParentalDashboard() {
                     Chore Denied
                   </div>
                   <div style={{
-                    color: "#444",
-                    background: "#fff2",
+                    color: "#1A1A1A",
+                    background: "#fff",
                     padding: "9px 18px",
                     borderRadius: 11,
                     marginBottom: 11,
