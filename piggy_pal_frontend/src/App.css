@@ -100,19 +100,31 @@ body {
 }
 
 .btn {
-  background-color: var(--kavia-orange);
-  color: white;
+  background-color: var(--primary); /* PiggyPal coral */
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 10px 20px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 8px 0 rgba(255, 111, 97, 0.07);
+  transition: background 0.22s, box-shadow 0.2s, color 0.15s;
 }
 
-.btn:hover {
-  background-color: #FF8B4D;
+.btn:hover, .btn:focus {
+  background: linear-gradient(90deg, var(--primary) 68%, var(--accent-purple) 100%);
+  color: var(--accent-yellow);
+  box-shadow: 0 4px 18px 0 rgba(255, 111, 97, 0.18);
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
 }
 
 .btn-large {
