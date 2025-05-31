@@ -240,11 +240,11 @@ function ParentalDashboard() {
           {/* Chore summary card */}
           <div
             style={{
-              background: "#fff8",
+              background: "#fff",
               borderRadius: 16,
               padding: "16px 8px",
               margin: "0 auto 18px auto",
-              color: "#1A1A1A",
+              color: "#141414",
               boxShadow: "0 2px 12px 0 #FFD60017",
               maxWidth: 300,
               animation: "chore-pop 0.42s cubic-bezier(.3,1.6,.22,1.04) both"
