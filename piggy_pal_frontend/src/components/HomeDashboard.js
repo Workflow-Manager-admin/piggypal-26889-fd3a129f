@@ -16,17 +16,14 @@ function HomeDashboard() {
   const [addError, setAddError] = useState("");
   const [addAnim, setAddAnim] = useState(false);
 
-  // Track the user input for amount to add (per goal ID)
+  // Track user input per card for adding $ (keyed by goal.id)
   const [amountInputs, setAmountInputs] = useState({});
-  // Track any error for individual goal input
+  // Track errors for incremental add (per goal)
   const [inputErrors, setInputErrors] = useState({});
 
-  // Add new goal
   // PUBLIC_INTERFACE
   /**
-   * handleAddGoal: Submits a new goal entry form.
-   * Requires both goal name and amount to be entered.
-   * No default goals; each submit creates a new unique goal card.
+   * handleAddGoal: Submits a new goal entry form with validation.
    */
   const handleAddGoal = (e) => {
     e.preventDefault();
@@ -40,8 +37,6 @@ function HomeDashboard() {
     setShowAdd(false);
     setAddAnim(true);
     setTimeout(() => setAddAnim(false), 680);
-
-    // Add new goal card with unique id and clear form
     setGoals(gArr => [
       ...gArr,
       {
@@ -57,7 +52,6 @@ function HomeDashboard() {
     setNewGoalTarget("");
   };
 
-  // Add money to a goal (by a custom amount; enforces not exceeding goal.target)
   // PUBLIC_INTERFACE
   /**
    * handleAddMoney: Adds a custom amount to the selected savings goal.
@@ -73,13 +67,12 @@ function HomeDashboard() {
     );
   };
 
-  // Delete a goal - simulate "deleted" property for future-proofing (even though filter suffices now)
-  // If a goal had a 'deleted' key, do not display it.
+  // PUBLIC_INTERFACE
+  /**
+   * handleDelete: Instantly deletes a goal from the dashboard.
+   */
   const handleDelete = (id) => {
-    setGoals(goals => 
-      goals.filter(g => g.id !== id)
-      // If supporting 'deleted' in future: goals.map(g => g.id === id ? {...g, deleted: true} : g)
-    );
+    setGoals(goals => goals.filter(g => g.id !== id));
   };
 
   // Accent color/emoji mappings
