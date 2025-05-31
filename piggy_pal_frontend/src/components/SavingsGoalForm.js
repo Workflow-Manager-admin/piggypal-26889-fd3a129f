@@ -227,7 +227,7 @@ function SavingsGoalForm() {
               background:
                 goalName.trim() && goalAmount.trim() && !isNaN(parseFloat(goalAmount))
                   ? "linear-gradient(90deg,var(--accent-2) 53%,var(--primary) 98%)"
-                  : "#b5babd",
+                  : "var(--surface-alt)", // palette fallback gray
               color: "var(--text-dark)",
               border: "none",
               padding: "10px 24px",
