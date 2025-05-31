@@ -133,12 +133,12 @@ function EducationZone() {
     setCompleted(false);
   }
 
-  // Themed playful UI
+  // Themed playful UI – use only palette backgrounds for all main areas
   return (
     <div style={{
       maxWidth: 420,
       margin: "54px auto",
-      background: "linear-gradient(120deg, var(--secondary) 72%, var(--accent-1) 100%)",
+      background: "var(--surface)", // Card background: always use palette
       borderRadius: 36,
       boxShadow: "0 2px 18px 0 var(--accent-purple)18",
       padding: "38px 18px 34px 18px",
@@ -148,7 +148,7 @@ function EducationZone() {
     }}>
       <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>📚</div>
       <h2 style={{
-        color: "var(--text-dark)",
+        color: "var(--accent-1)",
         fontFamily: "var(--font-playful)",
         fontWeight: 800,
         background: "linear-gradient(70deg, var(--accent-1) 70%, var(--secondary) 120%)",
@@ -180,7 +180,7 @@ function EducationZone() {
             🎉🏆
           </div>
           <div style={{
-            background: "var(--surface)",
+            background: "var(--surface-alt)",
             borderRadius: 18,
             color: "var(--text-dark)",
             fontWeight: 800,
@@ -232,8 +232,8 @@ function EducationZone() {
           </div>
           <div style={{
             margin: "17px 0 0 0",
-            color: "var(--text-light)",
-            background: "var(--accent-gold)",
+            color: "var(--text-dark)",
+            background: "var(--surface-contrast)",
             fontWeight: 700,
             fontSize: "1.23rem",
             letterSpacing: 1.04,
@@ -248,17 +248,17 @@ function EducationZone() {
               let bg, color, outline;
               if (reveal && idx === selected) {
                 if (ans.correct) {
-                  bg = "linear-gradient(90deg,var(--accent-1) 58%, var(--secondary) 92%)";
+                  bg = "linear-gradient(90deg,var(--surface) 59%, var(--accent-1) 92%)";
                   color = "var(--text-dark)";
                   outline = "3px solid var(--accent-1)";
                 } else {
-                  bg = "linear-gradient(91deg,var(--accent-orange) 54%,var(--accent-1) 124%)";
+                  bg = "linear-gradient(91deg,var(--surface) 51%,var(--accent-orange) 124%)";
                   color = "var(--text-dark)";
                   outline = "3px solid var(--accent-orange)";
                 }
               } else {
-                bg = "linear-gradient(90deg, var(--secondary) 56%, var(--accent-1) 98%)";
-                color = "var(--text-light)";
+                bg = "linear-gradient(90deg, var(--surface) 56%, var(--surface-alt) 98%)";
+                color = "var(--text-dark)";
                 outline = "none";
               }
               return (
