@@ -1,34 +1,38 @@
-/* Import Fredoka and Comic Neue for global playful font usage */
+/* Import Fredoka and Comic Neue from Google Fonts for globally playful, kid-friendly font */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 
-/* Base resets and coding styles */
+/* 
+   GLOBAL FONT ENFORCEMENT 
+   - All elements default to playful font style ('Fredoka', fallback to Comic Neue, then system playful fonts)
+*/
 :root {
   --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
 }
-* {
+
+/* Universal box-sizing and global font enforced */
+*, *::before, *::after {
   box-sizing: border-box;
   font-family: var(--font-playful) !important;
 }
 
-body {
+/* Body and html - font, smoothing, and background */
+html, body {
   margin: 0;
   padding: 0;
-  /* Global enforced playful font stack for all content */
   font-family: var(--font-playful) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background, #212529);
+  color: var(--text-dark, #F5F6FA);
 }
 
-/* Main app container: always use playful font (inherits from :root/body) */
-.app {
+/* Main app/root container and all primary containers */
+.app, #root, .container, main, nav, section {
   font-family: var(--font-playful) !important;
 }
 
-/* All components/elements inherit the font unless explicitly overridden */
-
-/* Provide code blocks readable font, but fallback to playful if needed */
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+/* Ensure font stack applies everywhere unless code/monospace block */
+code, pre, kbd, samp {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
 }
-
