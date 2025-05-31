@@ -154,7 +154,7 @@ function ParentalDashboard() {
                 outline: "none",
                 fontWeight: 500,
                 background: "#1A1A1A",
-                color: "#fff"
+                color: undefined
               }}
               required
             />
