@@ -104,12 +104,34 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-dark);
+  color: var(--primary); /* Strong readable playful brand */
+  text-shadow: 0 2px 8px var(--accent-1)22;
+  letter-spacing: 1.1px;
 }
 
 .logo-symbol {
   color: var(--accent-orange);
+  text-shadow: 0 2.5px 10px var(--primary)18; 
 }
+
+/* Add nav tab styling for playful palette/high contrast in bottom nav (optional, can be customized further)
+.piggy-nav-tabs button {
+  color: var(--accent-1);
+  transition: color 0.2s, font-size 0.1s;
+  font-family: var(--font-playful);
+  background: none;
+  border: none;
+}
+.piggy-nav-tabs button[aria-current="true"], .piggy-nav-tabs button.active {
+  color: var(--primary);
+  text-shadow: 0 2px 11px var(--accent-2)28;
+  font-weight: 800;
+}
+.piggy-nav-tabs span {
+  color: inherit;
+}
+*/
+/* End nav palette extension */
 
 
 .container {
