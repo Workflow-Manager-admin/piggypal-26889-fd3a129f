@@ -56,13 +56,13 @@ function EducationZone() {
       <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>📚</div>
       <h2 style={{
         color: "var(--text-dark)",
-        fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
-        fontWeight: 700,
+        fontFamily: "var(--font-playful)",
+        fontWeight: 800,
         background: "linear-gradient(70deg, var(--accent-1) 70%, var(--secondary) 120%)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
-        fontSize: "2.2rem",
+        fontSize: "2.15rem",
         margin: 0,
         letterSpacing: 1.5,
         textShadow: "0 1.5px 8px var(--background)"
