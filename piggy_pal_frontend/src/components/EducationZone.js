@@ -70,13 +70,14 @@ function EducationZone() {
       </h2>
       <div style={{
         margin: "27px 0 0 0",
-        color: "#101010",
+        color: "#181818",
         background: "var(--accent-yellow)",
         fontWeight: 700,
         fontSize: "1.23rem",
         letterSpacing: 1.04,
         borderRadius: 10,
-        padding: "8px 4px"
+        padding: "8px 4px",
+        textShadow: "0 1.5px 2.5px #FFD60088"
       }}>
         {quiz.question}
       </div>
@@ -94,8 +95,8 @@ function EducationZone() {
                   : "linear-gradient(90deg,#FFD600 56%,#A259F7 98%)",
               color:
                 reveal && idx === selected
-                  ? (ans.correct ? "#053" : "#ba284b")
-                  : "#1A1A1A",
+                  ? (ans.correct ? "#fff" : "#fff")
+                  : "#181818",
               fontWeight: 700,
               fontSize: "1.11rem",
               letterSpacing: 0.5,
@@ -106,7 +107,8 @@ function EducationZone() {
               boxShadow: "0 2px 12px 0 #FFD60029",
               outline: reveal && idx === selected ? "3px solid #20CFCF" : "none",
               cursor: reveal ? "default" : "pointer",
-              transition: "background 0.17s, color 0.17s, outline 0.16s"
+              transition: "background 0.17s, color 0.17s, outline 0.16s",
+              textShadow: "0 2px 8px #14141630"
             }}
             disabled={reveal}
             aria-label={"Answer: " + ans.text}
@@ -181,9 +183,10 @@ function EducationZone() {
       {!reveal && (
         <div style={{
           marginTop: 21,
-          color: "#A259F7",
+          color: "#fff",
           fontWeight: 500,
-          fontSize: "1.11rem"
+          fontSize: "1.11rem",
+          textShadow: "0 1.5px 4px #141416"
         }}>
           Test your money smarts with a quiz! More questions coming soon.
         </div>
