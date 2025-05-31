@@ -124,7 +124,7 @@ function SavingsReport() {
               top: 0,
               height: "100%",
               width: `${(display / SAVINGS_GOAL) * 100}%`,
-              background: "linear-gradient(93deg,var(--primary) 68%,var(--accent-purple) 118%)",
+              background: "linear-gradient(93deg,var(--primary) 68%,var(--accent-purple) 118%)", // Palette-approved gradient
               borderRadius: 19,
               boxShadow: "0 2px 22px var(--primary)",
               transition: "width 0.7s cubic-bezier(.32,1.66,.41,0.96)",
