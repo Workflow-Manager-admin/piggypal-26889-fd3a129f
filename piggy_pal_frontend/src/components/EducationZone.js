@@ -249,15 +249,18 @@ function EducationZone() {
               let bg, color, outline;
               if (reveal && idx === selected) {
                 if (ans.correct) {
-                  bg = "linear-gradient(90deg,var(--surface) 59%, var(--accent-1) 92%)";
+                  // Gradient from surface to accent: palette-only
+                  bg = "linear-gradient(90deg, var(--surface) 59%, var(--accent-1) 92%)";
                   color = "var(--text-dark)";
                   outline = "3px solid var(--accent-1)";
                 } else {
-                  bg = "linear-gradient(91deg,var(--surface) 51%,var(--accent-orange) 124%)";
+                  // Surface to accent-orange for wrong
+                  bg = "linear-gradient(91deg, var(--surface) 52%, var(--accent-orange) 121%)";
                   color = "var(--text-dark)";
                   outline = "3px solid var(--accent-orange)";
                 }
               } else {
+                // Palette-only: never ambiguous gray
                 bg = "linear-gradient(90deg, var(--surface) 56%, var(--surface-alt) 98%)";
                 color = "var(--text-dark)";
                 outline = "none";
