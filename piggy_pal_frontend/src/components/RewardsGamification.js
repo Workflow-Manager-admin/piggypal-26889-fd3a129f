@@ -224,7 +224,7 @@ function RewardsGamification() {
               background: spinning
                 ? "repeating-linear-gradient(120deg, #FFD600, #A259F7 10%, #FF6F61 25%)"
                 : "linear-gradient(90deg,#FFD600 52%,#A259F7 92%)",
-              color: "#333",
+              color: "#1A1A1A",
               fontWeight: 700,
               fontSize: "1.18rem",
               border: "none",
@@ -234,7 +234,8 @@ function RewardsGamification() {
               transition: "background 0.18s",
               opacity: spinning ? 0.8 : 1,
               cursor: spinning ? "not-allowed" : "pointer",
-              boxShadow: "0 2px 10px 0 rgba(255, 214, 0, 0.14)"
+              boxShadow: "0 2px 10px 0 rgba(255, 214, 0, 0.14)",
+              textShadow: "0 1px 2px #fff"
             }}
             disabled={spinning}
             onClick={spinWheel}
@@ -263,7 +264,9 @@ function RewardsGamification() {
               style={{
                 fontSize: 62,
                 marginBottom: 6,
-                filter: "drop-shadow(0 5px 17px #FFD600aa)"
+                filter: "drop-shadow(0 5px 17px #FFD600aa)",
+                color: "#fff",
+                textShadow: "0 2px 14px #FFD60055, 0 3px 17px #14141699"
               }}
               aria-label="badge unlocked"
             >
@@ -271,21 +274,23 @@ function RewardsGamification() {
             </div>
             <div style={{
               fontWeight: 800,
-              color: selectedBadge.color,
+              color: "#fff",
               fontSize: "1.43rem",
               marginBottom: 4,
-              letterSpacing: 0.8
+              letterSpacing: 0.8,
+              textShadow: "0 2px 8px #141416"
             }}>
-              {selectedBadge.name} UNLOCKED!
+              {selectedBadge.name} <span style={{ color: selectedBadge.color, textShadow: "0 2px 7px #FFD60066" }}>UNLOCKED!</span>
             </div>
             <div style={{
-              color: "#181818",
-              background: "#fff",
+              color: "#fff",
+              background: "#181818",
               padding: "11px 14px",
               borderRadius: 11,
               marginBottom: 10,
-              fontSize: "1.05rem",
-              boxShadow: "0 4px 22px 0 rgba(162,89,247,0.14)"
+              fontSize: "1.08rem",
+              boxShadow: "0 4px 18px 0 #FFD60015, 0 2px 7px rgba(162,89,247,0.10)",
+              textShadow: "0 1px 3px #fff2"
             }}>
               {selectedBadge.desc}
             </div>
@@ -328,9 +333,10 @@ function RewardsGamification() {
       {!hasSpun && (
         <div style={{
           marginTop: 20,
-          color: "#A259F7",
+          color: "#fff",
           fontWeight: 600,
-          fontSize: "1.12rem"
+          fontSize: "1.12rem",
+          textShadow: "0 2px 8px #141416"
         }}>
           Try the spin wheel and unlock a fun badge!
         </div>
