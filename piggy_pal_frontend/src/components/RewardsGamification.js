@@ -349,10 +349,10 @@ function RewardsGamification() {
       {!hasSpun && (
         <div style={{
           marginTop: 20,
-          color: "var(--text-light)",
+          color: "var(--text-dark)",
           fontWeight: 600,
           fontSize: "1.12rem",
-          textShadow: "0 2px 8px var(--background)"
+          textShadow: "0 2px 8px var(--surface)22"
         }}>
           Try the spin wheel and unlock a fun badge!
         </div>
