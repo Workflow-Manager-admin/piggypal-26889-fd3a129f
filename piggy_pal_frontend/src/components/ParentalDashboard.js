@@ -129,7 +129,7 @@ function ParentalDashboard() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#20CFCF",
+                color: "#fff",
                 fontSize: "1.07rem",
                 marginBottom: 6,
                 textAlign: "left"
