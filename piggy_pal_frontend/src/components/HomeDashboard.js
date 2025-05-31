@@ -16,6 +16,11 @@ function HomeDashboard() {
   const [addError, setAddError] = useState("");
   const [addAnim, setAddAnim] = useState(false);
 
+  // Track the user input for amount to add (per goal ID)
+  const [amountInputs, setAmountInputs] = useState({});
+  // Track any error for individual goal input
+  const [inputErrors, setInputErrors] = useState({});
+
   // Add new goal
   // PUBLIC_INTERFACE
   /**
@@ -67,11 +72,6 @@ function HomeDashboard() {
       )
     );
   };
-
-  // Track the user input for amount to add (per goal ID); default empty
-  const [amountInputs, setAmountInputs] = useState({});
-  // Track any error for individual goal input
-  const [inputErrors, setInputErrors] = useState({});
 
   // Delete a goal - simulate "deleted" property for future-proofing (even though filter suffices now)
   // If a goal had a 'deleted' key, do not display it.
@@ -524,4 +524,3 @@ function HomeDashboard() {
 }
 
 export default HomeDashboard;
-`````````````````````````````````
