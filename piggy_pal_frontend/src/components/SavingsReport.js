@@ -167,7 +167,8 @@ function SavingsReport() {
               paddingRight: 14,
               textAlign: "left",
               pointerEvents: "none",
-              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif"
+              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+              textShadow: "0 1.5px 9px #FFD600bb"
             }}
           >
             ${display} / ${SAVINGS_GOAL}
