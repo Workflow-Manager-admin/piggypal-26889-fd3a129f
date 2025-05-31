@@ -1,35 +1,137 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
+// Import screens for navigation
+import HomeDashboard from './components/HomeDashboard';
+import SavingsGoalForm from './components/SavingsGoalForm';
+import RewardsGamification from './components/RewardsGamification';
+import ParentalDashboard from './components/ParentalDashboard';
+import EducationZone from './components/EducationZone';
+import SavingsReport from './components/SavingsReport';
+import SecuritySharing from './components/SecuritySharing';
+
+// Define the main sections/tabs: route, label, icon (emoji), component
+const TABS = [
+  {
+    key: "home",
+    label: "Home",
+    icon: "🐷",
+    component: HomeDashboard
+  },
+  {
+    key: "goal",
+    label: "Goal",
+    icon: "🎯",
+    component: SavingsGoalForm
+  },
+  {
+    key: "rewards",
+    label: "Rewards",
+    icon: "🏅",
+    component: RewardsGamification
+  },
+  {
+    key: "parent",
+    label: "Parent",
+    icon: "👨‍👩‍👧",
+    component: ParentalDashboard
+  },
+  {
+    key: "education",
+    label: "Learn",
+    icon: "📚",
+    component: EducationZone
+  },
+  {
+    key: "report",
+    label: "Reports",
+    icon: "📈",
+    component: SavingsReport
+  },
+  {
+    key: "security",
+    label: "Safe",
+    icon: "🔒",
+    component: SecuritySharing
+  }
+];
+
 function App() {
+  // Simple state-based tab navigation
+  const [activeTab, setActiveTab] = useState('home');
+
+  // Pick the correct component based on tab
+  const ActiveComponent = TABS.find(t => t.key === activeTab)?.component || HomeDashboard;
+
   return (
-    <div className="app">
-      <nav className="navbar">
-        <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <div className="logo">
-              <span className="logo-symbol">*</span> KAVIA AI
-            </div>
-            <button className="btn">Template Button</button>
+    <div className="app" style={{ background: "var(--kavia-dark)", minHeight: "100vh" }}>
+      <nav className="navbar" style={{ background: "var(--kavia-dark)", borderBottom: '3px solid var(--kavia-orange)' }}>
+        <div className="container" style={{display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div className="logo" style={{ fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif", fontWeight: 700, fontSize: "1.5rem", letterSpacing: 1}}>
+            <span className="logo-symbol" style={{color: "#FF6F61", fontSize: "2rem", marginRight: 6}}>🐷</span>
+            PiggyPal
           </div>
+          {/* playful color-bar accent line */}
+          <div style={{ height: 6, flex: 1, marginLeft: 16, background: "linear-gradient(90deg, #FF6F61 23%, #20CFCF 48%, #A259F7 68%, #FFD600 100%)", borderRadius: 4, maxWidth: 200 }} />
         </div>
       </nav>
-
-      <main>
-        <div className="container">
-          <div className="hero">
-            <div className="subtitle">AI Workflow Manager Template</div>
-            
-            <h1 className="title">piggy_pal_frontend</h1>
-            
-            <div className="description">
-              Start building your application.
-            </div>
-            
-            <button className="btn btn-large">Button</button>
-          </div>
+      <main style={{ paddingTop: 84, flex: 1 }}>
+        <div className="container" style={{ borderRadius: 20, background: "rgba(35,35,35,0.7)", boxShadow: "0 6px 36px 0 rgba(42,22,100,0.10)", padding: "24px 0", marginBottom: 32, minHeight: 350 }}>
+          <ActiveComponent />
         </div>
       </main>
+      <nav
+        className="piggy-nav-tabs"
+        style={{
+          width: '100%',
+          position: 'fixed',
+          left: 0,
+          bottom: 0,
+          background: 'var(--kavia-dark)',
+          borderTop: '3px solid #A259F7',
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          padding: '8px 0',
+          zIndex: 110,
+          boxShadow: '0 -2px 12px 0 rgba(22, 22, 22, 0.07)'
+        }}
+      >
+        {TABS.map(tab => (
+          <button
+            key={tab.key}
+            className="btn"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: activeTab === tab.key ? '#FF6F61' : 'var(--text-secondary)',
+              fontWeight: activeTab === tab.key ? 700 : 500,
+              fontSize: activeTab === tab.key ? '1.30rem' : '1.15rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 1,
+              cursor: 'pointer',
+              borderRadius: 12,
+              padding: '7px 12px',
+              boxShadow: activeTab === tab.key ? '0 2px 8px 0 rgba(255,111,97,0.11)' : 'none',
+              transition: 'color 0.22s, font-size 0.15s'
+            }}
+            aria-label={tab.label}
+            onClick={() => setActiveTab(tab.key)}
+          >
+            <span aria-hidden style={{ fontSize: '1.45rem', lineHeight: 1.15 }}>{tab.icon}</span>
+            <span style={{
+              marginTop: 2,
+              fontSize: activeTab === tab.key ? '1.05rem' : '0.93rem',
+              fontFamily: "inherit",
+              letterSpacing: 0.2,
+            }}>
+              {tab.label}
+            </span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
