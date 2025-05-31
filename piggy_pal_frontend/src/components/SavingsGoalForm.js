@@ -62,44 +62,46 @@ function SavingsGoalForm() {
         border: "3.5px solid #20CFCF",
       }}
     >
-      <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>🎯</div>
+      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "#fff", textShadow: "0 1.5px 7px #141416" }}>🎯</div>
       <h2
         style={{
-          color: "#FF6F61",
+          color: "#fff",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
-          background: "linear-gradient(70deg,#FF6F61 60%,#20CFCF 115%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: "unset",
+          WebkitBackgroundClip: "unset",
+          WebkitTextFillColor: "unset",
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
+          textShadow: "0 2px 8px #14141680"
         }}
       >
         Savings Goal
       </h2>
       {/* Feedback or form content */}
       {saved && showDetails ? (
-        <div style={{ marginTop: 28, color: "#20CFCF", fontWeight: 800, fontSize: "1.7rem" }}>
+        <div style={{ marginTop: 28, color: "#fff", fontWeight: 800, fontSize: "1.7rem", textShadow: "0 2px 9px #16161660" }}>
           Goal Saved! 🎉
           <div
             style={{
               margin: "24px auto 14px auto",
               padding: "16px 10px",
               borderRadius: 17,
-              background: "#fff",
-              color: "#161616",
+              background: "#1A1A1A",
+              color: "#fff",
               fontWeight: 500,
-              fontSize: "1.12rem"
+              fontSize: "1.12rem",
+              boxShadow: "0 2px 9px #FFD60032"
             }}
           >
-            <span style={{ fontWeight: 700, color: "#FF6F61" }}>
+            <span style={{ fontWeight: 700, color: "#FFD600" }}>
               {goalName}
             </span>
             <span
               style={{
                 margin: "0 7px",
-                color: "#A259F7",
+                color: "#20CFCF",
                 fontWeight: 700,
                 fontSize: "1.05em"
               }}
@@ -142,7 +144,7 @@ function SavingsGoalForm() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#FF6F61",
+                color: "#fff",
                 fontSize: "1.07rem",
                 marginBottom: 7,
                 textAlign: "left",
@@ -159,12 +161,14 @@ function SavingsGoalForm() {
               placeholder="Eg, New Skateboard"
               style={{
                 width: "100%",
-                border: "2px solid #FF6F61",
+                border: "2px solid #FFD600",
                 borderRadius: 9,
                 fontSize: "1.12rem",
                 padding: "8px 11px",
                 outline: "none",
                 fontWeight: 500,
+                background: "#181818",
+                color: "#fff"
               }}
               required
               autoFocus
@@ -176,7 +180,7 @@ function SavingsGoalForm() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#20CFCF",
+                color: "#fff",
                 fontSize: "1.07rem",
                 marginBottom: 7,
                 textAlign: "left",
@@ -200,6 +204,8 @@ function SavingsGoalForm() {
                 padding: "8px 11px",
                 outline: "none",
                 fontWeight: 500,
+                background: "#1A1A1A",
+                color: "#fff"
               }}
               required
             />
@@ -247,9 +253,10 @@ function SavingsGoalForm() {
         <div
           style={{
             marginTop: 19,
-            color: "#333",
+            color: "#fff",
             fontWeight: 400,
             fontSize: "1.10rem",
+            textShadow: "0 1.5px 3px #141416"
           }}
         >
           Set a new savings goal to start saving smarter!
@@ -258,7 +265,7 @@ function SavingsGoalForm() {
       {/* Minimal error message */}
       {!saved && (goalName.trim() || goalAmount.trim()) &&
         (!goalName.trim() || !goalAmount.trim() || isNaN(parseFloat(goalAmount))) && (
-        <div style={{ color: "#A259F7", fontWeight: 500, fontSize: "1.01rem", marginTop: 12 }}>
+        <div style={{ color: "#FFD600", fontWeight: 700, fontSize: "1.01rem", marginTop: 12, textShadow: "0 1.5px 2.5px #141416" }}>
           Please enter a goal name and a valid amount.
         </div>
       )}

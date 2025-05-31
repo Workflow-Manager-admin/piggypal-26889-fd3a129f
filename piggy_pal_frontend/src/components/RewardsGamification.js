@@ -94,15 +94,16 @@ function RewardsGamification() {
       <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>🏅</div>
       <h2
         style={{
-          color: "#A259F7",
+          color: "#fff",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
-          background: "linear-gradient(70deg,#A259F7 60%,#FFD600 120%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          background: "unset",
+          WebkitBackgroundClip: "unset",
+          WebkitTextFillColor: "unset",
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
+          textShadow: "0 2px 9px #14141699"
         }}
       >
         Rewards & Gamification
