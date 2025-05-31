@@ -138,7 +138,8 @@ function EducationZone() {
     <div style={{
       maxWidth: 420,
       margin: "54px auto",
-      background: "var(--surface)", // Card background: always use palette
+      // Strict palette - never ambiguous: quiz/card container uses ONLY surface
+      background: "var(--surface)",
       borderRadius: 36,
       boxShadow: "0 2px 18px 0 var(--accent-purple)18",
       padding: "38px 18px 34px 18px",
@@ -233,7 +234,7 @@ function EducationZone() {
           <div style={{
             margin: "17px 0 0 0",
             color: "var(--text-dark)",
-            background: "var(--surface-contrast)",
+            background: "var(--surface-contrast)", // Palette tertiary for active question bg
             fontWeight: 700,
             fontSize: "1.23rem",
             letterSpacing: 1.04,
