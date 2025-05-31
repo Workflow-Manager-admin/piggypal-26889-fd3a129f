@@ -274,8 +274,8 @@ function SecuritySharing() {
         {showInvite && (
           <div style={{
             marginTop: 17,
-            background: "#fffdf7",
-            color: "#A259F7",
+            background: "#fff",
+            color: "#1A1A1A",
             padding: "16px 8px 13px 8px",
             borderRadius: 12,
             boxShadow: "0 3px 15px 0 #FFD6001b, 0 1.5px 6px #A259F74a",
