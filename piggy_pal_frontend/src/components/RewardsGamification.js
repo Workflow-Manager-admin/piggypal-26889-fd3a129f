@@ -300,14 +300,14 @@ function RewardsGamification() {
               }}>UNLOCKED!</span>
             </div>
             <div style={{
-              color: "var(--text-light)",
-              background: "var(--background)",
+              color: "var(--text-dark)",
+              background: "var(--surface)",
               padding: "11px 14px",
               borderRadius: 11,
               marginBottom: 10,
               fontSize: "1.08rem",
               boxShadow: "0 4px 18px 0 var(--accent-gold)15, 0 2px 7px var(--accent-purple)10",
-              textShadow: "0 1px 3px var(--surface)"
+              textShadow: "0 1px 3px var(--background)20"
             }}>
               {selectedBadge.desc}
             </div>
