@@ -70,20 +70,25 @@ function SecuritySharing() {
     <div style={{
       maxWidth: 400,
       margin: '54px auto',
-      background: 'linear-gradient(120deg, #20CFCF 68%, #A259F7 105%)',
+      background: 'linear-gradient(120deg, var(--secondary) 68%, var(--accent-1) 105%)',
       borderRadius: 36,
-      boxShadow: "0 2px 18px 0 rgba(32,207,207,0.08)",
+      boxShadow: "0 2px 18px 0 var(--secondary)14",
       padding: '38px 18px 34px 18px',
       textAlign: 'center',
-      border: '3.5px solid #A259F7',
+      border: '3.5px solid var(--accent-1)',
       minHeight: 440,
       position: "relative"
     }}>
-      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "#fff", textShadow: "0 1.5px 9px #141416" }}>
+      <div style={{
+        fontSize: "3.2rem",
+        marginBottom: 8,
+        color: "var(--text-dark)",
+        textShadow: "0 1.5px 9px var(--background)"
+      }}>
         {unlocked ? "🔓" : "🔒"}
       </div>
       <h2 style={{
-        color: "#fff",
+        color: "var(--text-dark)",
         fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
         fontWeight: 700,
         background: "unset",
@@ -92,7 +97,7 @@ function SecuritySharing() {
         fontSize: "2.2rem",
         margin: 0,
         letterSpacing: 1.5,
-        textShadow: "0 2px 9px #181818"
+        textShadow: "0 2px 9px var(--background)"
       }}>
         Security & Sharing
       </h2>
@@ -112,11 +117,11 @@ function SecuritySharing() {
         >
           <label htmlFor="pin-entry" style={{
             fontWeight: 700,
-            color: "#fff",
+            color: "var(--text-dark)", // For max contrast
             fontFamily: "inherit",
             fontSize: "1.08rem",
             letterSpacing: 0.7,
-            textShadow: "0 1.5px 6px #181818"
+            textShadow: "0 1.5px 6px var(--background)"
           }}>
             Enter PIN to Unlock
           </label>
@@ -136,13 +141,13 @@ function SecuritySharing() {
               textAlign: "center",
               fontWeight: 700,
               letterSpacing: 8,
-              border: "2.5px solid #FFD600",
+              border: "2.5px solid var(--secondary)",
               borderRadius: 11,
               padding: "8px 8px",
               outline: "none",
-              background: "#1A1A1A",
-              color: "#fff",
-              boxShadow: "0 2px 11px 0 #FFD6001b",
+              background: "var(--surface)",
+              color: "var(--text-dark)",
+              boxShadow: "0 2px 11px 0 var(--secondary)16",
               marginBottom: 6
             }}
             aria-label="Enter 4-digit PIN"
@@ -152,14 +157,16 @@ function SecuritySharing() {
             className="btn btn-large"
             type="submit"
             style={{
-              background: "linear-gradient(90deg,#A259F7 45%,#20CFCF 110%)",
-              color: "#fff",
+              background: pin.length === 4
+                ? "linear-gradient(90deg, var(--accent-1) 48%, var(--secondary) 110%)"
+                : "var(--button-bg-secondary)",
+              color: "var(--button-text-inverse)",
               fontWeight: 700,
               fontSize: "1.09rem",
               border: "none",
               borderRadius: 10,
               letterSpacing: 0.8,
-              boxShadow: "0 2px 6px 0 #20CFCF22",
+              boxShadow: "0 2px 6px 0 var(--accent-1)19",
               marginTop: 2,
               minWidth: 110,
               opacity: pin.length === 4 ? 1 : 0.7,
@@ -173,12 +180,12 @@ function SecuritySharing() {
           </button>
           {pinError && (
             <div style={{
-              color: "#FFD600",
+              color: "var(--secondary)",
               fontWeight: 700,
               fontSize: "1.02rem",
               marginTop: 3,
               minHeight: 18,
-              textShadow: "0 1.5px 9px #181818"
+              textShadow: "0 1.5px 9px var(--background)"
             }}>
               {pinError}
             </div>
@@ -192,31 +199,31 @@ function SecuritySharing() {
           <div style={{
             fontSize: 40,
             marginBottom: 5,
-            color: "#FFD600",
-            textShadow: "0 2px 12px #FFD60099"
+            color: "var(--accent-gold)",
+            textShadow: "0 2px 12px var(--accent-gold)99"
           }}>
             🎉
           </div>
           <div style={{
             fontWeight: 800,
-            color: "#fff",
+            color: "var(--text-dark)",
             fontSize: "1.23rem",
-            background: "#292927",
+            background: "var(--surface)",
             borderRadius: 12,
             margin: "0 auto 8px auto",
             display: "inline-block",
-            boxShadow: "0 1px 11px #FFD60044",
+            boxShadow: "0 1px 11px var(--accent-gold)44",
             padding: "15px 27px",
-            textShadow: "0 2px 6px #181818"
+            textShadow: "0 2px 6px var(--background)"
           }}>
             Feature Unlocked!
           </div>
           <div style={{
-            color: "#FFD600",
+            color: "var(--secondary)",
             fontWeight: 700,
             fontSize: "1.1rem",
             margin: "0 0 7px 0",
-            textShadow: "0 1.5px 5px #181818"
+            textShadow: "0 1.5px 5px var(--background)"
           }}>
             Welcome to PiggyPal<br />Safe & Fun Sharing! 🐷🔓
           </div>
@@ -224,8 +231,8 @@ function SecuritySharing() {
             className="btn"
             style={{
               marginTop: 8,
-              background: "linear-gradient(92deg,#FFD600 62%,#20CFCF 94%)",
-              color: "#fff",
+              background: "linear-gradient(92deg, var(--secondary) 62%, var(--accent-1) 94%)",
+              color: "var(--button-text-inverse)",
               fontWeight: 700,
               fontSize: "1.06rem",
               border: "none",
@@ -243,29 +250,29 @@ function SecuritySharing() {
       {/* Mock Invite/QR Code area */}
       <div style={{
         margin: unlocked ? "38px 0 0 0" : "36px 0 0 0",
-        borderTop: '2.2px dashed #FFD600',
+        borderTop: '2.2px dashed var(--secondary)',
         paddingTop: 27
       }}>
         <div style={{
-          color: "#fff",
+          color: "var(--text-dark)",
           fontWeight: 600,
           fontSize: "1.15rem",
           marginBottom: 12,
           letterSpacing: 0.6,
-          textShadow: "0 2px 8px #181818"
+          textShadow: "0 2px 8px var(--background)"
         }}>
           Want to share with family or friends?
         </div>
         <button
           className="btn btn-large"
           style={{
-            background: "linear-gradient(90deg,#FFD600 48%,#A259F7 110%)",
-            color: "#181818",
+            background: "linear-gradient(90deg, var(--accent-gold) 48%, var(--accent-1) 110%)",
+            color: "var(--text-light)",
             fontWeight: 800,
             fontSize: "1.10rem",
             border: "none",
             borderRadius: 10,
-            boxShadow: "0 2px 7px 0 #FFD60014",
+            boxShadow: "0 2px 7px 0 var(--accent-gold)10",
             margin: "3px 0 0 0",
             padding: "13px 25px",
             letterSpacing: 0.8
@@ -280,35 +287,42 @@ function SecuritySharing() {
         {showInvite && (
           <div style={{
             marginTop: 17,
-            background: "#181818",
-            color: "#fff",
+            background: "var(--background)",
+            color: "var(--text-dark)",
             padding: "16px 8px 13px 8px",
             borderRadius: 12,
-            boxShadow: "0 3px 15px 0 #FFD6001b, 0 1.5px 6px #A259F74a",
+            boxShadow: "0 3px 15px 0 var(--accent-gold)13, 0 1.5px 6px var(--accent-1)25",
             animation: codeAnim ? "invite-pop 1s cubic-bezier(.27,1.0,.48,0.88) both" : "none"
           }}>
-            <div style={{ fontWeight: 600, color: "#FFD600", fontSize: "1.07rem", letterSpacing: 0.7, marginBottom: 1, textShadow: "0 1.5px 5px #181818" }}>
+            <div style={{
+              fontWeight: 600,
+              color: "var(--accent-gold)",
+              fontSize: "1.07rem",
+              letterSpacing: 0.7,
+              marginBottom: 1,
+              textShadow: "0 1.5px 5px var(--background)"
+            }}>
               Your Invite Link
             </div>
             <div style={{
               fontWeight: 800,
               fontFamily: "'Fredoka One','Comic Sans MS',sans-serif",
               fontSize: "1.18rem",
-              color: "#fff",
+              color: "var(--primary)",
               margin: "7px 0 10px 0",
               wordBreak: "break-all",
-              textShadow: "0 1.5px 7px #FFD60060"
+              textShadow: "0 1.5px 7px var(--accent-gold)30"
             }}>
               {invite}
             </div>
-            <div style={{ color: "#FFD600" }}>
+            <div style={{ color: "var(--accent-gold)" }}>
               <span role="img" aria-label="qr">📸</span> Show this to a friend!
             </div>
             <button
               className="btn"
               style={{
-                background: "linear-gradient(91deg,#A259F7 46%,#20CFCF 99%)",
-                color: "#fff",
+                background: "linear-gradient(91deg, var(--accent-1) 46%, var(--secondary) 99%)",
+                color: "var(--button-text-inverse)",
                 fontWeight: 700,
                 fontSize: "1.01rem",
                 border: "none",
@@ -344,10 +358,10 @@ function SecuritySharing() {
       {/* Helper text */}
       <div style={{
         marginTop: 22,
-        color: "#fff",
+        color: "var(--text-dark)",
         fontWeight: 400,
         fontSize: "1.08rem",
-        textShadow: "0 1.5px 7px #181818"
+        textShadow: "0 1.5px 7px var(--background)"
       }}>
         This is a demo! In the real PiggyPal, your PIN would keep your money safe and invite links would let trusted people add to your goal!<br />Try unlocking and sharing now.
       </div>
