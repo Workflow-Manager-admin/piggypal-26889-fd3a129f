@@ -1,5 +1,11 @@
-/* Import Fredoka font (Google Fonts) for playful, kid-friendly look */
+/* Import Fredoka and Comic Neue from Google Fonts for playful, kid-friendly accessibility */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+/* 
+  Global playful, friendly, accessible font-family for the app.
+  Font order: Fredoka, Comic Neue, Comic Sans MS, cursive, sans-serif.
+*/
 
 :root {
   /* PiggyPal 2024 playful accessible palette */
@@ -12,7 +18,7 @@
   --text-light: #1A1A1A;      /* For light backgrounds */
   --text-dark: #F5F6FA;       /* For dark backgrounds */
 
-  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif; /* Brand playful font stack */
+  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif; /* Playful kid-friendly stack (fallback for max OS support) */
 
   /* Semantic roles/aliases for easier styling */
   --nav-bg: var(--background);
@@ -39,9 +45,10 @@
   --piggy-yellow: #FFD600;  /* deprecated - use --secondary */
 }
 
+/* Enforce playful font family globally */
 body {
   margin: 0;
-  font-family: var(--font-playful);
+  font-family: var(--font-playful) !important;
   background-color: var(--background);
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
@@ -49,18 +56,18 @@ body {
   /* enforce readable text rendering */
 }
 
-/* Ensure typography and all content inherits playful font */
+/* All elements default to playful font-family, unless explicitly overridden */
 *, *::before, *::after {
-  font-family: inherit;
+  font-family: var(--font-playful) !important;
 }
 
-/* The main "app" always gets the playful font */
+/* Main "app" container uses playful font explicitly */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
-  font-family: var(--font-playful);
+  font-family: var(--font-playful) !important;
 }
 
 .app {
@@ -69,6 +76,8 @@ body {
   flex-direction: column;
   background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
 }
+
+/* If special font-family used in subcomponents (e.g. 'Fredoka One'), encourage fallback to --font-playful stack if unavailable */
 
 .navbar {
   background-color: var(--nav-bg);

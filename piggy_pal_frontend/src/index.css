@@ -1,17 +1,20 @@
 /* Base resets and coding styles */
 * {
   box-sizing: border-box;
+  font-family: var(--font-playful) !important;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Fredoka', 'Baloo 2', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+  /* Always use the playful stack for max override */
+  font-family: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Provide code blocks readable font, but fallback to playful if needed */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
