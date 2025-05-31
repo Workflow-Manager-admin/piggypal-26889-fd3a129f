@@ -54,28 +54,27 @@ function SavingsReport() {
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background:
-          "linear-gradient(120deg, #FFD600 75%, #20CFCF 105%)",
+        background: "linear-gradient(120deg, #19191e 55%, #FFD600 111%)",
         borderRadius: 36,
-        boxShadow: "0 2px 18px 0 rgba(255,214,0,0.11)",
+        boxShadow: "0 3px 24px 0 rgba(36,15,16,0.15), 0 12px 45px 0 rgba(162,89,247,0.10)",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
-        border: "3.5px solid #20CFCF",
+        border: "3.5px solid var(--primary)",
         position: "relative",
         minHeight: 370,
         overflow: "hidden",
       }}
     >
-      <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>🐷📈</div>
+      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--accent-yellow)", textShadow: "0 1.5px 8px #FFD60044" }}>🐷📈</div>
       <h2
         style={{
-          color: "#FFD600",
-          fontFamily:
-            "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+          color: "var(--accent-purple)",
+          fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
-          background: "linear-gradient(70deg,#FFD600 60%,#20CFCF 120%)",
+          background: "linear-gradient(70deg, var(--accent-yellow) 55%, var(--secondary) 130%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
@@ -91,11 +90,12 @@ function SavingsReport() {
       >
         <div
           style={{
-            fontWeight: 600,
-            fontSize: "1.15rem",
-            color: "#20CFCF",
+            fontWeight: 700,
+            fontSize: "1.16rem",
+            color: "var(--secondary)",
             letterSpacing: 1.2,
             marginBottom: 12,
+            textShadow: "0 1.5px 3px #1a1a2065",
           }}
         >
           How full is your piggy bank?
@@ -104,16 +104,15 @@ function SavingsReport() {
         <div
           style={{
             height: 38,
-            background:
-              "linear-gradient(90deg, #FFD600 63%, #20CFCF 100%)",
+            background: "linear-gradient(90deg, #23233A 75%, #FFD600 105%)",
             borderRadius: 18,
-            boxShadow: "0 2px 18px 0 #FFD60033",
+            boxShadow: "0 2px 19px 0 #FFD60033",
             position: "relative",
             overflow: "hidden",
             margin: "0 auto",
             maxWidth: 280,
-            width: "85%",
-            border: "2.5px solid #FFD600",
+            width: "87%",
+            border: "2.5px solid var(--primary)",
             marginBottom: 18,
           }}
         >
@@ -125,10 +124,9 @@ function SavingsReport() {
               top: 0,
               height: "100%",
               width: `${(display / SAVINGS_GOAL) * 100}%`,
-              background:
-                "linear-gradient(93deg,#FF6F61 70%,#A259F7 120%)",
-              borderRadius: 18,
-              boxShadow: "0 2px 22px #FF6F613a",
+              background: "linear-gradient(93deg,var(--primary) 68%,var(--accent-purple) 118%)",
+              borderRadius: 19,
+              boxShadow: "0 2px 22px var(--primary)",
               transition: "width 0.7s cubic-bezier(.32,1.66,.41,0.96)",
               minWidth: 22,
               display: display === 0 ? "none" : "block",
@@ -144,8 +142,7 @@ function SavingsReport() {
               zIndex: 3,
               fontSize: 28,
               transition: "left 0.7s cubic-bezier(.32,1.66,.41,0.96)",
-              filter:
-                "drop-shadow(0 3px 7px #FF6F611b) drop-shadow(0 2px 4px #A259F74a)",
+              filter: "drop-shadow(0 3px 11px #FFD60022) drop-shadow(0 1.5px 6px #A259F77c)",
               userSelect: "none",
             }}
             aria-label="animated piggy"
@@ -158,12 +155,12 @@ function SavingsReport() {
               position: "absolute",
               left: 0,
               right: 0,
-              top: 6,
+              top: 7,
               zIndex: 4,
-              color: "#fff",
+              color: "var(--text-color)",
               fontWeight: 900,
-              fontSize: "1.09rem",
-              textShadow: "0 2px 9px #FFD600bb, 0 1px 0 #A259F799",
+              fontSize: "1.11rem",
+              textShadow: "0 2px 9px #FFD600bb, 0 1px 0 #1a1a206c",
               letterSpacing: 1,
               paddingLeft: 30,
               paddingRight: 14,
@@ -182,25 +179,24 @@ function SavingsReport() {
           onClick={handleAddSavings}
           disabled={amount >= SAVINGS_GOAL}
           style={{
-            background:
-              "linear-gradient(90deg,#FF6F61 66%,#A259F7 104%)",
+            background: amount < SAVINGS_GOAL
+              ? "linear-gradient(91deg, var(--primary) 66%, var(--accent-purple) 104%)"
+              : "repeating-linear-gradient(-90deg, #FFD600, #A259F7 12%, #20CFCF 27%)",
             color: "#fff",
-            fontWeight: 700,
-            fontSize: "1.15rem",
+            fontWeight: 800,
+            fontSize: "1.16rem",
             border: "none",
             borderRadius: 13,
-            marginTop: 6,
+            marginTop: 7,
             padding: "13px 36px",
-            boxShadow: "0 2px 12px 0 #FFD60029",
+            boxShadow: "0 3px 19px 0 #FFD60029",
             letterSpacing: 0.7,
-            outline:
-              amount < SAVINGS_GOAL
-                ? "3px solid #FFD60033"
-                : "none",
-            opacity: amount < SAVINGS_GOAL ? 1 : 0.57,
+            outline: amount < SAVINGS_GOAL ? "3px solid #FFD60022" : "none",
+            opacity: amount < SAVINGS_GOAL ? 1 : 0.62,
             cursor: amount < SAVINGS_GOAL ? "pointer" : "not-allowed",
-            transition: "background 0.17s, opacity 0.18s",
-            marginBottom: amount < SAVINGS_GOAL ? 0 : 10,
+            transition: "background 0.19s, opacity 0.18s",
+            marginBottom: amount < SAVINGS_GOAL ? 0 : 12,
+            textShadow: "0 1.5px 5px var(--accent-purple)"
           }}
           aria-label="Add Savings"
         >
@@ -219,11 +215,11 @@ function SavingsReport() {
           <div
             style={{
               marginTop: 14,
-              color: "#FFD600",
-              fontWeight: 800,
-              fontSize: "1.26rem",
-              letterSpacing: 1.12,
-              textShadow: "0 2px 14px #FFD60044",
+              color: "var(--accent-yellow)",
+              fontWeight: 900,
+              fontSize: "1.27rem",
+              letterSpacing: 1.18,
+              textShadow: "0 2px 17px var(--accent-yellow), 0 1.5px 3px #F7E86D7b",
               animation: "savings-pop 0.6s cubic-bezier(.6,2.0,.44,1.13) both",
             }}
           >
@@ -245,14 +241,14 @@ function SavingsReport() {
             display: "flex",
             width: "100%",
             justifyContent: "center",
-            fontSize: 28,
-            opacity: 0.9,
+            fontSize: 27,
+            opacity: 0.93,
             animation: "coin-drop 1.0s cubic-bezier(.23,1.7,.33,1.01)"
           }}
         >
-          <span style={{ margin: "0 6px" }}>🪙</span>
-          <span style={{ margin: "0 6px" }}>🪙</span>
-          <span style={{ margin: "0 6px" }}>🪙</span>
+          <span style={{ margin: "0 7px" }}>🪙</span>
+          <span style={{ margin: "0 7px" }}>🪙</span>
+          <span style={{ margin: "0 7px" }}>🪙</span>
         </div>
       )}
       {/* Animations */}
@@ -274,9 +270,10 @@ function SavingsReport() {
       <div
         style={{
           marginTop: 25,
-          color: "#A259F7",
-          fontWeight: 400,
-          fontSize: "1.09rem",
+          color: "var(--accent-purple)",
+          fontWeight: 600,
+          fontSize: "1.10rem",
+          textShadow: "0 1.5px 2px #180a2385",
         }}
       >
         Each click adds $5! Try filling your piggy bank!
