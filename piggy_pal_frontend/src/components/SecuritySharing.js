@@ -112,10 +112,11 @@ function SecuritySharing() {
         >
           <label htmlFor="pin-entry" style={{
             fontWeight: 700,
-            color: "#20CFCF",
+            color: "#fff",
             fontFamily: "inherit",
             fontSize: "1.08rem",
-            letterSpacing: 0.7
+            letterSpacing: 0.7,
+            textShadow: "0 1.5px 6px #181818"
           }}>
             Enter PIN to Unlock
           </label>
