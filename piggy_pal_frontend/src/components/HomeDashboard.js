@@ -217,7 +217,7 @@ function HomeDashboard() {
                     transition: "width 0.4s cubic-bezier(.41,1.36,.68,1.0)"
                   }} />
                 </div>
-                {/* Add Money with user input + Delete */}
+                {/* Add Money + Delete controls */}
                 <div style={{
                   display: "flex",
                   flexDirection: "column",
@@ -226,6 +226,7 @@ function HomeDashboard() {
                   marginTop: 8,
                   width: "100%"
                 }}>
+                  {/* Add savings input + button */}
                   <form
                     style={{
                       display: "flex",
@@ -268,7 +269,7 @@ function HomeDashboard() {
                       pattern="^[0-9]*[.]?[0-9]{0,2}$"
                       min="0"
                       max={goal.target - goal.saved}
-                      placeholder={`$ to add`}
+                      placeholder="$ to add"
                       value={amountInputs[goal.id] ?? ""}
                       disabled={goal.saved >= goal.target}
                       aria-label={`Amount to add to ${goal.name}`}
@@ -287,7 +288,7 @@ function HomeDashboard() {
                         boxShadow: "0 1px 6px var(--accent-gold)19"
                       }}
                       onChange={e => {
-                        // Reset error, accept only numbers/decimal
+                        // Keep only numeric/decimal
                         const val = e.target.value.replace(/[^0-9.]/g, "");
                         setAmountInputs(prev => ({ ...prev, [goal.id]: val }));
                         setInputErrors(prev => ({ ...prev, [goal.id]: null }));
@@ -299,7 +300,7 @@ function HomeDashboard() {
                       type="submit"
                       style={{
                         background: goal.saved < goal.target ?
-                          "linear-gradient(90deg,var(--primary) 62%,var(--accent-teal) 111%)" : "#aaa",
+                          "linear-gradient(90deg,var(--primary) 62%,var(--accent-teal) 111%)" : "#bbb",
                         color: goal.saved < goal.target ? "var(--text-light)" : "#eee",
                         fontWeight: 800,
                         border: "none",
@@ -317,11 +318,13 @@ function HomeDashboard() {
                       {goal.saved < goal.target ? <>Apply</> : <>Goal Reached!</>}
                     </button>
                   </form>
+                  {/* Input error feedback */}
                   {inputErrors[goal.id] && (
                     <div style={{ color: "var(--accent-orange)", fontWeight: 600, fontSize: "0.97rem" }}>
                       {inputErrors[goal.id]}
                     </div>
                   )}
+                  {/* Delete Goal Button */}
                   <button
                     className="btn"
                     style={{
