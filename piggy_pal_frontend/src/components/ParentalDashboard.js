@@ -357,8 +357,8 @@ function ParentalDashboard() {
                     Chore Approved!
                   </div>
                   <div style={{
-                    color: "#444",
-                    background: "#fffef8",
+                    color: "#1A1A1A",
+                    background: "#fff",
                     padding: "9px 18px",
                     borderRadius: 11,
                     marginBottom: 13,
