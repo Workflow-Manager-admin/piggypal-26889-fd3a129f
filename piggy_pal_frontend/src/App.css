@@ -46,6 +46,12 @@
   --accent-orange: #FF974A;
 
   /* Legacy/deprecated palette completely removed for color unity and harmony */
+
+/* Accessibility: Strong focus outline for keyboard users */
+:focus {
+  outline: 2.5px dashed var(--accent-purple);
+  outline-offset: 3px;
+}
 }
 
 /* ENFORCE playful kid-friendly font globally (root, body, all elements, containers) */
@@ -194,26 +200,27 @@ body {
 }
 /* Typography */
 .subtitle {
-  color: var(--secondary);
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 0.9px;
-  text-shadow: 0 1px 2px #3A86FF12;
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: 1.1px;
+  text-shadow: 0 1px 2px var(--accent-teal)12;
 }
 
 .title {
   font-size: 3.5rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
   margin: 0;
-  color: var(--text-dark);
-  text-shadow: 0 2px 12px #3A86FF33;
+  color: var(--primary);
+  font-family: var(--font-playful);
+  text-shadow: 0 3px 13px var(--accent-purple)36;
 }
 
 .description {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: var(--primary);
+  font-size: 1.13rem;
+  line-height: 1.54;
+  color: var(--accent-purple);
   max-width: 600px;
   margin-bottom: 16px;
 }
