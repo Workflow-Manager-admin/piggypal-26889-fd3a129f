@@ -80,7 +80,7 @@ function ParentalDashboard() {
       style={{
         maxWidth: 420,
         margin: "54px auto",
-        background: "linear-gradient(110deg, var(--accent-2) 68%, var(--accent-purple) 99%)",
+        background: "var(--surface)",
         borderRadius: 36,
         boxShadow: "0 2px 18px 0 var(--accent-2)1a",
         padding: "38px 18px 34px 18px",
