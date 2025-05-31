@@ -48,16 +48,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(125deg, var(--kavia-dark) 78%, var(--primary) 130%);
+  background: linear-gradient(130deg, var(--background) 76%, var(--primary) 140%);
 }
 
 .navbar {
-  background-color: var(--kavia-dark);
+  background-color: var(--nav-bg);
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid var(--kavia-orange);
+  border-bottom: 3.5px solid var(--primary);
   position: fixed;
   top: 0;
   width: 100%;
@@ -71,11 +71,11 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #fff;
+  color: var(--text-dark);
 }
 
 .logo-symbol {
-  color: var(--primary);
+  color: var(--accent-orange);
 }
 
 
