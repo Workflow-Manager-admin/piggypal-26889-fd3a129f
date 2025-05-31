@@ -308,7 +308,7 @@ function HomeDashboard() {
             onClick={e => e.stopPropagation()}
             style={{
               maxWidth: 370,
-              background: "linear-gradient(101deg, #FFFDEE 81%, #FFD600 125%)",
+              background: "#fff",
               borderRadius: 30,
               padding: "27px 22px 24px 22px",
               boxShadow: "0 8px 38px 0 #FFD6004a, 0 1.5px 7px #FF6F6113",
@@ -316,7 +316,8 @@ function HomeDashboard() {
               textAlign: "center",
               animation: "piggy-pop 0.36s cubic-bezier(.33,1.2,.48,1.01) both",
               minHeight: 190,
-              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif"
+              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+              color: "#181818"
             }}
           >
             <div style={{
@@ -328,8 +329,8 @@ function HomeDashboard() {
             </div>
             <div style={{
               fontWeight: 900,
-              color: "#FF6F61",
-              background: "linear-gradient(70deg,#FF6F61 54%,#A259F7 110%)",
+              color: "#C9373D",
+              background: "linear-gradient(70deg,#FF6F61 65%,#A259F7 110%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontSize: "1.45rem",
