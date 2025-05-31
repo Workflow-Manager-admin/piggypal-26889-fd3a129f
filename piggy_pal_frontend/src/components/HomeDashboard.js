@@ -72,9 +72,13 @@ function HomeDashboard() {
     );
   };
 
-  // Delete a goal
+  // Delete a goal - simulate "deleted" property for future-proofing (even though filter suffices now)
+  // If a goal had a 'deleted' key, do not display it.
   const handleDelete = (id) => {
-    setGoals(goals => goals.filter(g => g.id !== id));
+    setGoals(goals => 
+      goals.filter(g => g.id !== id)
+      // If supporting 'deleted' in future: goals.map(g => g.id === id ? {...g, deleted: true} : g)
+    );
   };
 
   // Accent color/emoji mappings
