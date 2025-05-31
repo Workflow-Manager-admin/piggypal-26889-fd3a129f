@@ -1,9 +1,22 @@
 :root {
+  /* Kavia palette (legacy used for reference) */
   --kavia-orange: #E87A41;
   --kavia-dark: #1A1A1A;
   --text-color: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --border-color: rgba(255, 255, 255, 0.1);
+
+  /* PiggyPal core palette */
+  --piggy-coral: #FF6F61;
+  --piggy-teal:  #20CFCF;
+  --piggy-purple: #A259F7;
+  --piggy-yellow: #FFD600;
+
+  /* Alias for easier theme use */
+  --primary: var(--piggy-coral);
+  --secondary: var(--piggy-teal);
+  --accent-purple: var(--piggy-purple);
+  --accent-yellow: var(--piggy-yellow);
 }
 
 body {
