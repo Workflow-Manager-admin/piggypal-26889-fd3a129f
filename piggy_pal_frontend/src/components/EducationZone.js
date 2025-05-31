@@ -45,82 +45,96 @@ function EducationZone() {
     <div style={{
       maxWidth: 420,
       margin: '54px auto',
-      background: 'linear-gradient(120deg, #FFD600 72%, #A259F7 100%)',
+      background: 'linear-gradient(120deg, var(--secondary) 72%, var(--accent-1) 100%)',
       borderRadius: 36,
-      boxShadow: "0 2px 18px 0 rgba(162,89,247,0.09)",
+      boxShadow: "0 2px 18px 0 var(--accent-purple)18",
       padding: '38px 18px 34px 18px',
       textAlign: 'center',
-      border: '3.5px solid #A259F7',
+      border: '3.5px solid var(--accent-1)',
       minHeight: 410,
     }}>
       <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>📚</div>
       <h2 style={{
-        color: "#fff",
+        color: "var(--text-dark)",
         fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
         fontWeight: 700,
-        background: "unset",
-        WebkitBackgroundClip: "unset",
-        WebkitTextFillColor: "unset",
+        background: "linear-gradient(70deg, var(--accent-1) 70%, var(--secondary) 120%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
         fontSize: "2.2rem",
         margin: 0,
         letterSpacing: 1.5,
-        textShadow: "0 1.5px 8px #14141699"
+        textShadow: "0 1.5px 8px var(--background)"
       }}>
         Financial Quiz Time!
       </h2>
       <div style={{
         margin: "27px 0 0 0",
-        color: "#181818",
-        background: "var(--accent-yellow)",
+        color: "var(--text-light)",
+        background: "var(--accent-gold)",
         fontWeight: 700,
         fontSize: "1.23rem",
         letterSpacing: 1.04,
         borderRadius: 10,
         padding: "8px 4px",
-        textShadow: "0 1.5px 2.5px #FFD60088"
+        textShadow: "0 1.5px 2.5px var(--accent-gold)8a"
       }}>
         {quiz.question}
       </div>
       <div style={{ margin: "30px 0 0 0" }}>
-        {quiz.answers.map((ans, idx) => (
-          <button
-            key={ans.text}
-            className="btn btn-large"
-            style={{
-              width: "100%",
-              margin: "0 0 13px 0",
-              background:
-                reveal && idx === selected
-                  ? (ans.correct ? "linear-gradient(90deg,#20CFCF 48%,#FFD600 92%)" : "linear-gradient(91deg,#FF6F61 72%,#A259F7 124%)")
-                  : "linear-gradient(90deg,#FFD600 56%,#A259F7 98%)",
-              color:
-                reveal && idx === selected
-                  ? (ans.correct ? "#fff" : "#fff")
-                  : "#181818",
-              fontWeight: 700,
-              fontSize: "1.11rem",
-              letterSpacing: 0.5,
-              borderRadius: 11,
-              border: "none",
-              padding: "12px 13px",
-              opacity: reveal && selected !== idx ? 0.78 : 1,
-              boxShadow: "0 2px 12px 0 #FFD60029",
-              outline: reveal && idx === selected ? "3px solid #20CFCF" : "none",
-              cursor: reveal ? "default" : "pointer",
-              transition: "background 0.17s, color 0.17s, outline 0.16s",
-              textShadow: "0 2px 8px #14141630"
-            }}
-            disabled={reveal}
-            aria-label={"Answer: " + ans.text}
-            onClick={() => handleAnswer(idx)}
-          >
-            {ans.text}
-            {reveal && idx === selected && (
-              ans.correct ? <span style={{ marginLeft: 10 }} role="img" aria-label="correct">✅</span>
-              : <span style={{ marginLeft: 10 }} role="img" aria-label="incorrect">😅</span>
-            )}
-          </button>
-        ))}
+        {quiz.answers.map((ans, idx) => {
+          // Accessible color for normal/unselected vs answered
+          let bg, color, outline;
+          if (reveal && idx === selected) {
+            if (ans.correct) {
+              bg = "linear-gradient(90deg,var(--accent-1) 58%, var(--secondary) 92%)";
+              color = "var(--text-dark)";
+              outline = "3px solid var(--accent-1)";
+            } else {
+              bg = "linear-gradient(91deg,var(--accent-orange) 54%,var(--accent-1) 124%)";
+              color = "var(--text-dark)";
+              outline = "3px solid var(--accent-orange)";
+            }
+          } else {
+            bg = "linear-gradient(90deg, var(--secondary) 56%, var(--accent-1) 98%)";
+            color = "var(--text-light)";
+            outline = "none";
+          }
+          return (
+            <button
+              key={ans.text}
+              className="btn btn-large"
+              style={{
+                width: "100%",
+                margin: "0 0 13px 0",
+                background: bg,
+                color: color,
+                fontWeight: 700,
+                fontSize: "1.11rem",
+                letterSpacing: 0.5,
+                borderRadius: 11,
+                border: "none",
+                padding: "12px 13px",
+                opacity: reveal && selected !== idx ? 0.78 : 1,
+                boxShadow: "0 2px 12px 0 var(--accent-gold)20",
+                outline: outline,
+                cursor: reveal ? "default" : "pointer",
+                transition: "background 0.17s, color 0.17s, outline 0.16s",
+                textShadow: "0 2px 8px var(--background)20"
+              }}
+              disabled={reveal}
+              aria-label={"Answer: " + ans.text}
+              onClick={() => handleAnswer(idx)}
+            >
+              {ans.text}
+              {reveal && idx === selected && (
+                ans.correct ? <span style={{ marginLeft: 10 }} role="img" aria-label="correct">✅</span>
+                : <span style={{ marginLeft: 10 }} role="img" aria-label="incorrect">😅</span>
+              )}
+            </button>
+          );
+        })}
       </div>
       {/* Feedback, themed */}
       {reveal && (
@@ -133,42 +147,43 @@ function EducationZone() {
         }}>
           {feedback === "correct" ? (
             <div style={{
-              color: "#134941",
+              color: "var(--primary)",
               fontWeight: 800,
               fontSize: "1.34rem",
               marginBottom: 2,
-              background: "#fff",
+              background: "var(--surface)",
               padding: "12px 16px",
               borderRadius: 13,
-              boxShadow: "0 4px 16px 0 #20CFCF33"
+              boxShadow: "0 4px 16px 0 var(--accent-1)20"
             }}>
               {quiz.correctFeedback}
             </div>
           ) : (
             <div>
               <div style={{
-                color: "#991c21",
+                color: "var(--accent-orange)",
                 fontWeight: 800,
                 fontSize: "1.20rem",
                 marginBottom: 2,
-                background: "#fff",
+                background: "var(--surface)",
                 padding: "11px 14px",
                 borderRadius: 13,
-                boxShadow: "0 2px 11px 0 #FF6F6121"
+                boxShadow: "0 2px 11px 0 var(--accent-orange)14"
               }}>
                 {quiz.incorrectFeedback}
               </div>
               <button
                 className="btn"
                 style={{
-                  background: "linear-gradient(91deg,#FFD600 40%,#A259F7 90%)",
-                  color: "#fff",
+                  background: "linear-gradient(91deg,var(--accent-gold) 40%,var(--accent-1) 90%)",
+                  color: "var(--text-dark)",
                   fontWeight: 700,
                   fontSize: "1.07rem",
                   marginTop: 12,
                   border: "none",
                   borderRadius: 9,
                   padding: "9px 18px",
+                  boxShadow: "0 1.5px 8px var(--accent-gold)18"
                 }}
                 onClick={handleRetry}
                 aria-label="Try Again"
@@ -183,10 +198,10 @@ function EducationZone() {
       {!reveal && (
         <div style={{
           marginTop: 21,
-          color: "#fff",
+          color: "var(--text-dark)",
           fontWeight: 500,
           fontSize: "1.11rem",
-          textShadow: "0 1.5px 4px #141416"
+          textShadow: "0 1.5px 4px var(--accent-1)33"
         }}>
           Test your money smarts with a quiz! More questions coming soon.
         </div>
