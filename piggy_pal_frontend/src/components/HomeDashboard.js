@@ -323,7 +323,7 @@ function HomeDashboard() {
               textAlign: "center",
               animation: "piggy-pop 0.36s cubic-bezier(.33,1.2,.48,1.01) both",
               minHeight: 190,
-              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+              fontFamily: "var(--font-playful)",
               color: "var(--text-light)"
             }}
           >
@@ -336,6 +336,7 @@ function HomeDashboard() {
             </div>
             <div style={{
               fontWeight: 900,
+              fontFamily: "var(--font-playful)",
               color: "var(--accent-2)",
               background: "linear-gradient(70deg,var(--accent-2) 65%,var(--accent-1) 110%)",
               WebkitBackgroundClip: "text",
@@ -349,13 +350,14 @@ function HomeDashboard() {
             <div style={{
               color: "var(--accent-1)",
               fontWeight: 600,
+              fontFamily: "var(--font-playful)",
               fontSize: "1.15rem"
             }}>
               {selected.goal > 0 ? (
                 <>
-                  Goal: <span style={{ color: "var(--accent-2)", fontWeight: 800 }}>${selected.goal}</span>
+                  Goal: <span style={{ color: "var(--accent-2)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>${selected.goal}</span>
                   <br />Saved:&nbsp;
-                  <span style={{ color: "var(--primary)", fontWeight: 800 }}>${selected.saved}</span>
+                  <span style={{ color: "var(--primary)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>${selected.saved}</span>
                   <br />
                   <PiggyProgress saved={selected.saved} goal={selected.goal} />
                   {(selected.saved >= selected.goal) && (
@@ -363,6 +365,7 @@ function HomeDashboard() {
                       color: "var(--secondary)",
                       background: "var(--card-bg-light)",
                       fontWeight: 800,
+                      fontFamily: "var(--font-playful)",
                       borderRadius: 8,
                       padding: "5px 10px",
                       marginTop: 9,
@@ -372,7 +375,7 @@ function HomeDashboard() {
                   )}
                 </>
               ) : (
-                <div style={{ color:"var(--accent-1)", fontWeight: 700 }}>
+                <div style={{ color:"var(--accent-1)", fontWeight: 800, fontFamily: "var(--font-playful)" }}>
                   New piggy! Tap "Goal" to set target on the Goals tab.
                 </div>
               )}
@@ -382,12 +385,13 @@ function HomeDashboard() {
               style={{
                 background: "linear-gradient(90deg,var(--accent-1) 50%,var(--accent-2) 100%)",
                 color: "var(--text-dark)",
-                fontWeight: 700,
+                fontWeight: 800,
+                fontFamily: "var(--font-playful)",
                 marginTop: 18,
                 border: "none",
                 borderRadius: 10,
                 padding: "8px 20px",
-                fontSize: "1rem",
+                fontSize: "1.07rem",
               }}
               onClick={handleModalClose}
               aria-label="close piggy info"
@@ -426,7 +430,8 @@ function HomeDashboard() {
         <div style={{
           marginTop: 30,
           color: "var(--accent-1)",
-          fontWeight: 500,
+          fontWeight: 600,
+          fontFamily: "var(--font-playful)",
           fontSize: "1.09rem"
         }}>
           Make saving fun! Track all your piggy jars here.

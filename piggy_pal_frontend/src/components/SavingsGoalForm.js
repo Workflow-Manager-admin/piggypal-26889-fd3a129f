@@ -66,12 +66,12 @@ function SavingsGoalForm() {
       <h2
         style={{
           color: "var(--text-dark)",
-          fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
-          fontWeight: 700,
+          fontFamily: "var(--font-playful)",
+          fontWeight: 800,
           background: "unset",
           WebkitBackgroundClip: "unset",
           WebkitTextFillColor: "unset",
-          fontSize: "2.2rem",
+          fontSize: "2.15rem",
           margin: 0,
           letterSpacing: 1.5,
           textShadow: "0 2px 8px var(--background)80"
