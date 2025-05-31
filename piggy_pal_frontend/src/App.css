@@ -120,8 +120,8 @@ body {
 }
 
 .feature-card h2 {
-  color: var(--accent-purple);
-  background: linear-gradient(70deg, var(--accent-purple) 70%, var(--secondary) 120%);
+  color: var(--accent-1);
+  background: linear-gradient(70deg, var(--accent-1) 70%, var(--secondary) 120%);
   font-family: 'Fredoka One','Comic Sans MS','Inter',sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -142,7 +142,7 @@ body {
 
 .feature-card .card-desc {
   margin-top: 14px;
-  color: var(--text-color);
+  color: var(--text-light);
   font-weight: 400;
   font-size: 1.1rem;
 }
