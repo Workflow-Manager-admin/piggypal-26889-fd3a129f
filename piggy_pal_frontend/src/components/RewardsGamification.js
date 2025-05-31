@@ -366,11 +366,19 @@ function RewardsGamification() {
           color: "var(--text-dark)",
           fontWeight: 600,
           fontSize: "1.12rem",
-          textShadow: "0 2px 8px var(--surface)22"
+          background: "var(--surface-alt)",
+          borderRadius: 10,
+          padding: "6px 12px",
+          textShadow: "0 2px 8px var(--surface)22",
+          boxShadow: "0 1px 7px var(--accent-gold)06",
+          maxWidth: 310,
+          marginLeft: "auto",
+          marginRight: "auto"
         }}>
           Try the spin wheel and unlock a fun badge!
         </div>
       )}
+      </div>
     </div>
   );
 }
