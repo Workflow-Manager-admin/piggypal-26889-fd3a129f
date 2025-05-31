@@ -33,13 +33,14 @@ body {
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* enforce readable text rendering */
 }
 
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, var(--kavia-dark) 75%, var(--primary) 130%);
+  background: linear-gradient(125deg, var(--kavia-dark) 78%, var(--primary) 130%);
 }
 
 .navbar {
