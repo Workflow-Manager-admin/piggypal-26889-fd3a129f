@@ -92,10 +92,10 @@ function SavingsReport() {
           style={{
             fontWeight: 700,
             fontSize: "1.16rem",
-            color: "var(--secondary)",
+            color: "#fff",
             letterSpacing: 1.2,
             marginBottom: 12,
-            textShadow: "0 1.5px 3px #1a1a2065",
+            textShadow: "0 1.5px 8px #141416"
           }}
         >
           How full is your piggy bank?
