@@ -217,40 +217,111 @@ function HomeDashboard() {
                     transition: "width 0.4s cubic-bezier(.41,1.36,.68,1.0)"
                   }} />
                 </div>
-                {/* Add Money/Delete */}
+                {/* Add Money with user input + Delete */}
                 <div style={{
                   display: "flex",
-                  justifyContent: "center",
-                  gap: 9,
-                  marginTop: 8
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 8,
+                  width: "100%"
                 }}>
-                  <button
-                    className="btn btn-large"
+                  <form
                     style={{
-                      background: goal.saved < goal.target ?
-                        "linear-gradient(90deg, var(--primary) 62%, var(--accent-teal) 111%)" :
-                        "#aaa",
-                      color: goal.saved < goal.target ? "var(--text-light)" : "#eee",
-                      fontWeight: 800,
-                      border: "none",
-                      borderRadius: 9,
-                      fontSize: "1.03rem",
-                      padding: "7px 16px",
-                      cursor: goal.saved < goal.target ? "pointer" : "not-allowed",
-                      opacity: goal.saved < goal.target ? 1 : 0.7,
-                      boxShadow: "0 2px 12px 0 var(--primary)12",
-                      transition: "background 0.15s"
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "100%",
+                      gap: 7,
+                      marginBottom: 3,
+                      flexWrap: "wrap",
+                      position: "relative",
                     }}
-                    type="button"
-                    aria-label={`Add money to ${goal.name}`}
-                    onClick={() => handleAddMoney(goal.id)}
-                    disabled={goal.saved >= goal.target}
+                    onSubmit={e => {
+                      e.preventDefault();
+                      if (goal.saved >= goal.target) return;
+                      let inputVal = amountInputs[goal.id];
+                      const amount = parseFloat(inputVal);
+                      let maxAdd = goal.target - goal.saved;
+                      if (isNaN(amount) || amount <= 0) {
+                        setInputErrors(prev => ({
+                          ...prev,
+                          [goal.id]: "Enter a valid amount"
+                        }));
+                        return;
+                      }
+                      if (amount > maxAdd) {
+                        setInputErrors(prev => ({
+                          ...prev,
+                          [goal.id]: `Goal limit: max $${maxAdd}`
+                        }));
+                        return;
+                      }
+                      setInputErrors(prev => ({ ...prev, [goal.id]: null }));
+                      handleAddMoney(goal.id, amount);
+                      setAmountInputs(prev => ({ ...prev, [goal.id]: "" }));
+                    }}
                   >
-                    {goal.saved < goal.target
-                      ? <>Add&nbsp;<span style={{ fontWeight: 900 }}>$5</span> 🐷</>
-                      : <>Goal Reached! 🎉</>
-                    }
-                  </button>
+                    <input
+                      type="text"
+                      inputMode="decimal"
+                      pattern="^[0-9]*[.]?[0-9]{0,2}$"
+                      min="0"
+                      max={goal.target - goal.saved}
+                      placeholder={`$ to add`}
+                      value={amountInputs[goal.id] ?? ""}
+                      disabled={goal.saved >= goal.target}
+                      aria-label={`Amount to add to ${goal.name}`}
+                      style={{
+                        width: 76,
+                        border: `2px solid ${goal.color}`,
+                        borderRadius: 8,
+                        fontSize: "1.09rem",
+                        fontWeight: 500,
+                        background: "var(--surface-contrast)",
+                        color: "var(--text-dark)",
+                        padding: "6.5px 7px",
+                        outline: "none",
+                        marginRight: 3,
+                        marginBottom: 0,
+                        boxShadow: "0 1px 6px var(--accent-gold)19"
+                      }}
+                      onChange={e => {
+                        // Reset error, accept only numbers/decimal
+                        const val = e.target.value.replace(/[^0-9.]/g, "");
+                        setAmountInputs(prev => ({ ...prev, [goal.id]: val }));
+                        setInputErrors(prev => ({ ...prev, [goal.id]: null }));
+                      }}
+                      required
+                    />
+                    <button
+                      className="btn btn-large"
+                      type="submit"
+                      style={{
+                        background: goal.saved < goal.target ?
+                          "linear-gradient(90deg,var(--primary) 62%,var(--accent-teal) 111%)" : "#aaa",
+                        color: goal.saved < goal.target ? "var(--text-light)" : "#eee",
+                        fontWeight: 800,
+                        border: "none",
+                        borderRadius: 9,
+                        fontSize: "1.03rem",
+                        padding: "7px 12px",
+                        cursor: goal.saved < goal.target ? "pointer" : "not-allowed",
+                        opacity: goal.saved < goal.target ? 1 : 0.7,
+                        boxShadow: "0 2px 12px 0 var(--primary)12",
+                        transition: "background 0.15s"
+                      }}
+                      aria-label={`Apply savings to ${goal.name}`}
+                      disabled={goal.saved >= goal.target}
+                    >
+                      {goal.saved < goal.target ? <>Apply</> : <>Goal Reached!</>}
+                    </button>
+                  </form>
+                  {inputErrors[goal.id] && (
+                    <div style={{ color: "var(--accent-orange)", fontWeight: 600, fontSize: "0.97rem" }}>
+                      {inputErrors[goal.id]}
+                    </div>
+                  )}
                   <button
                     className="btn"
                     style={{
@@ -261,7 +332,6 @@ function HomeDashboard() {
                       border: "none",
                       borderRadius: 8,
                       padding: "7px 12px",
-                      marginLeft: 2,
                       transition: "background 0.15s"
                     }}
                     type="button"
@@ -454,3 +524,4 @@ function HomeDashboard() {
 }
 
 export default HomeDashboard;
+``
