@@ -249,7 +249,7 @@ function HomeDashboard() {
             : "linear-gradient(95deg, var(--secondary) 60%, var(--primary) 112%)",
           color: "var(--text-dark)",
           fontWeight: 900,
-          fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+          fontFamily: "var(--font-playful)",
           fontSize: "1.16rem",
           letterSpacing: 1,
           border: "none",
