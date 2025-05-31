@@ -221,6 +221,9 @@ function SavingsReport() {
               fontWeight: 900,
               fontSize: "1.27rem",
               letterSpacing: 1.18,
+              background: "var(--surface-contrast)",
+              borderRadius: 13,
+              padding: "10px 0",
               textShadow: "0 2px 17px var(--accent-gold), 0 1.5px 3px var(--accent-gold)92",
               animation: "savings-pop 0.6s cubic-bezier(.6,2.0,.44,1.13) both",
             }}
@@ -272,10 +275,16 @@ function SavingsReport() {
       <div
         style={{
           marginTop: 25,
-          color: "var(--text-light)",
+          color: "var(--text-dark)",
+          background: "var(--surface-alt)",
           fontWeight: 600,
           fontSize: "1.10rem",
-          textShadow: "0 1.5px 2.5px var(--background)"
+          textShadow: "0 1.5px 2.5px var(--background)",
+          borderRadius: 10,
+          padding: "6px 8px",
+          maxWidth: 340,
+          marginLeft: "auto",
+          marginRight: "auto"
         }}
       >
         Each click adds $5! Try filling your piggy bank!
