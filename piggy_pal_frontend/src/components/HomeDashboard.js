@@ -4,80 +4,122 @@ import React, { useState } from "react";
 /**
  * Interactive Home Dashboard:
  * - Shows list of playful piggy bank avatars (goal cards).
- * - Click piggy to view details in a friendly modal.
- * - Animated "Add New Goal" creates a new empty piggy jar.
- * - Uses PiggyPal playful branding/colors and fun feedback.
+ * - Add, delete, or update each goal (name, limit, amount).
+ * - Add money to a goal directly from dashboard.
+ * - Uses playful palette and rounded styles.
  */
 function HomeDashboard() {
-  // Demo: mock piggy avatars ("jars"). In real app, would be fetched or global state!
-  const samplePiggies = [
-    {
-      name: "Super Games",
-      emoji: "🎮",
-      color: "var(--accent-orange)",
-      goal: 50,
-      saved: 19,
-      id: 1,
-    },
-    {
-      name: "Bike Fund",
-      emoji: "🚲",
-      color: "var(--primary)",
-      goal: 120,
-      saved: 48,
-      id: 2,
-    },
-    {
-      name: "Birthday",
-      emoji: "🎂",
-      color: "var(--secondary)",
-      goal: 35,
-      saved: 33,
-      id: 3,
-    }
+  // Palette - available piggy colors
+  const piggyColors = [
+    "var(--primary)",     // coral
+    "var(--secondary)",   // teal
+    "var(--accent-1)",    // purple
+    "var(--accent-2)",    // gold/yellow
+    "var(--accent-orange)"// orange
+  ];
+  const piggyEmojis = ["🐷", "🐖", "🐽", "🐗", "🥓", "🎁", "🎮", "🚲", "🎂"];
+
+  // Initial demo state for user goals (could move to persisted state or backend in future)
+  const initialGoals = [
+    { id: 1, name: "Super Games", emoji: "🎮", color: piggyColors[4], goal: 50, saved: 19 },
+    { id: 2, name: "Bike Fund", emoji: "🚲", color: piggyColors[0], goal: 120, saved: 48 },
+    { id: 3, name: "Birthday", emoji: "🎂", color: piggyColors[1], goal: 35, saved: 33 }
   ];
 
-  // State: piggies/jars
-  const [piggies, setPiggies] = useState(samplePiggies);
-  // Modal/selected details
-  const [selected, setSelected] = useState(null); // piggy id
+  // Local state: Array of savings goals
+  const [goals, setGoals] = useState(initialGoals);
+  // Modal control for details
+  const [selected, setSelected] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  // "Add" animation state
+  // Add goal animation
   const [adding, setAdding] = useState(false);
+  // Add form control (for new goal)
+  const [newGoalName, setNewGoalName] = useState("");
+  const [newGoalLimit, setNewGoalLimit] = useState("");
+  // UI error feedback for goal creation
+  const [addError, setAddError] = useState("");
+  // Manage input for quick add-money direct to dashboard
+  const [addAmtById, setAddAmtById] = useState({}); // { goalId: "" } keyed by goal id
 
-  // Helper: Add a new piggy/jar (empty goal)
-  function handleAddPiggy() {
+  // Add new savings goal (with user input for name and savings limit)
+  function handleAddGoal(e) {
+    e.preventDefault();
+    const name = newGoalName.trim();
+    const goalLimit = parseFloat(newGoalLimit);
+    // Validation
+    if (!name || isNaN(goalLimit) || goalLimit <= 0) {
+      setAddError("Please enter a name and valid amount.");
+      return;
+    }
+    const emoji = piggyEmojis[Math.floor(Math.random() * piggyEmojis.length)];
+    const color = piggyColors[Math.floor(Math.random() * piggyColors.length)];
     setAdding(true);
     setTimeout(() => {
-      setPiggies(ps => [
-        ...ps,
+      setGoals(arr => [
+        ...arr,
         {
-          name: "",
-          emoji: ["🐷", "🐖", "🐽", "🐗", "🥓"][Math.floor(Math.random() * 5)],
-          color: ["var(--piggy-coral)", "var(--piggy-teal)", "var(--accent-purple)", "var(--accent-yellow)"][Math.floor(Math.random() * 4)],
-          goal: 0,
-          saved: 0,
           id: Date.now() + Math.floor(Math.random()*9999),
-          isNew: true
+          name,
+          emoji,
+          color,
+          goal: Math.round(goalLimit * 100) / 100,
+          saved: 0
         }
       ]);
+      setNewGoalName("");
+      setNewGoalLimit("");
+      setAddError("");
       setAdding(false);
-    }, 350); // playful delay
+    }, 370);
   }
 
-  // Click piggy → open details modal
-  function handleViewDetails(piggy) {
-    setSelected(piggy);
+  // Add money to an existing goal (increments the saved amount, never goes beyond the goal limit)
+  function handleAddMoney(goalId, amount) {
+    const amt = parseFloat(amount);
+    if (isNaN(amt) || amt <= 0) return;
+    setGoals(gs =>
+      gs.map(g =>
+        g.id === goalId
+          ? { ...g, saved: Math.min(g.saved + amt, g.goal) }
+          : g
+      )
+    );
+    setAddAmtById(s => ({ ...s, [goalId]: "" }));
+  }
+
+  // Remove a goal
+  function handleDeleteGoal(goalId) {
+    setGoals(gs => gs.filter(g => g.id !== goalId));
+    // Clean up input state
+    setAddAmtById(a => {
+      const { [goalId]: _, ...rest } = a;
+      return rest;
+    });
+    if (selected && selected.id === goalId) {
+      setShowModal(false); setSelected(null);
+    }
+  }
+
+  // Click piggy/card to open modal for more info
+  function handleViewDetails(goal) {
+    setSelected(goal);
     setShowModal(true);
   }
 
   // Close details modal
   function handleModalClose() {
     setShowModal(false);
-    setTimeout(() => setSelected(null), 280);
+    setTimeout(() => setSelected(null), 220);
+  }
+
+  // Handle quick add-amount input change
+  function handleQuickAmtChange(goalId, val) {
+    if (!/^\d*\.?\d{0,2}$/.test(val)) return;
+    setAddAmtById(s => ({ ...s, [goalId]: val }));
   }
 
   // Playful progress bar renderer
+  // PUBLIC_INTERFACE
   function PiggyProgress({ saved, goal }) {
     const pct = goal > 0 ? Math.min(saved / goal, 1) : 0;
     return (
@@ -116,6 +158,167 @@ function HomeDashboard() {
       </div>
     );
   }
+
+  // Helper: render a single goal card (with add, delete, quick add forms)
+  function GoalCard({ goal, idx }) {
+    return (
+      <div
+        key={goal.id}
+        tabIndex={0}
+        role="button"
+        aria-label={goal.name ? `View ${goal.name} piggy details` : "View new piggy details"}
+        onClick={() => handleViewDetails(goal)}
+        onKeyDown={(e) => { if (["Enter", " "].includes(e.key)) handleViewDetails(goal); }}
+        style={{
+          cursor: "pointer",
+          outline: "none",
+          background: `linear-gradient(120deg, ${goal.color} 85%, var(--accent-1) 120%)`,
+          borderRadius: 26,
+          boxShadow: "0 2px 13px var(--accent-2)17",
+          padding: "16px 16px 13px 16px",
+          margin: "8px 0",
+          minWidth: 104,
+          minHeight: 94,
+          maxWidth: 138,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          border: `2.3px solid var(--surface)`,
+          transition: "box-shadow .18s, border .17s, transform .19s, background .19s",
+          position: "relative",
+          zIndex: 1,
+          fontFamily: "var(--font-playful)"
+        }}
+      >
+        <span
+          style={{
+            fontSize: 38,
+            filter: "drop-shadow(0 2px 10px var(--accent-2)11) drop-shadow(0 2px 2px var(--secondary)4a)",
+            transition: "transform 0.15s",
+            fontFamily: "var(--font-playful)"
+          }}
+        >
+          {goal.emoji}
+        </span>
+        <div
+          style={{
+            fontWeight: 800,
+            color: "var(--text-dark)",
+            fontSize: "1.06rem",
+            letterSpacing: 0.7,
+            margin: "6px 0 1px 0",
+            maxWidth: 98,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }}>
+          {goal.name}
+        </div>
+        <PiggyProgress saved={goal.saved} goal={goal.goal} />
+        {/* Add money quick form */}
+        <form
+          style={{
+            marginTop: 10,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 4
+          }}
+          onSubmit={e => {
+            e.preventDefault();
+            handleAddMoney(goal.id, addAmtById[goal.id]);
+          }}
+          onClick={e => e.stopPropagation()} // don't trigger view details modal
+        >
+          <input
+            type="text"
+            value={addAmtById[goal.id] || ""}
+            onChange={e => handleQuickAmtChange(goal.id, e.target.value)}
+            placeholder="+$"
+            inputMode="decimal"
+            pattern="^[0-9]*[.]?[0-9]{0,2}$"
+            maxLength={7}
+            style={{
+              width: 44,
+              fontSize: 15,
+              borderRadius: 8,
+              border: "1.7px solid var(--accent-2)",
+              padding: "2.3px 7px",
+              fontWeight: 700,
+              color: "var(--accent-1)",
+              background: "var(--surface-alt)",
+              outline: "none"
+            }}
+            aria-label="Add amount"
+          />
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              fontWeight: 700,
+              fontSize: "0.99rem",
+              borderRadius: 8,
+              padding: "4px 12px",
+              background: "var(--accent-gold)",
+              color: "var(--primary)",
+              border: "none",
+              cursor: "pointer",
+              boxShadow: "0 1.5px 6px var(--accent-gold)20",
+              marginLeft: 1
+            }}
+            disabled={
+              !addAmtById[goal.id] ||
+              isNaN(parseFloat(addAmtById[goal.id])) ||
+              parseFloat(addAmtById[goal.id]) <= 0 ||
+              goal.saved >= goal.goal
+            }
+            aria-label="Add money to goal"
+            tabIndex={0}
+          >＋</button>
+        </form>
+        {/* Delete this goal (trash icon button) */}
+        <button
+          className="btn"
+          title="Delete goal"
+          aria-label="Delete goal"
+          style={{
+            background: "var(--accent-orange)",
+            color: "var(--surface)",
+            border: "none",
+            borderRadius: 9,
+            marginTop: 5,
+            fontWeight: 700,
+            fontSize: 11,
+            padding: "2px 11px",
+            cursor: "pointer",
+            boxShadow: "0 1px 5px var(--accent-orange)33"
+          }}
+          onClick={e => { e.stopPropagation(); handleDeleteGoal(goal.id); }}
+        >
+          <span role="img" aria-label="delete">🗑️</span>
+        </button>
+        {/* Mini view badge */}
+        <span
+          style={{
+            fontSize: 12,
+            color: "var(--secondary)",
+            background: "var(--card-bg-light)",
+            fontWeight: 900,
+            padding: "1px 7px 1.5px 7px",
+            borderRadius: 8,
+            marginTop: 5,
+            letterSpacing: 0.37
+          }}>
+          View
+        </span>
+      </div>
+    );
+  }
+
+  // Calculate total saved across all goals
+  const totalSaved = goals.reduce((sum, g) => sum + g.saved, 0);
+  const totalGoal = goals.reduce((sum, g) => sum + g.goal, 0);
 
   return (
     <div style={{
