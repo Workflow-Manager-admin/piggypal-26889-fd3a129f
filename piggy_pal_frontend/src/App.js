@@ -64,19 +64,68 @@ function App() {
   const ActiveComponent = TABS.find(t => t.key === activeTab)?.component || HomeDashboard;
 
   return (
-    <div className="app" style={{ background: "var(--kavia-dark)", minHeight: "100vh" }}>
-      <nav className="navbar" style={{ background: "var(--kavia-dark)", borderBottom: '3px solid var(--kavia-orange)' }}>
-        <div className="container" style={{display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div className="logo" style={{ fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif", fontWeight: 700, fontSize: "1.5rem", letterSpacing: 1}}>
-            <span className="logo-symbol" style={{color: "#FF6F61", fontSize: "2rem", marginRight: 6}}>🐷</span>
+    <div
+      className="app"
+      style={{
+        background: "var(--background)",
+        minHeight: "100vh"
+      }}
+    >
+      <nav
+        className="navbar"
+        style={{
+          background: "var(--nav-bg)",
+          borderBottom: "3.5px solid var(--primary)"
+        }}
+      >
+        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div className="logo"
+            style={{
+              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
+              fontWeight: 700,
+              fontSize: "1.5rem",
+              letterSpacing: 1,
+              color: "var(--text-dark)"
+            }}
+          >
+            <span
+              className="logo-symbol"
+              style={{
+                color: "var(--accent-orange)",
+                fontSize: "2rem",
+                marginRight: 6
+              }}
+            >
+              🐷
+            </span>
             PiggyPal
           </div>
           {/* playful color-bar accent line */}
-          <div style={{ height: 6, flex: 1, marginLeft: 16, background: "linear-gradient(90deg, #FF6F61 23%, #20CFCF 48%, #A259F7 68%, #FFD600 100%)", borderRadius: 4, maxWidth: 200 }} />
+          <div
+            style={{
+              height: 6,
+              flex: 1,
+              marginLeft: 16,
+              background: "linear-gradient(90deg, var(--primary) 0%, var(--secondary) 25%, var(--accent-1) 52%, var(--accent-2) 100%)",
+              borderRadius: 4,
+              maxWidth: 220
+            }}
+          />
         </div>
       </nav>
       <main style={{ paddingTop: 84, flex: 1 }}>
-        <div className="container" style={{ borderRadius: 20, background: "rgba(35,35,35,0.7)", boxShadow: "0 6px 36px 0 rgba(42,22,100,0.10)", padding: "24px 0", marginBottom: 32, minHeight: 350 }}>
+        <div
+          className="container"
+          style={{
+            borderRadius: 20,
+            background: "var(--surface)",
+            boxShadow: "0 6px 36px 0 #3A86FF18",
+            padding: "24px 0",
+            marginBottom: 32,
+            minHeight: 350,
+            color: "var(--text-light)"
+          }}
+        >
           <ActiveComponent />
         </div>
       </main>
@@ -87,14 +136,14 @@ function App() {
           position: 'fixed',
           left: 0,
           bottom: 0,
-          background: 'var(--kavia-dark)',
-          borderTop: '3px solid #A259F7',
+          background: 'var(--nav-bg)',
+          borderTop: '3.5px solid var(--accent-1)',
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
           padding: '8px 0',
           zIndex: 110,
-          boxShadow: '0 -2px 12px 0 rgba(22, 22, 22, 0.07)'
+          boxShadow: '0 -2px 12px 0 #2125290D'
         }}
       >
         {TABS.map(tab => (
@@ -104,7 +153,9 @@ function App() {
             style={{
               background: 'none',
               border: 'none',
-              color: activeTab === tab.key ? '#FF6F61' : 'var(--text-secondary)',
+              color: activeTab === tab.key
+                ? 'var(--primary)'
+                : 'var(--accent-1)',
               fontWeight: activeTab === tab.key ? 700 : 500,
               fontSize: activeTab === tab.key ? '1.30rem' : '1.15rem',
               display: 'flex',
@@ -114,7 +165,9 @@ function App() {
               cursor: 'pointer',
               borderRadius: 12,
               padding: '7px 12px',
-              boxShadow: activeTab === tab.key ? '0 2px 8px 0 rgba(255,111,97,0.11)' : 'none',
+              boxShadow: activeTab === tab.key
+                ? '0 2px 8px 0 #3A86FF11'
+                : 'none',
               transition: 'color 0.22s, font-size 0.15s'
             }}
             aria-label={tab.label}
@@ -125,7 +178,7 @@ function App() {
               marginTop: 2,
               fontSize: activeTab === tab.key ? '1.05rem' : '0.93rem',
               fontFamily: "inherit",
-              letterSpacing: 0.2,
+              letterSpacing: 0.2
             }}>
               {tab.label}
             </span>
