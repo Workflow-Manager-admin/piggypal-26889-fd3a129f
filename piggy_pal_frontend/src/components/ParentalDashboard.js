@@ -80,12 +80,12 @@ function ParentalDashboard() {
       style={{
         maxWidth: 420,
         margin: "54px auto",
-        background: "linear-gradient(110deg, #20CFCF 68%, #FF6F61 99%)",
+        background: "linear-gradient(110deg, var(--accent-2) 68%, var(--accent-purple) 99%)",
         borderRadius: 36,
-        boxShadow: "0 2px 18px 0 rgba(32,207,207,0.12)",
+        boxShadow: "0 2px 18px 0 var(--accent-2)1a",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
-        border: "3.5px solid #20CFCF",
+        border: "3.5px solid var(--accent-2)",
         minHeight: 440,
         transition: resetting ? "transform 0.3s" : undefined,
         transform: resetting ? "scale(0.92) rotate(-7deg)" : "none",
@@ -95,7 +95,7 @@ function ParentalDashboard() {
       <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>👨‍👩‍👧</div>
       <h2
         style={{
-          color: "#fff",
+          color: "var(--text-dark)",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
           background: "unset",
@@ -104,7 +104,7 @@ function ParentalDashboard() {
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
-          textShadow: "0 2px 7px #141416"
+          textShadow: "0 2px 7px var(--background)"
         }}
       >
         Parental Dashboard
@@ -129,7 +129,7 @@ function ParentalDashboard() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#fff",
+                color: "var(--text-dark)",
                 fontSize: "1.07rem",
                 marginBottom: 6,
                 textAlign: "left"
@@ -165,7 +165,7 @@ function ParentalDashboard() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#fff",
+                color: "var(--text-dark)",
                 fontSize: "1.07rem",
                 marginBottom: 6,
                 textAlign: "left"
