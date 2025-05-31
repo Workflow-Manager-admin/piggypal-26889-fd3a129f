@@ -17,27 +17,35 @@ function HomeDashboard() {
   const [addAnim, setAddAnim] = useState(false);
 
   // Add new goal
+  // PUBLIC_INTERFACE
+  /**
+   * handleAddGoal: Submits a new goal entry form.
+   * Requires both goal name and amount to be entered.
+   * No default goals; each submit creates a new unique goal card.
+   */
   const handleAddGoal = (e) => {
     e.preventDefault();
     const name = newGoalName.trim();
     const target = parseFloat(newGoalTarget);
     if (!name || isNaN(target) || target < 1) {
-      setAddError("Enter a name and amount ($1+)");
+      setAddError("Please enter BOTH a name and an amount to save ($1 or more).");
       return;
     }
     setAddError("");
     setShowAdd(false);
     setAddAnim(true);
     setTimeout(() => setAddAnim(false), 680);
-    setGoals([
-      ...goals,
+
+    // Add new goal card with unique id and clear form
+    setGoals(gArr => [
+      ...gArr,
       {
         id: Date.now(),
         name,
         target,
         saved: 0,
-        color: pickAccent(goals.length),
-        emoji: pickEmoji(goals.length)
+        color: pickAccent(gArr.length),
+        emoji: pickEmoji(gArr.length)
       }
     ]);
     setNewGoalName("");
