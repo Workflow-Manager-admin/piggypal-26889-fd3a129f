@@ -48,13 +48,13 @@ function SavingsGoalForm() {
     setShowDetails(false);
   };
 
-  // Core playful card container re-uses the existing card style
+  // Core playful card container re-uses the existing card style but now uses consistent palette backgrounds.
   return (
     <div
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "linear-gradient(120deg, var(--accent-2) 74%, var(--primary) 94%)",
+        background: "var(--surface)",
         borderRadius: 36,
         boxShadow: "0 2px 18px 0 var(--primary)18",
         padding: "38px 18px 34px 18px",
@@ -89,7 +89,7 @@ function SavingsGoalForm() {
               padding: "16px 10px",
               borderRadius: 17,
               background: "var(--background)",
-              color: "var(--text-dark)",
+              color: "var(--text-light)",
               fontWeight: 500,
               fontSize: "1.12rem",
               boxShadow: "0 2px 9px var(--secondary)32"
