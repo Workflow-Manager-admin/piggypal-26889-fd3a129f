@@ -85,7 +85,9 @@ function App() {
               fontWeight: 700,
               fontSize: "1.5rem",
               letterSpacing: 1,
-              color: "var(--text-dark)"
+              // Use playful high-contrast color for nav brand
+              color: "var(--primary)", // Instead of var(--text-dark) (was muted charcoal)
+              textShadow: "0 2px 8px var(--accent-1)25"
             }}
           >
             <span
@@ -93,7 +95,8 @@ function App() {
               style={{
                 color: "var(--accent-orange)",
                 fontSize: "2rem",
-                marginRight: 6
+                marginRight: 6,
+                textShadow: "0 3px 11px var(--primary)50"
               }}
             >
               🐷
@@ -108,7 +111,8 @@ function App() {
               marginLeft: 16,
               background: "linear-gradient(90deg, var(--primary) 0%, var(--secondary) 25%, var(--accent-1) 52%, var(--accent-2) 100%)",
               borderRadius: 4,
-              maxWidth: 220
+              maxWidth: 220,
+              boxShadow: "0 2.5px 14px var(--primary)18"
             }}
           />
         </div>
