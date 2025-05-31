@@ -121,22 +121,22 @@ function HomeDashboard() {
       maxWidth: 490,
       minHeight: 420,
       margin: '54px auto',
-      background: 'linear-gradient(118deg, #FFD600 86%, #FF6F61 135%)',
+      background: 'linear-gradient(118deg, var(--secondary) 86%, var(--accent-2) 135%)',
       borderRadius: 36,
-      boxShadow: "0 2px 18px 0 rgba(255,111,97,0.13), 0 7px 33px 0 rgba(255, 214, 0, 0.10)",
+      boxShadow: "0 2px 18px 0 var(--primary)1a, 0 7px 33px 0 var(--secondary)19",
       padding: '30px 12px 28px 12px',
       textAlign: 'center',
-      border: '3.5px solid #FF6F61',
+      border: '3.5px solid var(--primary)',
       transition: "box-shadow 0.13s",
       position: "relative",
       overflow: "visible"
     }}>
-      <div style={{ fontSize: "2.4rem", marginBottom: 8 }} aria-label="Piggy Home">🐷🏠</div>
+      <div style={{ fontSize: "2.4rem", marginBottom: 8, color: "var(--accent-2)" }} aria-label="Piggy Home">🐷🏠</div>
       <h2 style={{
-        color: "#FF6F61",
+        color: "var(--accent-2)",
         fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
         fontWeight: 700,
-        background: "linear-gradient(70deg,#FF6F61 60%,#A259F7 130%)",
+        background: "linear-gradient(70deg,var(--accent-2) 60%,var(--accent-1) 130%)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
@@ -146,7 +146,7 @@ function HomeDashboard() {
       }}>
         Your PiggyPals
       </h2>
-      <div style={{ color: "#A259F7", fontWeight: 600, fontSize: "1.24rem", margin: "21px 0 19px 0" }}>
+      <div style={{ color: "var(--accent-1)", fontWeight: 600, fontSize: "1.24rem", margin: "21px 0 19px 0" }}>
         {piggies.length === 0 ? "Create your first piggy goal!" : "Tap a piggy to view progress"}
       </div>
       {/* Piggy avatars/cards grid */}
@@ -169,10 +169,10 @@ function HomeDashboard() {
             style={{
               cursor: "pointer",
               outline: "none",
-              background: `linear-gradient(120deg, ${p.color} 85%, #A259F7 120%)`,
+              background: `linear-gradient(120deg, ${p.color} 85%, var(--accent-1) 120%)`,
               borderRadius: 26,
-              boxShadow: p.isNew ? "0 6px 27px 0 #FFD60044,0 2.5px 18px #A259F799"
-                                : "0 2px 13px #FF6F6117",
+              boxShadow: p.isNew ? "0 6px 27px 0 var(--secondary)77,0 2.5px 18px var(--accent-1)66"
+                                : "0 2px 13px var(--accent-2)17",
               padding: "16px 16px 13px 16px",
               margin: "8px 0",
               minWidth: 104,
@@ -182,7 +182,7 @@ function HomeDashboard() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              border: `2.3px solid #fffa`,
+              border: `2.3px solid var(--surface)`,
               transition: "box-shadow .18s, border .17s, transform .19s, background .19s",
               position: "relative",
               zIndex: 1,
@@ -192,7 +192,7 @@ function HomeDashboard() {
             <span
               style={{
                 fontSize: 38,
-                filter: "drop-shadow(0 2px 10px #FF6F6111) drop-shadow(0 2px 2px #FFD6004a)",
+                filter: "drop-shadow(0 2px 10px var(--accent-2)11) drop-shadow(0 2px 2px var(--secondary)4a)",
                 transform: p.isNew ? "scale(1.23)" : undefined,
                 transition: "transform 0.15s"
               }}
@@ -202,7 +202,7 @@ function HomeDashboard() {
             <div
               style={{
                 fontWeight: 700,
-                color: "#fff",
+                color: "var(--text-dark)",
                 fontSize: "1.04rem",
                 letterSpacing: 0.7,
                 margin: "6px 0 1px 0",
@@ -211,15 +211,15 @@ function HomeDashboard() {
                 overflow: "hidden",
                 textOverflow: "ellipsis"
               }}>
-              {p.name ? p.name : <span style={{color:"#FFD600",fontWeight:800}}>New Goal!</span>}
+              {p.name ? p.name : <span style={{color:"var(--secondary)",fontWeight:800}}>New Goal!</span>}
             </div>
             <PiggyProgress saved={p.saved} goal={p.goal} />
             {/* Mini 'View' badge */}
             <span
               style={{
                 fontSize: 13,
-                color: "#FFD600",
-                background: "#fff1",
+                color: "var(--secondary)",
+                background: "var(--surface)",
                 fontWeight: 900,
                 padding: "1px 7px 1.5px 7px",
                 borderRadius: 9,
@@ -238,9 +238,9 @@ function HomeDashboard() {
           marginTop: 13,
           padding: "13px 34px 13px 21px",
           background: adding
-            ? "repeating-linear-gradient(-90deg, #FFD600, #A259F7 8%, #20CFCF 17%)"
-            : "linear-gradient(95deg, var(--accent-yellow) 60%, var(--primary) 112%)",
-          color: "#fff",
+            ? "repeating-linear-gradient(-90deg, var(--secondary), var(--accent-1) 8%, var(--primary) 17%)"
+            : "linear-gradient(95deg, var(--secondary) 60%, var(--primary) 112%)",
+          color: "var(--text-dark)",
           fontWeight: 900,
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontSize: "1.16rem",
@@ -249,10 +249,10 @@ function HomeDashboard() {
           borderRadius: 14,
           position: "relative",
           minWidth: 165,
-          boxShadow: "0 4px 22px 0 #FFD60032,0 1.5px 7px 0 #FF6F6114",
+          boxShadow: "0 4px 22px 0 var(--secondary)22,0 1.5px 7px 0 var(--accent-2)14",
           transition: "background 0.18s, box-shadow 0.12s, filter 0.13s",
           filter: adding ? "brightness(1.1) blur(0.5px)" : undefined,
-          outline: adding ? "3px solid #FFD600" : "none",
+          outline: adding ? "3px solid var(--secondary)" : "none",
           pointerEvents: adding ? "none" : undefined
         }}
         onClick={handleAddPiggy}
@@ -267,7 +267,7 @@ function HomeDashboard() {
       </button>
       {adding && (
         <div style={{
-          color: "#A259F7",
+          color: "var(--accent-1)",
           fontWeight: 700,
           fontSize: "1.12rem",
           marginTop: 13,
@@ -279,7 +279,7 @@ function HomeDashboard() {
       {/* "No piggies" encouragement */}
       {!adding && piggies.length === 0 && (
         <div style={{
-          color: "#FF6F61",
+          color: "var(--accent-2)",
           fontWeight: 700,
           marginTop: 21,
           fontSize: "1.18rem"
