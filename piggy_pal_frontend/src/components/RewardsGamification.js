@@ -1,56 +1,58 @@
 import React, { useState } from "react";
 
+// PUBLIC_INTERFACE
 /**
  * Playful Rewards & Gamification screen featuring a "spin-the-wheel" demo mini-game
  * to unlock a badge, with animated feedback.
  */
-// PUBLIC_INTERFACE
 function RewardsGamification() {
   const [spinning, setSpinning] = useState(false);
   const [hasSpun, setHasSpun] = useState(false);
   const [badgeUnlocked, setBadgeUnlocked] = useState(false);
   const [wheelRotation, setWheelRotation] = useState(0);
 
+  // Palette colors mapped to semantic CSS vars
+  const BADGE_COLORS = [
+    "var(--accent-gold)",     // yellow
+    "var(--accent-purple)",   // purple
+    "var(--accent-orange)",   // coral/orange
+  ];
+
   const badges = [
     {
       name: "Super Saver",
       emoji: "💰",
       desc: "Saved 3 days in a row!",
-      color: "#FFD600"
+      color: "var(--accent-gold)"
     },
     {
       name: "Goal Getter",
       emoji: "🎯",
       desc: "Set your first goal.",
-      color: "#A259F7"
+      color: "var(--accent-purple)"
     },
     {
       name: "Spin Star",
       emoji: "🌟",
       desc: "Tried the wheel!",
-      color: "#FF6F61"
+      color: "var(--accent-orange)"
     },
   ];
 
-  // Just select a badge randomly on spin (for demo)
   function randomBadge() {
     return badges[Math.floor(Math.random() * badges.length)];
   }
 
   const [selectedBadge, setSelectedBadge] = useState(null);
 
-  // Handle spin action
   const spinWheel = () => {
     if (spinning) return;
     setSpinning(true);
     setHasSpun(true);
-
     // Random rotation, at least 3 full turns
-    const spinDegrees = 1440 + Math.floor(Math.random() * 360); // 4+ full spins
+    const spinDegrees = 1440 + Math.floor(Math.random() * 360);
     setWheelRotation(prev => prev + spinDegrees);
-    // Wheel spin lasts 2s
     setTimeout(() => {
-      // Unlock badge!
       const badge = randomBadge();
       setSelectedBadge(badge);
       setBadgeUnlocked(true);
@@ -58,7 +60,6 @@ function RewardsGamification() {
     }, 2000);
   };
 
-  // Reset everything
   const reset = () => {
     setBadgeUnlocked(false);
     setHasSpun(false);
@@ -66,14 +67,13 @@ function RewardsGamification() {
     setWheelRotation(0);
   };
 
-  // The slices for the wheel are based on the demo badges
   const wheelSlices = [
-    { label: badges[0].name, emoji: badges[0].emoji, color: "#FFD600" },
-    { label: badges[1].name, emoji: badges[1].emoji, color: "#A259F7" },
-    { label: badges[2].name, emoji: badges[2].emoji, color: "#FF6F61" },
-    { label: badges[0].name, emoji: badges[0].emoji, color: "#FFD600" },
-    { label: badges[1].name, emoji: badges[1].emoji, color: "#A259F7" },
-    { label: badges[2].name, emoji: badges[2].emoji, color: "#FF6F61" },
+    { label: badges[0].name, emoji: badges[0].emoji, color: "var(--accent-gold)" },
+    { label: badges[1].name, emoji: badges[1].emoji, color: "var(--accent-purple)" },
+    { label: badges[2].name, emoji: badges[2].emoji, color: "var(--accent-orange)" },
+    { label: badges[0].name, emoji: badges[0].emoji, color: "var(--accent-gold)" },
+    { label: badges[1].name, emoji: badges[1].emoji, color: "var(--accent-purple)" },
+    { label: badges[2].name, emoji: badges[2].emoji, color: "var(--accent-orange)" },
   ];
 
   return (
@@ -81,20 +81,20 @@ function RewardsGamification() {
       style={{
         maxWidth: 420,
         margin: "54px auto",
-        background: "linear-gradient(120deg, #A259F7 76%, #FFD600 105%)",
+        background: "linear-gradient(120deg, var(--accent-purple) 76%, var(--accent-gold) 105%)",
         borderRadius: 36,
-        boxShadow: "0 2px 18px 0 rgba(162,89,247,0.13)",
+        boxShadow: "0 2px 18px 0 var(--accent-purple)13",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
-        border: "3.5px solid #FFD600",
+        border: "3.5px solid var(--accent-gold)",
         minHeight: 480,
         position: "relative"
       }}
     >
-      <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>🏅</div>
+      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--accent-gold)" }}>🏅</div>
       <h2
         style={{
-          color: "#fff",
+          color: "var(--text-dark)",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
           background: "unset",
@@ -103,24 +103,24 @@ function RewardsGamification() {
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
-          textShadow: "0 2px 9px #14141699"
+          textShadow: "0 2px 9px var(--background)99"
         }}
       >
         Rewards & Gamification
       </h2>
 
       {/* Mini-game: Spin-the-wheel */}
-      <div style={{ margin: '30px 0 0 0', display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ margin: "30px 0 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div
           aria-label="spin the wheel"
           style={{
             width: 180,
             height: 180,
             borderRadius: "50%",
-            border: "7px solid #A259F7",
-            background: "#fff",
+            border: "7px solid var(--accent-purple)",
+            background: "var(--surface)",
             margin: "0 auto 17px auto",
-            boxShadow: "0 2px 15px 0 rgba(162,89,247,0.21)",
+            boxShadow: "0 2px 15px 0 var(--accent-purple)21",
             position: "relative",
             overflow: "hidden",
             zIndex: 3,
@@ -138,7 +138,12 @@ function RewardsGamification() {
             pointerEvents: "none"
           }}>
             <svg width="28" height="28">
-              <polygon points="14,0 28,28 0,28" fill="#FFD600" stroke="#A259F7" strokeWidth="2" />
+              <polygon
+                points="14,0 28,28 0,28"
+                fill="var(--accent-gold)"
+                stroke="var(--accent-purple)"
+                strokeWidth="2"
+              />
             </svg>
           </div>
           {/* Wheel */}
@@ -181,20 +186,23 @@ function RewardsGamification() {
                       display: "flex",
                       alignItems: "center",
                       gap: 6,
-                      textShadow: "0 1px 0 #fff, 0 1.5px 0 #eaec",
+                      textShadow: "0 1px 0 var(--surface), 0 1.5px 0 var(--border-color)",
                       pointerEvents: "none",
                       userSelect: "none"
                     }}
                   >
                     {slice.emoji}{" "}
-                    <span style={{ fontSize: 14, color: "#222" }}>{slice.label}</span>
+                    <span style={{
+                      fontSize: 14,
+                      color: "var(--text-light)",
+                      textShadow: "0 1px 1px var(--surface), 0 1.5px 0 var(--border-color)"
+                    }}>{slice.label}</span>
                   </div>
                 </div>
               );
             })}
             {/* Slice backgrounds/segments */}
             {[...Array(wheelSlices.length)].map((_, i) => {
-              // Colored sectors
               const startAngle = (360 / wheelSlices.length) * i;
               return (
                 <div
@@ -222,9 +230,9 @@ function RewardsGamification() {
               marginTop: 4,
               minWidth: 120,
               background: spinning
-                ? "repeating-linear-gradient(120deg, #FFD600, #A259F7 10%, #FF6F61 25%)"
-                : "linear-gradient(90deg,#FFD600 52%,#A259F7 92%)",
-              color: "#1A1A1A",
+                ? "repeating-linear-gradient(120deg, var(--accent-gold), var(--accent-purple) 10%, var(--accent-orange) 25%)"
+                : "linear-gradient(90deg, var(--accent-gold) 52%, var(--accent-purple) 92%)",
+              color: "var(--text-light)",
               fontWeight: 700,
               fontSize: "1.18rem",
               border: "none",
@@ -234,8 +242,8 @@ function RewardsGamification() {
               transition: "background 0.18s",
               opacity: spinning ? 0.8 : 1,
               cursor: spinning ? "not-allowed" : "pointer",
-              boxShadow: "0 2px 10px 0 rgba(255, 214, 0, 0.14)",
-              textShadow: "0 1px 2px #fff"
+              boxShadow: "0 2px 10px 0 var(--accent-gold)14",
+              textShadow: "0 1px 2px var(--surface)"
             }}
             disabled={spinning}
             onClick={spinWheel}
@@ -264,9 +272,9 @@ function RewardsGamification() {
               style={{
                 fontSize: 62,
                 marginBottom: 6,
-                filter: "drop-shadow(0 5px 17px #FFD600aa)",
-                color: "#fff",
-                textShadow: "0 2px 14px #FFD60055, 0 3px 17px #14141699"
+                filter: "drop-shadow(0 5px 17px var(--accent-gold)aa)",
+                color: "var(--accent-gold)",
+                textShadow: "0 2px 14px var(--accent-gold)55, 0 3px 17px var(--background)99"
               }}
               aria-label="badge unlocked"
             >
@@ -274,31 +282,34 @@ function RewardsGamification() {
             </div>
             <div style={{
               fontWeight: 800,
-              color: "#fff",
+              color: "var(--text-dark)",
               fontSize: "1.43rem",
               marginBottom: 4,
               letterSpacing: 0.8,
-              textShadow: "0 2px 8px #141416"
+              textShadow: "0 2px 8px var(--background)"
             }}>
-              {selectedBadge.name} <span style={{ color: selectedBadge.color, textShadow: "0 2px 7px #FFD60066" }}>UNLOCKED!</span>
+              {selectedBadge.name} <span style={{
+                color: selectedBadge.color,
+                textShadow: "0 2px 7px var(--accent-gold)66"
+              }}>UNLOCKED!</span>
             </div>
             <div style={{
-              color: "#fff",
-              background: "#181818",
+              color: "var(--text-light)",
+              background: "var(--background)",
               padding: "11px 14px",
               borderRadius: 11,
               marginBottom: 10,
               fontSize: "1.08rem",
-              boxShadow: "0 4px 18px 0 #FFD60015, 0 2px 7px rgba(162,89,247,0.10)",
-              textShadow: "0 1px 3px #fff2"
+              boxShadow: "0 4px 18px 0 var(--accent-gold)15, 0 2px 7px var(--accent-purple)10",
+              textShadow: "0 1px 3px var(--surface)"
             }}>
               {selectedBadge.desc}
             </div>
             <button
               className="btn"
               style={{
-                background: "linear-gradient(98deg,#FFD600 61%,#A259F7 93%)",
-                color: "#fff",
+                background: "linear-gradient(98deg, var(--accent-gold) 61%, var(--accent-purple) 93%)",
+                color: "var(--button-text)",
                 fontWeight: 700,
                 marginTop: 10,
                 fontSize: "1.08rem",
@@ -306,7 +317,7 @@ function RewardsGamification() {
                 border: "none",
                 borderRadius: 10,
                 padding: "9px 22px",
-                boxShadow: "0 1px 6px 0 #FFD60044"
+                boxShadow: "0 1px 6px 0 var(--accent-gold)44"
               }}
               onClick={reset}
               aria-label="Play again"
@@ -329,14 +340,13 @@ function RewardsGamification() {
         }
         `}
       </style>
-      {/* Helper text or encouragement */}
       {!hasSpun && (
         <div style={{
           marginTop: 20,
-          color: "#fff",
+          color: "var(--text-light)",
           fontWeight: 600,
           fontSize: "1.12rem",
-          textShadow: "0 2px 8px #141416"
+          textShadow: "0 2px 8px var(--background)"
         }}>
           Try the spin wheel and unlock a fun badge!
         </div>
