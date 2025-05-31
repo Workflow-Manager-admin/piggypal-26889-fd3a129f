@@ -161,13 +161,13 @@ function SavingsReport() {
               background: "var(--accent-gold)",
               borderRadius: 9,
               fontWeight: 900,
+              fontFamily: "var(--font-playful)",
               fontSize: "1.11rem",
               letterSpacing: 1,
               paddingLeft: 30,
               paddingRight: 14,
               textAlign: "left",
               pointerEvents: "none",
-              fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
               textShadow: "0 1.5px 7px var(--accent-gold)33"
             }}
           >

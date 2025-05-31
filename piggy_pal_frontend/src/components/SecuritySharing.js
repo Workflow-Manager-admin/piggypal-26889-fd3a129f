@@ -306,7 +306,7 @@ function SecuritySharing() {
             </div>
             <div style={{
               fontWeight: 800,
-              fontFamily: "'Fredoka One','Comic Sans MS',sans-serif",
+              fontFamily: "var(--font-playful)",
               fontSize: "1.18rem",
               color: "var(--primary)",
               margin: "7px 0 10px 0",
