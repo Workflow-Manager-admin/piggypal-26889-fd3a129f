@@ -54,7 +54,7 @@ function SavingsReport() {
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "var(--surface)", // Use palette surface - previously had a gradient
+        background: "var(--surface)",
         borderRadius: 36,
         boxShadow: "0 3px 24px 0 var(--accent-purple)17, 0 12px 45px 0 var(--accent-1)13",
         padding: "38px 18px 34px 18px",
@@ -62,7 +62,7 @@ function SavingsReport() {
         border: "3.5px solid var(--primary)",
         position: "relative",
         minHeight: 370,
-        overflow: "hidden",
+        overflow: "hidden"
       }}
     >
       <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--accent-gold)", textShadow: "0 1.5px 8px var(--accent-gold)55" }}>🐷📈</div>
@@ -82,6 +82,7 @@ function SavingsReport() {
       >
         Savings Report
       </h2>
+
       <div
         style={{
           marginTop: 26,
@@ -95,7 +96,10 @@ function SavingsReport() {
             color: "var(--text-light)",
             letterSpacing: 1.2,
             marginBottom: 12,
-            textShadow: "0 1.5px 8px var(--background)"
+            textShadow: "0 1.5px 8px var(--background)",
+            background: "var(--surface)", // subtle surface bg for distinction
+            borderRadius: 8,
+            padding: "4px 0"
           }}
         >
           How full is your piggy bank?
@@ -104,7 +108,7 @@ function SavingsReport() {
         <div
           style={{
             height: 38,
-            background: "var(--surface-alt)", // Previously gradient, now harmonized to palette surface-alt
+            background: "var(--surface-alt)", // surface-alt for progress bg
             borderRadius: 18,
             boxShadow: "0 2px 19px 0 var(--accent-gold)33",
             position: "relative",
@@ -124,12 +128,12 @@ function SavingsReport() {
               top: 0,
               height: "100%",
               width: `${(display / SAVINGS_GOAL) * 100}%`,
-              background: "linear-gradient(93deg,var(--primary) 68%,var(--accent-purple) 118%)", // Palette-approved gradient
+              background: "linear-gradient(93deg,var(--primary) 68%,var(--accent-purple) 118%)",
               borderRadius: 19,
               boxShadow: "0 2px 22px var(--primary)",
               transition: "width 0.7s cubic-bezier(.32,1.66,.41,0.96)",
               minWidth: 22,
-              display: display === 0 ? "none" : "block",
+              display: display === 0 ? "none" : "block"
             }}
             aria-label="savings progress bar"
           />
@@ -144,6 +148,8 @@ function SavingsReport() {
               transition: "left 0.7s cubic-bezier(.32,1.66,.41,0.96)",
               filter: "drop-shadow(0 3px 11px var(--accent-gold)44) drop-shadow(0 1.5px 6px var(--accent-purple)52)",
               userSelect: "none",
+              background: "var(--surface)", // keeps piggy area surface for clarity
+              borderRadius: 9
             }}
             aria-label="animated piggy"
           >
@@ -158,7 +164,7 @@ function SavingsReport() {
               top: 7,
               zIndex: 4,
               color: "var(--text-light)",
-              background: "var(--accent-gold)",
+              background: "var(--surface)", // surface overlay for total
               borderRadius: 9,
               fontWeight: 900,
               fontFamily: "var(--font-playful)",
@@ -168,7 +174,8 @@ function SavingsReport() {
               paddingRight: 14,
               textAlign: "left",
               pointerEvents: "none",
-              textShadow: "0 1.5px 7px var(--accent-gold)33"
+              textShadow: "0 1.5px 7px var(--accent-gold)33",
+              boxShadow: "0 2px 8px var(--surface)90"
             }}
           >
             ${display} / ${SAVINGS_GOAL}
@@ -221,11 +228,12 @@ function SavingsReport() {
               fontWeight: 900,
               fontSize: "1.27rem",
               letterSpacing: 1.18,
-              background: "var(--surface-contrast)",
+              background: "var(--surface)", // use var(--surface) for result/feedback
               borderRadius: 13,
               padding: "10px 0",
               textShadow: "0 2px 17px var(--accent-gold), 0 1.5px 3px var(--accent-gold)92",
               animation: "savings-pop 0.6s cubic-bezier(.6,2.0,.44,1.13) both",
+              boxShadow: "0 2px 11px 0 var(--accent-gold)21"
             }}
           >
             🎉 Congrats! Your piggy is FULL!
@@ -248,7 +256,8 @@ function SavingsReport() {
             justifyContent: "center",
             fontSize: 27,
             opacity: 0.93,
-            animation: "coin-drop 1.0s cubic-bezier(.23,1.7,.33,1.01)"
+            animation: "coin-drop 1.0s cubic-bezier(.23,1.7,.33,1.01)",
+            background: "none" // no overlay, let card bg show
           }}
         >
           <span style={{ margin: "0 7px" }}>🪙</span>
@@ -276,7 +285,7 @@ function SavingsReport() {
         style={{
           marginTop: 25,
           color: "var(--text-dark)",
-          background: "var(--surface-alt)",
+          background: "var(--surface-alt)", // encouragement remains on surface-alt for gentle contrast
           fontWeight: 600,
           fontSize: "1.10rem",
           textShadow: "0 1.5px 2.5px var(--background)",
