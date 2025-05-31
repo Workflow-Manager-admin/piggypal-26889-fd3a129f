@@ -190,8 +190,8 @@ body {
 }
 
 .btn {
-  background-color: var(--primary); /* PiggyPal coral */
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--text-dark);
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -199,21 +199,21 @@ body {
   font-weight: 800;
   letter-spacing: 0.04em;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(255, 111, 97, 0.09);
+  box-shadow: 0 2px 8px 0 #3A86FF16;
   transition: background 0.22s, box-shadow 0.2s, color 0.14s;
   outline: none;
 }
 
 .btn:hover, .btn:focus {
-  background: linear-gradient(90deg, var(--primary) 66%, var(--accent-purple) 100%);
-  color: var(--accent-yellow);
-  box-shadow: 0 4px 21px 0 rgba(255, 111, 97, 0.22);
-  outline: 2.5px solid var(--accent-yellow);
+  background: linear-gradient(99deg, var(--primary) 70%, var(--accent-1) 115%);
+  color: var(--secondary);
+  box-shadow: 0 4px 21px 0 #8338EC22;
+  outline: 2.5px solid var(--secondary);
 }
 
 .btn-secondary {
   background: var(--secondary);
-  color: var(--text-color);
+  color: var(--text-light);
   border: none;
   border-radius: 8px;
   font-weight: 700;
