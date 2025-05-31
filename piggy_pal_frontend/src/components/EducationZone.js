@@ -69,10 +69,13 @@ function EducationZone() {
       </h2>
       <div style={{
         margin: "27px 0 0 0",
-        color: "#FF6F61",
+        color: "#101010",
+        background: "var(--accent-yellow)",
         fontWeight: 700,
         fontSize: "1.23rem",
-        letterSpacing: 1.04
+        letterSpacing: 1.04,
+        borderRadius: 10,
+        padding: "8px 4px"
       }}>
         {quiz.question}
       </div>
@@ -127,11 +130,11 @@ function EducationZone() {
         }}>
           {feedback === "correct" ? (
             <div style={{
-              color: "#20CFCF",
+              color: "#134941",
               fontWeight: 800,
               fontSize: "1.34rem",
               marginBottom: 2,
-              background: "#fffefb",
+              background: "#fff",
               padding: "12px 16px",
               borderRadius: 13,
               boxShadow: "0 4px 16px 0 #20CFCF33"
