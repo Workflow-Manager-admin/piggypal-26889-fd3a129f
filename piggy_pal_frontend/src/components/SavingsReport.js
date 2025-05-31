@@ -272,10 +272,10 @@ function SavingsReport() {
       <div
         style={{
           marginTop: 25,
-          color: "var(--accent-purple)",
+          color: "#fff",
           fontWeight: 600,
           fontSize: "1.10rem",
-          textShadow: "0 1.5px 2px #180a2385",
+          textShadow: "0 1.5px 2.5px #19191e"
         }}
       >
         Each click adds $5! Try filling your piggy bank!
