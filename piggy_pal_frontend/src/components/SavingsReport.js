@@ -54,7 +54,7 @@ function SavingsReport() {
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "linear-gradient(120deg, var(--background) 76%, var(--secondary) 130%)",
+        background: "var(--surface)", // Use palette surface - previously had a gradient
         borderRadius: 36,
         boxShadow: "0 3px 24px 0 var(--accent-purple)17, 0 12px 45px 0 var(--accent-1)13",
         padding: "38px 18px 34px 18px",
@@ -104,7 +104,7 @@ function SavingsReport() {
         <div
           style={{
             height: 38,
-            background: "linear-gradient(90deg, var(--surface) 69%, var(--accent-gold) 108%)",
+            background: "var(--surface-alt)", // Previously gradient, now harmonized to palette surface-alt
             borderRadius: 18,
             boxShadow: "0 2px 19px 0 var(--accent-gold)33",
             position: "relative",
