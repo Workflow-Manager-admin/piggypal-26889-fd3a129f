@@ -7,7 +7,7 @@ import React, { useState } from "react";
  * Interactive playful demo where user can:
  *  - Enter a PIN (1234) to "unlock" a feature with fun feedback/animation.
  *  - Click to "generate" a sharing invite code (random string as mock QR link).
- * Uses PiggyPal branding, color, and fun feedback.
+ * Uses PiggyPal branding, color, and fun feedback, with all text styles enforcing maximum contrast.
  */
 function SecuritySharing() {
   // PIN state and feedback
@@ -79,7 +79,7 @@ function SecuritySharing() {
       minHeight: 440,
       position: "relative"
     }}>
-      <div style={{ fontSize: "3.2rem", marginBottom: 8 }}>
+      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "#fff", textShadow: "0 1.5px 9px #141416" }}>
         {unlocked ? "🔓" : "🔒"}
       </div>
       <h2 style={{
@@ -132,17 +132,17 @@ function SecuritySharing() {
             autoFocus
             style={{
               width: "110px",
-              fontSize: "1.3rem",
+              fontSize: "1.35rem",
               textAlign: "center",
               fontWeight: 700,
               letterSpacing: 8,
-              border: "2.5px solid #A259F7",
+              border: "2.5px solid #FFD600",
               borderRadius: 11,
               padding: "8px 8px",
               outline: "none",
-              background: "#fff",
-              color: "#20CFCF",
-              boxShadow: "0 2px 7px 0 #A259F72c",
+              background: "#1A1A1A",
+              color: "#fff",
+              boxShadow: "0 2px 11px 0 #FFD6001b",
               marginBottom: 6
             }}
             aria-label="Enter 4-digit PIN"
@@ -173,11 +173,12 @@ function SecuritySharing() {
           </button>
           {pinError && (
             <div style={{
-              color: "#FF6F61",
+              color: "#FFD600",
               fontWeight: 700,
               fontSize: "1.02rem",
               marginTop: 3,
-              minHeight: 18
+              minHeight: 18,
+              textShadow: "0 1.5px 9px #181818"
             }}>
               {pinError}
             </div>
@@ -198,22 +199,24 @@ function SecuritySharing() {
           </div>
           <div style={{
             fontWeight: 800,
-            color: "#20CFCF",
+            color: "#fff",
             fontSize: "1.23rem",
-            background: "#fffefb",
+            background: "#292927",
             borderRadius: 12,
             margin: "0 auto 8px auto",
             display: "inline-block",
             boxShadow: "0 1px 11px #FFD60044",
-            padding: "15px 27px"
+            padding: "15px 27px",
+            textShadow: "0 2px 6px #181818"
           }}>
             Feature Unlocked!
           </div>
           <div style={{
-            color: "#A259F7",
+            color: "#FFD600",
             fontWeight: 700,
             fontSize: "1.1rem",
-            margin: "0 0 7px 0"
+            margin: "0 0 7px 0",
+            textShadow: "0 1.5px 5px #181818"
           }}>
             Welcome to PiggyPal<br />Safe & Fun Sharing! 🐷🔓
           </div>
@@ -244,11 +247,12 @@ function SecuritySharing() {
         paddingTop: 27
       }}>
         <div style={{
-          color: "#A259F7",
+          color: "#fff",
           fontWeight: 600,
           fontSize: "1.15rem",
           marginBottom: 12,
-          letterSpacing: 0.6
+          letterSpacing: 0.6,
+          textShadow: "0 2px 8px #181818"
         }}>
           Want to share with family or friends?
         </div>
@@ -256,7 +260,7 @@ function SecuritySharing() {
           className="btn btn-large"
           style={{
             background: "linear-gradient(90deg,#FFD600 48%,#A259F7 110%)",
-            color: "#222",
+            color: "#181818",
             fontWeight: 800,
             fontSize: "1.10rem",
             border: "none",
@@ -276,27 +280,28 @@ function SecuritySharing() {
         {showInvite && (
           <div style={{
             marginTop: 17,
-            background: "#fff",
-            color: "#1A1A1A",
+            background: "#181818",
+            color: "#fff",
             padding: "16px 8px 13px 8px",
             borderRadius: 12,
             boxShadow: "0 3px 15px 0 #FFD6001b, 0 1.5px 6px #A259F74a",
             animation: codeAnim ? "invite-pop 1s cubic-bezier(.27,1.0,.48,0.88) both" : "none"
           }}>
-            <div style={{ fontWeight: 600, color: "#20CFCF", fontSize: "1.07rem", letterSpacing: 0.7, marginBottom: 1 }}>
+            <div style={{ fontWeight: 600, color: "#FFD600", fontSize: "1.07rem", letterSpacing: 0.7, marginBottom: 1, textShadow: "0 1.5px 5px #181818" }}>
               Your Invite Link
             </div>
             <div style={{
               fontWeight: 800,
               fontFamily: "'Fredoka One','Comic Sans MS',sans-serif",
               fontSize: "1.18rem",
-              color: "#A259F7",
+              color: "#fff",
               margin: "7px 0 10px 0",
-              wordBreak: "break-all"
+              wordBreak: "break-all",
+              textShadow: "0 1.5px 7px #FFD60060"
             }}>
               {invite}
             </div>
-            <div>
+            <div style={{ color: "#FFD600" }}>
               <span role="img" aria-label="qr">📸</span> Show this to a friend!
             </div>
             <button
