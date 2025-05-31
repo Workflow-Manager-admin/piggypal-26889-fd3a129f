@@ -70,9 +70,9 @@ function SecuritySharing() {
     <div style={{
       maxWidth: 400,
       margin: '54px auto',
-      background: 'linear-gradient(120deg, var(--secondary) 68%, var(--accent-1) 105%)',
+      background: 'var(--surface)', // Unified card container as surface
       borderRadius: 36,
-      boxShadow: "0 2px 18px 0 var(--secondary)14",
+      boxShadow: "0 2px 18px 0 var(--accent-1)14",
       padding: '38px 18px 34px 18px',
       textAlign: 'center',
       border: '3.5px solid var(--accent-1)',
@@ -112,7 +112,9 @@ function SecuritySharing() {
             flexDirection: "column",
             alignItems: "center",
             gap: 13,
-            padding: "0 2px"
+            padding: "0 2px",
+            background: "var(--surface)", // Input form surface
+            borderRadius: 16
           }}
         >
           <label htmlFor="pin-entry" style={{
@@ -145,8 +147,8 @@ function SecuritySharing() {
               borderRadius: 11,
               padding: "8px 8px",
               outline: "none",
-              background: "var(--surface)",
-              color: "var(--text-dark)",
+              background: "var(--background)", // Input inner background as background for focus
+              color: "var(--text-light)",
               boxShadow: "0 2px 11px 0 var(--secondary)16",
               marginBottom: 6
             }}
@@ -251,7 +253,9 @@ function SecuritySharing() {
       <div style={{
         margin: unlocked ? "38px 0 0 0" : "36px 0 0 0",
         borderTop: '2.2px dashed var(--secondary)',
-        paddingTop: 27
+        paddingTop: 27,
+        background: "var(--surface)", // Overlay the section background as surface
+        borderRadius: 18
       }}>
         <div style={{
           color: "var(--text-dark)",
@@ -288,7 +292,7 @@ function SecuritySharing() {
           <div style={{
             marginTop: 17,
             background: "var(--background)",
-            color: "var(--text-dark)",
+            color: "var(--text-light)",
             padding: "16px 8px 13px 8px",
             borderRadius: 12,
             boxShadow: "0 3px 15px 0 var(--accent-gold)13, 0 1.5px 6px var(--accent-1)25",
