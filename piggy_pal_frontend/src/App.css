@@ -118,7 +118,7 @@ body {
   padding: 0 24px;
   width: 100%;
   box-sizing: border-box;
-  background: var(--card-bg-default);
+  /* Don't enforce surface background—used only for sections needing a card bg */
   border-radius: 24px;
   color: var(--text-dark);
   font-family: var(--font-playful) !important;
