@@ -144,6 +144,7 @@ function SavingsGoalForm() {
               style={{
                 display: "block",
                 fontWeight: 600,
+                fontFamily: "var(--font-playful)",
                 color: "var(--text-dark)",
                 fontSize: "1.07rem",
                 marginBottom: 7,
@@ -180,6 +181,7 @@ function SavingsGoalForm() {
               style={{
                 display: "block",
                 fontWeight: 600,
+                fontFamily: "var(--font-playful)",
                 color: "var(--text-dark)",
                 fontSize: "1.07rem",
                 marginBottom: 7,
