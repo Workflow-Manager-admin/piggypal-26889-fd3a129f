@@ -85,15 +85,16 @@ body {
   padding: 0 24px;
   width: 100%;
   box-sizing: border-box;
-  background: rgba(28, 29, 40, 0.94);
+  background: var(--surface);
   border-radius: 20px;
+  color: var(--text-light);
 }
 
-/* PiggyPal-feature playful card design (for feature placeholder screens) */
+/* PiggyPal-feature playful card design */
 .feature-card {
-  background: linear-gradient(119deg, var(--card-bg-light) 44%, var(--accent-yellow) 82%, var(--primary) 120%);
+  background: linear-gradient(119deg, var(--surface) 44%, var(--secondary) 82%, var(--primary) 120%);
   border-radius: 36px;
-  box-shadow: 0 3px 24px 0 rgba(36, 15, 16, 0.12), 0 12px 45px 0 rgba(162, 89, 247, 0.09);
+  box-shadow: 0 3px 24px 0 #22306215, 0 12px 45px 0 #8338EC22;
   padding: 38px 18px 34px 18px;
   text-align: center;
   margin: 54px auto;
