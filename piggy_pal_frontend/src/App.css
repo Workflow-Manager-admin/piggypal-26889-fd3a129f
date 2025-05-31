@@ -112,9 +112,11 @@ body {
   padding: 0 24px;
   width: 100%;
   box-sizing: border-box;
-  background: var(--surface);
-  border-radius: 20px;
-  color: var(--text-light);
+  background: var(--card-bg-default);
+  border-radius: 24px;
+  color: var(--text-dark);
+  font-family: var(--font-playful) !important;
+  box-shadow: 0 3px 24px 0 #A259F71A, 0 12px 45px 0 #FFD60012;
 }
 
 /* PiggyPal-feature playful card design */
