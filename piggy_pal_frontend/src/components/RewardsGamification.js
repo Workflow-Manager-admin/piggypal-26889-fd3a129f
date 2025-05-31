@@ -182,6 +182,7 @@ function RewardsGamification() {
                       top: 62,
                       color: slice.color,
                       fontWeight: 700,
+                      fontFamily: "var(--font-playful)",
                       fontSize: "1.33rem",
                       display: "flex",
                       alignItems: "center",
