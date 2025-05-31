@@ -148,29 +148,43 @@ function App() {
               color: activeTab === tab.key
                 ? 'var(--primary)'
                 : 'var(--accent-1)',
-              fontWeight: activeTab === tab.key ? 700 : 500,
-              fontSize: activeTab === tab.key ? '1.30rem' : '1.15rem',
+              fontWeight: activeTab === tab.key ? 800 : 600,
+              fontSize: activeTab === tab.key ? '1.34rem' : '1.14rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: 1,
               cursor: 'pointer',
-              borderRadius: 12,
-              padding: '7px 12px',
+              borderRadius: 15,
+              padding: '7px 14px',
               boxShadow: activeTab === tab.key
-                ? '0 2px 8px 0 #3A86FF11'
+                ? '0 2px 16px 0 var(--primary)28'
                 : 'none',
-              transition: 'color 0.22s, font-size 0.15s'
+              textShadow: activeTab === tab.key
+                ? '0 3px 11px var(--accent-1)36'
+                : '0 2px 8px var(--primary)20',
+              transition: 'color 0.22s, font-size 0.16s, box-shadow 0.18s'
             }}
             aria-label={tab.label}
             onClick={() => setActiveTab(tab.key)}
           >
-            <span aria-hidden style={{ fontSize: '1.45rem', lineHeight: 1.15 }}>{tab.icon}</span>
+            <span aria-hidden style={{
+              fontSize: activeTab === tab.key ? '1.62rem' : '1.36rem',
+              lineHeight: 1.13,
+              color: activeTab === tab.key ? 'var(--primary)' : 'var(--accent-1)',
+              textShadow: activeTab === tab.key
+                ? '0 2px 13px var(--accent-2)70, 0 1.5px 7px var(--primary)40'
+                : '0 2px 7px var(--primary)18, 0 1.5px 4px var(--accent-1)12'
+            }}>{tab.icon}</span>
             <span style={{
               marginTop: 2,
-              fontSize: activeTab === tab.key ? '1.05rem' : '0.93rem',
+              fontSize: activeTab === tab.key ? '1.08rem' : '0.92rem',
               fontFamily: "inherit",
-              letterSpacing: 0.2
+              letterSpacing: 0.2,
+              color: activeTab === tab.key ? 'var(--primary)' : 'var(--accent-1)',
+              textShadow: activeTab === tab.key
+                ? '0 2px 13px var(--accent-2)70, 0 1.5px 7px var(--primary)40'
+                : '0 2px 7px var(--primary)18, 0 1.5px 4px var(--accent-1)12'
             }}>
               {tab.label}
             </span>
