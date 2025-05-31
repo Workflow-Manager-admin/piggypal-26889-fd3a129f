@@ -147,12 +147,14 @@ function ParentalDashboard() {
               placeholder="Eg, Clean your room"
               style={{
                 width: "100%",
-                border: "2px solid #20CFCF",
+                border: "2px solid #FFD600",
                 borderRadius: 8,
                 fontSize: "1.12rem",
                 padding: "8px 11px",
                 outline: "none",
                 fontWeight: 500,
+                background: "#1A1A1A",
+                color: "#fff"
               }}
               required
             />
@@ -163,7 +165,7 @@ function ParentalDashboard() {
               style={{
                 display: "block",
                 fontWeight: 600,
-                color: "#FF6F61",
+                color: "#fff",
                 fontSize: "1.07rem",
                 marginBottom: 6,
                 textAlign: "left"
