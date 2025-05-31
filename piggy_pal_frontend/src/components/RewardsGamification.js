@@ -76,22 +76,32 @@ function RewardsGamification() {
     { label: badges[2].name, emoji: badges[2].emoji, color: "var(--accent-orange)" },
   ];
 
+  // Outer: "page" container uses background variable, inner card area uses surface (strong contrast)
   return (
     <div
       style={{
-        maxWidth: 420,
-        margin: "54px auto",
-        // Palette: replace decorative gradient with subtle patterned background using palette
-        background: "var(--surface)",
-        borderRadius: 36,
-        boxShadow: "0 2px 18px 0 var(--accent-purple)13",
-        padding: "38px 18px 34px 18px",
-        textAlign: "center",
-        border: "3.5px solid var(--accent-gold)",
-        minHeight: 480,
-        position: "relative"
+        width: "100vw",
+        minHeight: "calc(100vh - 120px)",
+        background: "var(--background)",
+        padding: 0,
+        margin: 0,
       }}
     >
+      <div
+        style={{
+          maxWidth: 420,
+          margin: "54px auto",
+          background: "var(--surface)",
+          borderRadius: 36,
+          boxShadow: "0 2px 18px 0 var(--accent-purple)13",
+          padding: "38px 18px 34px 18px",
+          textAlign: "center",
+          border: "3.5px solid var(--accent-gold)",
+          minHeight: 480,
+          position: "relative",
+          zIndex: 1
+        }}
+      >
       <div style={{
         fontSize: "3.2rem",
         marginBottom: 8,
