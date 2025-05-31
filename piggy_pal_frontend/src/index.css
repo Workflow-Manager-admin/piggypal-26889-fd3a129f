@@ -1,4 +1,11 @@
+/* Import Fredoka and Comic Neue for global playful font usage */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
 /* Base resets and coding styles */
+:root {
+  --font-playful: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+}
 * {
   box-sizing: border-box;
   font-family: var(--font-playful) !important;
@@ -7,11 +14,18 @@
 body {
   margin: 0;
   padding: 0;
-  /* Always use the playful stack for max override */
-  font-family: 'Fredoka', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif !important;
+  /* Global enforced playful font stack for all content */
+  font-family: var(--font-playful) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Main app container: always use playful font (inherits from :root/body) */
+.app {
+  font-family: var(--font-playful) !important;
+}
+
+/* All components/elements inherit the font unless explicitly overridden */
 
 /* Provide code blocks readable font, but fallback to playful if needed */
 code {
