@@ -51,16 +51,17 @@
 /* ENFORCE playful kid-friendly font globally (root, body, all elements, containers) */
 html, body, #root, .app, .container, main, nav, section {
   font-family: var(--font-playful) !important;
+  background: var(--background);
+  color: var(--text-light);
 }
 
 body {
   margin: 0;
   background-color: var(--background);
-  color: var(--text-dark);
+  color: var(--text-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 /* All elements default to playful font-family, using !important to ensure override unless an explicit code/monospace font is needed */
 *, *::before, *::after {
   font-family: var(--font-playful) !important;
