@@ -297,7 +297,7 @@ function HomeDashboard() {
             position: "fixed",
             inset: 0,
             zIndex: 999,
-            background: "rgba(0,0,0,0.48)",
+            background: "rgba(33,37,41,0.64)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -308,29 +308,29 @@ function HomeDashboard() {
             onClick={e => e.stopPropagation()}
             style={{
               maxWidth: 370,
-              background: "#fff",
+              background: "var(--surface)",
               borderRadius: 30,
               padding: "27px 22px 24px 22px",
-              boxShadow: "0 8px 38px 0 #FFD6004a, 0 1.5px 7px #FF6F6113",
-              border: `3.5px solid ${selected.color || "#FFD600"}`,
+              boxShadow: "0 8px 38px 0 var(--secondary)4a, 0 1.5px 7px var(--accent-2)21",
+              border: `3.5px solid ${selected.color || "var(--secondary)"}`,
               textAlign: "center",
               animation: "piggy-pop 0.36s cubic-bezier(.33,1.2,.48,1.01) both",
               minHeight: 190,
               fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
-              color: "#181818"
+              color: "var(--text-light)"
             }}
           >
             <div style={{
               fontSize: 51,
               marginBottom: 9,
-              filter: "drop-shadow(0 4px 18px #A259F74b)"
+              filter: "drop-shadow(0 4px 18px var(--accent-1)55)"
             }}>
               {selected.emoji}
             </div>
             <div style={{
               fontWeight: 900,
-              color: "#C9373D",
-              background: "linear-gradient(70deg,#FF6F61 65%,#A259F7 110%)",
+              color: "var(--accent-2)",
+              background: "linear-gradient(70deg,var(--accent-2) 65%,var(--accent-1) 110%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontSize: "1.45rem",
@@ -340,21 +340,21 @@ function HomeDashboard() {
               {selected.name && selected.name.length > 0 ? selected.name : "Unnamed Piggy"}
             </div>
             <div style={{
-              color: "#A259F7",
+              color: "var(--accent-1)",
               fontWeight: 600,
               fontSize: "1.15rem"
             }}>
               {selected.goal > 0 ? (
                 <>
-                  Goal: <span style={{ color: "#FF6F61", fontWeight: 800 }}>${selected.goal}</span>
+                  Goal: <span style={{ color: "var(--accent-2)", fontWeight: 800 }}>${selected.goal}</span>
                   <br />Saved:&nbsp;
-                  <span style={{ color: "#20CFCF", fontWeight: 800 }}>${selected.saved}</span>
+                  <span style={{ color: "var(--primary)", fontWeight: 800 }}>${selected.saved}</span>
                   <br />
                   <PiggyProgress saved={selected.saved} goal={selected.goal} />
                   {(selected.saved >= selected.goal) && (
                     <div style={{
-                      color: "#FFD600",
-                      background: "#fffbe9",
+                      color: "var(--secondary)",
+                      background: "var(--card-bg-light)",
                       fontWeight: 800,
                       borderRadius: 8,
                       padding: "5px 10px",
@@ -365,7 +365,7 @@ function HomeDashboard() {
                   )}
                 </>
               ) : (
-                <div style={{ color:"#A259F7", fontWeight: 700 }}>
+                <div style={{ color:"var(--accent-1)", fontWeight: 700 }}>
                   New piggy! Tap "Goal" to set target on the Goals tab.
                 </div>
               )}
@@ -373,8 +373,8 @@ function HomeDashboard() {
             <button
               className="btn"
               style={{
-                background: "linear-gradient(90deg,#A259F7 50%,#FF6F61 100%)",
-                color: "#fff",
+                background: "linear-gradient(90deg,var(--accent-1) 50%,var(--accent-2) 100%)",
+                color: "var(--text-dark)",
                 fontWeight: 700,
                 marginTop: 18,
                 border: "none",
@@ -418,7 +418,7 @@ function HomeDashboard() {
       {!showModal && (
         <div style={{
           marginTop: 30,
-          color: "#A259F7",
+          color: "var(--accent-1)",
           fontWeight: 500,
           fontSize: "1.09rem"
         }}>

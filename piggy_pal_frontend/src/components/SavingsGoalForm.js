@@ -54,18 +54,18 @@ function SavingsGoalForm() {
       style={{
         maxWidth: 400,
         margin: "54px auto",
-        background: "linear-gradient(120deg, #FF6F61 74%, #20CFCF 94%)",
+        background: "linear-gradient(120deg, var(--accent-2) 74%, var(--primary) 94%)",
         borderRadius: 36,
-        boxShadow: "0 2px 18px 0 rgba(32,207,207,0.10)",
+        boxShadow: "0 2px 18px 0 var(--primary)18",
         padding: "38px 18px 34px 18px",
         textAlign: "center",
-        border: "3.5px solid #20CFCF",
+        border: "3.5px solid var(--primary)",
       }}
     >
-      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "#fff", textShadow: "0 1.5px 7px #141416" }}>🎯</div>
+      <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--secondary)", textShadow: "0 1.5px 7px var(--background)" }}>🎯</div>
       <h2
         style={{
-          color: "#fff",
+          color: "var(--text-dark)",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
           background: "unset",
@@ -74,7 +74,7 @@ function SavingsGoalForm() {
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
-          textShadow: "0 2px 8px #14141680"
+          textShadow: "0 2px 8px var(--background)80"
         }}
       >
         Savings Goal
