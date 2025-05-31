@@ -110,7 +110,8 @@ function HomeDashboard() {
           background: "var(--secondary)",
           borderRadius: 7,
           padding: "2px 6px",
-          textShadow: "none"
+          textShadow: "none",
+          fontFamily: "var(--font-playful)"
         }}>{goal > 0 ? `$${saved}/${goal}` : "Set your goal!"}</span>
       </div>
     );
@@ -129,9 +130,11 @@ function HomeDashboard() {
       border: '3.5px solid var(--primary)',
       transition: "box-shadow 0.13s",
       position: "relative",
-      overflow: "visible"
+      overflow: "visible",
+      fontFamily: "var(--font-playful)",
+      color: "var(--text-dark)"
     }}>
-      <div style={{ fontSize: "2.4rem", marginBottom: 8, color: "var(--accent-2)" }} aria-label="Piggy Home">🐷🏠</div>
+      <div style={{ fontSize: "2.4rem", marginBottom: 8, color: "var(--accent-2)", fontFamily: "var(--font-playful)" }} aria-label="Piggy Home">🐷🏠</div>
       <h2 style={{
         color: "var(--accent-2)",
         fontFamily: "var(--font-playful)",
@@ -146,12 +149,12 @@ function HomeDashboard() {
       }}>
         Your PiggyPals
       </h2>
-      <div style={{ 
-        color: "var(--accent-1)", 
-        fontWeight: 700, 
-        fontFamily: "var(--font-playful)", 
-        fontSize: "1.2rem", 
-        margin: "21px 0 19px 0" 
+      <div style={{
+        color: "var(--accent-1)",
+        fontWeight: 700,
+        fontFamily: "var(--font-playful)",
+        fontSize: "1.2rem",
+        margin: "21px 0 19px 0"
       }}>
         {piggies.length === 0 ? "Create your first piggy goal!" : "Tap a piggy to view progress"}
       </div>
@@ -192,7 +195,8 @@ function HomeDashboard() {
               transition: "box-shadow .18s, border .17s, transform .19s, background .19s",
               position: "relative",
               zIndex: 1,
-              animation: p.isNew ? "piggy-pop 0.74s cubic-bezier(.22,1.6,.41,1.01) both" : undefined
+              animation: p.isNew ? "piggy-pop 0.74s cubic-bezier(.22,1.6,.41,1.01) both" : undefined,
+              fontFamily: "var(--font-playful)"
             }}
           >
             <span
@@ -200,7 +204,8 @@ function HomeDashboard() {
                 fontSize: 38,
                 filter: "drop-shadow(0 2px 10px var(--accent-2)11) drop-shadow(0 2px 2px var(--secondary)4a)",
                 transform: p.isNew ? "scale(1.23)" : undefined,
-                transition: "transform 0.15s"
+                transition: "transform 0.15s",
+                fontFamily: "var(--font-playful)"
               }}
             >
               {p.emoji}
@@ -218,7 +223,13 @@ function HomeDashboard() {
                 overflow: "hidden",
                 textOverflow: "ellipsis"
               }}>
-              {p.name ? p.name : <span style={{color:"var(--secondary)",fontWeight:900,fontFamily:"var(--font-playful)"}}>New Goal!</span>}
+              {p.name
+                ? p.name
+                : <span style={{
+                    color: "var(--secondary)",
+                    fontWeight: 900,
+                    fontFamily: "var(--font-playful)"
+                  }}>New Goal!</span>}
             </div>
             <PiggyProgress saved={p.saved} goal={p.goal} />
             {/* Mini 'View' badge */}
@@ -228,6 +239,7 @@ function HomeDashboard() {
                 color: "var(--secondary)",
                 background: "var(--surface)",
                 fontWeight: 900,
+                fontFamily: "var(--font-playful)",
                 padding: "1px 7px 1.5px 7px",
                 borderRadius: 9,
                 marginTop: 5,
@@ -268,7 +280,8 @@ function HomeDashboard() {
       >
         <span style={{
           marginRight: 10, fontSize: 26, verticalAlign: "middle", display: "inline-block",
-          animation: adding ? "wiggle 0.55s cubic-bezier(.22,1.41,.53,.82) both" : undefined
+          animation: adding ? "wiggle 0.55s cubic-bezier(.22,1.41,.53,.82) both" : undefined,
+          fontFamily: "var(--font-playful)"
         }}>➕</span>
         Add New Goal
       </button>
@@ -276,6 +289,7 @@ function HomeDashboard() {
         <div style={{
           color: "var(--accent-1)",
           fontWeight: 700,
+          fontFamily: "var(--font-playful)",
           fontSize: "1.12rem",
           marginTop: 13,
           animation: "fadein 0.55s cubic-bezier(.22,1.13,.32,.86) both"
@@ -288,6 +302,7 @@ function HomeDashboard() {
         <div style={{
           color: "var(--accent-2)",
           fontWeight: 700,
+          fontFamily: "var(--font-playful)",
           marginTop: 21,
           fontSize: "1.18rem"
         }}>
@@ -330,7 +345,8 @@ function HomeDashboard() {
             <div style={{
               fontSize: 51,
               marginBottom: 9,
-              filter: "drop-shadow(0 4px 18px var(--accent-1)55)"
+              filter: "drop-shadow(0 4px 18px var(--accent-1)55)",
+              fontFamily: "var(--font-playful)"
             }}>
               {selected.emoji}
             </div>
@@ -368,7 +384,7 @@ function HomeDashboard() {
                       fontFamily: "var(--font-playful)",
                       borderRadius: 8,
                       padding: "5px 10px",
-                      marginTop: 9,
+                      marginTop: 9
                     }}>
                       🎉 Goal reached! Time to treat yourself.
                     </div>
@@ -391,7 +407,7 @@ function HomeDashboard() {
                 border: "none",
                 borderRadius: 10,
                 padding: "8px 20px",
-                fontSize: "1.07rem",
+                fontSize: "1.07rem"
               }}
               onClick={handleModalClose}
               aria-label="close piggy info"
