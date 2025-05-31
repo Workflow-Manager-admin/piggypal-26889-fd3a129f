@@ -114,20 +114,8 @@ function App() {
         </div>
       </nav>
       <main style={{ paddingTop: 84, flex: 1 }}>
-        <div
-          className="container"
-          style={{
-            borderRadius: 20,
-            background: "var(--surface)",
-            boxShadow: "0 6px 36px 0 #3A86FF18",
-            padding: "24px 0",
-            marginBottom: 32,
-            minHeight: 350,
-            color: "var(--text-light)"
-          }}
-        >
-          <ActiveComponent />
-        </div>
+        {/* Remove .container for HomeDashboard area - let child card backgrounds show */}
+        <ActiveComponent />
       </main>
       <nav
         className="piggy-nav-tabs"
