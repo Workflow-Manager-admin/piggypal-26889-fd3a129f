@@ -68,16 +68,16 @@ function SavingsReport() {
       <div style={{ fontSize: "3.2rem", marginBottom: 8, color: "var(--accent-yellow)", textShadow: "0 1.5px 8px #FFD60044" }}>🐷📈</div>
       <h2
         style={{
-          color: "var(--accent-purple)",
+          color: "#fff",
           fontFamily: "'Fredoka One','Comic Sans MS','Inter',sans-serif",
           fontWeight: 700,
-          background: "linear-gradient(70deg, var(--accent-yellow) 55%, var(--secondary) 130%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          background: "unset",
+          WebkitBackgroundClip: "unset",
+          WebkitTextFillColor: "unset",
           fontSize: "2.2rem",
           margin: 0,
           letterSpacing: 1.5,
+          textShadow: "0 2px 9px #19191e"
         }}
       >
         Savings Report
